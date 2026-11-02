@@ -34,29 +34,14 @@ export const SKIP_DIRS = ['node_modules', 'dist', 'coverage'] as const;
 /** The README sections every integration has, in this order (GOVERNANCE rule 7). */
 export const README_SECTIONS = ['## Add it', '## Use it', '## Grow your task', '## Limits'] as const;
 
-/** Licences an integration's OWN code may carry. */
-export const ITEM_LICENCES = ['Apache-2.0', 'MIT', 'MIT-0'] as const;
-
-/**
- * Licences allowed for code LINKED into a published integration (its runtime dependency tree).
- * A tool an integration runs as a separate process (`system_packages`) is not linked.
- */
-export const DEPENDENCY_LICENCES = [
-  'Apache-2.0',
-  'MIT',
-  'MIT-0',
-  'ISC',
-  'BSD-2-Clause',
-  'BSD-3-Clause',
-  '0BSD',
-] as const;
+/** The one licence of every package and file in this repo. */
+export const LICENCE = 'Apache-2.0';
 
 /** npm lifecycle scripts that run on install: a published package must have none (supply-chain rule). */
 export const INSTALL_SCRIPTS = ['preinstall', 'install', 'postinstall', 'prepare'] as const;
 
 /** Version every generated integration starts at: 0.x until the platform side proves it. */
 export const NEW_ITEM_VERSION = '0.1.0';
-export const NEW_ITEM_LICENCE = 'Apache-2.0';
 export const NODE_ENGINE = '>=22';
 
 /**

@@ -3,7 +3,7 @@
 name: release
 
 # Run by hand only (Actions → release → Run workflow). `changeset publish` publishes EVERY non-private
-# package whose version is not on npm yet, so do not run it before telegram, s3-storage and stream have
+# package whose version is not on npm yet, so do not run it before telegram and stream have
 # their first version on npm (published by hand: npm trusted publishing needs the package to exist).
 # See ADR-0002 §5.1.
 on:

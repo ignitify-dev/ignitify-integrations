@@ -9,7 +9,7 @@ import {
   DRAFT_VERSION,
   INSTALL_SCRIPTS,
   INTEGRATIONS_DIR,
-  ITEM_LICENCES,
+  LICENCE,
   PUBLISHED_FILES,
   README_SECTIONS,
   REPOSITORY_URL,
@@ -95,11 +95,7 @@ const publishIssues = (
   const description = pkg['description'];
   return [
     ...field('name', `"${name}"`, pkg['name'] === name),
-    ...field(
-      'license',
-      `one of ${ITEM_LICENCES.join(', ')}`,
-      typeof licence === 'string' && (ITEM_LICENCES as readonly string[]).includes(licence),
-    ),
+    ...field('license', `"${LICENCE}"`, licence === LICENCE),
     ...field('description', 'a non-empty string', typeof description === 'string' && description !== ''),
     ...field('type', '"module"', pkg['type'] === 'module'),
     ...field('engines.node', 'set', isRecord(engines) && typeof engines['node'] === 'string' && engines['node'] !== ''),

@@ -29,18 +29,10 @@ export const ITEM_MESSAGES = {
   noRootReferences: `${ROOT_TSCONFIG}: has no references list`,
 } as const;
 
-export const LICENCE_MESSAGES = {
-  noPackages: 'package-lock.json has no "packages" map: regenerate it with npm >= 7 (lockfile v2 or v3)',
-  missing: (key: string) => `${key}: no licence in package-lock.json`,
-  unparsable: (key: string, licence: string) => `${key}: cannot read the licence expression "${licence}"`,
-  notAllowed: (key: string, licence: string) => `${key}: licence "${licence}" is not on the allow-list`,
-} as const;
-
 export const CLI_MESSAGES = {
   issues: (count: number) => `${count} issue(s):`,
   itemsOk: (count: number, drafts: number) => `${count} integration(s) OK, ${drafts} of them draft(s)`,
   legalCopied: (dirs: readonly string[]) => `LICENSE and NOTICE copied into: ${dirs.join(', ')}`,
-  licencesOk: 'every linked dependency licence is on the allow-list',
   newItemUsage: 'usage: npm run new-item -- <name> [--code] [--draft]',
   badName: (name: string, pattern: string) => `name "${name}" must match ${pattern}`,
   exists: (dir: string) => `${dir} already exists: refusing to overwrite it`,

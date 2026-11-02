@@ -35,7 +35,7 @@ The store is an option, never a gate. You can install a package with npm and wri
 
 ```bash
 npm ci --ignore-scripts
-npm run check        # lint, format, typecheck, tests, integration checks, licence check
+npm run check        # lint, format, typecheck, tests, integration checks
 npm run new-item -- my-service [--code] [--draft]
 ```
 
@@ -43,4 +43,4 @@ Requires Node 22. See [CONTRIBUTING.md](CONTRIBUTING.md) and [writing an integra
 
 ## Licence
 
-Apache-2.0. The integration READMEs and the guide are MIT-0, so you can copy their example code into your task with no notice. See [LICENSE](LICENSE) and [REUSE.toml](REUSE.toml).
+Apache-2.0, for every package and file. See [LICENSE](LICENSE).

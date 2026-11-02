@@ -2,7 +2,7 @@
   "name": "@ignitify-integrations/tools",
   "version": "0.0.0",
   "private": true,
-  "description": "Repo tools: integration checks, licence check, integration generator",
+  "description": "Repo tools: integration checks, integration generator",
   "license": "Apache-2.0",
   "type": "module",
   "dependencies": {

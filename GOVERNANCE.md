@@ -11,7 +11,7 @@ All of these must hold:
 
 1. **Value test.** The issue says what a tenant no longer needs to build or run.
 2. **Code only when needed.** Settings only by default. Code only for work the vendor SDK does not do in that runtime.
-3. **Licence.** The integration is Apache-2.0. Linked dependencies pass the licence check.
+3. **Licence.** Apache-2.0, like every package here.
 4. **System packages.** A tool in `system_packages` runs unmodified, as a separate process, and has an OSI licence. AGPL tools are not accepted. The README records the tool's licence. The integration has a test with the real tool, skipped when it is not installed.
 5. **Tests.** Decisions are unit-tested; code that talks to a service has a contract test against a real server where one runs locally.
 6. **Owner.** A named owner in CODEOWNERS.

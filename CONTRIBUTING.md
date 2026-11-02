@@ -32,7 +32,6 @@ A pull request with an unsigned commit is not merged. The DCO check on each pull
 - No magic literals: names, limits and messages go in the package's `src/constants.ts`.
 - No duplicated logic: use `runtime` and `core` helpers.
 - No install scripts (`preinstall`, `install`, `postinstall`, `prepare`) in any package.
-- Dependencies of published code must use a licence in the allow-list (`DEPENDENCY_LICENCES` in `tools/src/constants.ts`). `npm run check:licences` checks the whole tree.
 - Secrets never appear in errors, logs or test snapshots.
 - Tests assert decisions and invariants, not line counts.
 

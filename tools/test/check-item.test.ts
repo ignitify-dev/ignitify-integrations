@@ -147,7 +147,7 @@ describe('checkItem', () => {
     );
     expect(issues).toEqual([
       'integrations/s3-storage/package.json: name must be "@ignitify-integrations/s3-storage"',
-      'integrations/s3-storage/package.json: license must be one of Apache-2.0, MIT, MIT-0',
+      'integrations/s3-storage/package.json: license must be "Apache-2.0"',
       'integrations/s3-storage/package.json: description must be a non-empty string',
       'integrations/s3-storage/package.json: type must be "module"',
       'integrations/s3-storage/package.json: engines.node must be set',

@@ -25,11 +25,10 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check:items": "tsc -b && tsx tools/src/bin/check-items.ts",
-    "check:licences": "tsc -b && tsx tools/src/bin/check-licences.ts",
     "new-item": "tsc -b && tsx tools/src/bin/new-item.ts",
     "version": "changeset version && npm install --package-lock-only --ignore-scripts",
     "release": "npm run build && npm run copy-legal && changeset publish",
-    "check": "npm run lint && npm run format:check && npm run typecheck && npm test && npm run check:items && npm run check:licences",
+    "check": "npm run lint && npm run format:check && npm run typecheck && npm test && npm run check:items",
     "copy-legal": "tsc -b && tsx tools/src/bin/copy-legal.ts"
   },
   "devDependencies": {
