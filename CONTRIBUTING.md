@@ -15,7 +15,7 @@ Every commit must be signed off. This states that you wrote the change or have t
 git commit -s -m "feat(telegram): ..."
 ```
 
-A pull request with an unsigned commit is not merged. The automatic DCO check is not set up yet.
+A pull request with an unsigned commit is not merged. An automatic DCO check on each pull request is not set up yet.
 
 ## Workflow
 

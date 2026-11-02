@@ -3,7 +3,7 @@
 ## Roles
 
 - **Maintainers** merge pull requests, cut releases and decide on new integrations. At least two maintainers exist at all times.
-- **Integration owners** are named per integration folder in a CODEOWNERS file (not set up yet). They review changes to their integration and answer its issues.
+- **Integration owners** are named per integration folder in [CODEOWNERS](.github/CODEOWNERS). They review changes to their integration and answer its issues.
 
 ## How an integration is accepted
 
@@ -40,7 +40,7 @@ While an integration is 0.x, the same rule applies one level down: a change that
 
 ## Nightly job and deprecation
 
-A nightly job is not set up yet. When it is, it runs the full test suite on `master`, with the `s3-storage` contract test against an S3 sandbox bucket. Other integrations have no sandbox test yet.
+The nightly job ([nightly.yml](.github/workflows/nightly.yml)) runs the full test suite on `master`. With the `sandbox` environment's keys set, it also runs the `s3-storage` contract test against an S3 sandbox bucket; without them, that test is skipped. Other integrations have no sandbox test yet.
 
 An integration that is broken for 14 days, or whose vendor API is gone, is marked with `npm deprecate` in all its versions. It stays on npm, so existing lockfiles still work. It is never unpublished.
 

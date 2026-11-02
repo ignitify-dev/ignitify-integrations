@@ -1,0 +1,23 @@
+name: New integration
+description: Propose a new integration
+labels: [new-item]
+body:
+  - type: input
+    id: service
+    attributes:
+      label: Service or feature
+      placeholder: e.g. SendGrid, OCR
+    validations:
+      required: true
+  - type: textarea
+    id: value
+    attributes:
+      label: Value test
+      description: What does a tenant no longer need to build or run? "They skip npm install" is not enough.
+    validations:
+      required: true
+  - type: textarea
+    id: why-code
+    attributes:
+      label: If it needs code, why?
+      description: Settings only is the default. What does the vendor SDK not do in this runtime?

@@ -20,6 +20,6 @@ Integration code runs in the tenant's VM with all of the task's secrets and host
 
 ## How releases are protected
 
-- Release automation is not set up yet. The plan: CI publishes with npm trusted publishing (OIDC) and provenance, and no npm token exists. The first version of each package is published once by hand, because npm needs the package before trusted publishing can be set.
+- The release workflow ([release.yml](.github/workflows/release.yml)) publishes with npm trusted publishing (OIDC) and provenance; no npm token exists. A maintainer starts it by hand. The first version of each package is published once by hand, because npm needs the package before trusted publishing can be set.
 - No package has install scripts.
 - New dependency versions are taken only after a waiting period (Renovate `minimumReleaseAge`).

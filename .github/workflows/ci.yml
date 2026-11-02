@@ -1,0 +1,65 @@
+# Every pull request and every push to master. Fork PRs get NO secrets: this workflow uses none.
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      # A local MinIO (started below) for the S3 contract test. Test-only values, not secrets.
+      S3_TEST_ENDPOINT: http://127.0.0.1:19000
+      S3_TEST_ACCESS_KEY: testkey
+      S3_TEST_SECRET_KEY: testsecret123
+      S3_TEST_BUCKET: ii-test
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run lint
+      - run: npm run format:check
+      - run: npm run typecheck
+      - name: System packages for integration tests
+        run: sudo apt-get update -q && sudo apt-get install -y -q ffmpeg
+      - name: S3-compatible server for contract tests
+        run: |
+          docker run -d --name minio -p 19000:9000 \
+            -e MINIO_ROOT_USER="$S3_TEST_ACCESS_KEY" -e MINIO_ROOT_PASSWORD="$S3_TEST_SECRET_KEY" \
+            minio/minio:latest server /data
+          timeout 60 sh -c 'until curl -sf http://127.0.0.1:19000/minio/health/live; do sleep 1; done'
+      - run: npm test
+      - run: npm run check:items
+      - run: npm run check:licences
+
+  reuse:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: fsfe/reuse-action@676e2d560c9a403aa252096d99fcab3e1132b0f5 # v6.0.0
+
+  osv:
+    # The PR scanner compares the PR with its base branch, so it runs on pull requests only.
+    if: github.event_name == 'pull_request'
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    uses: google/osv-scanner-action/.github/workflows/osv-scanner-reusable-pr.yml@b1d267aea5211fa648d9d442fa64b90dbdcbdd36 # v2.7.0

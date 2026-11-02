@@ -1,0 +1,34 @@
+# Nightly: the full suite on master, plus the contract tests that have a REAL sandbox (today: s3-storage only).
+# Sandbox keys live in the protected "sandbox" environment, reachable only from master on schedule.
+name: nightly
+
+on:
+  schedule:
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sandbox:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    environment: sandbox
+    env:
+      S3_TEST_ENDPOINT: ${{ secrets.S3_SANDBOX_ENDPOINT }}
+      S3_TEST_ACCESS_KEY: ${{ secrets.S3_SANDBOX_ACCESS_KEY }}
+      S3_TEST_SECRET_KEY: ${{ secrets.S3_SANDBOX_SECRET_KEY }}
+      S3_TEST_BUCKET: ${{ secrets.S3_SANDBOX_BUCKET }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: sudo apt-get update -q && sudo apt-get install -y -q ffmpeg
+      - run: npm test
