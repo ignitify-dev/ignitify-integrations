@@ -32,6 +32,10 @@ export const CALLBACK_ROUTE_PREFIX = '/__callback/';
  * (a longer list is refused at deploy); kept here so `integration:add` refuses it first.
  */
 export const EGRESS_ALLOW_MAX = 32;
+/** Most entries in `network.inbound_routes`. Mirrors the platform, which uses its egress limit here too. */
+export const INBOUND_ROUTES_MAX = EGRESS_ALLOW_MAX;
+/** Longest inbound route prefix. Mirrors the platform limit (a longer route is refused at deploy). */
+export const INBOUND_ROUTE_MAX_LENGTH = 256;
 /** `network.egress_hint` is one short line the plan prints, not documentation. */
 export const EGRESS_HINT_MAX_LENGTH = 200;
 /** One line: no line break, so the hint prints as one "you add" line. */

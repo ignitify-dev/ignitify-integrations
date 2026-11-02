@@ -1,5 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { EGRESS_ALLOW_MAX, parseManifest } from '@ignitify-integrations/core';
+import {
+  EGRESS_ALLOW_MAX,
+  INBOUND_ROUTE_MAX_LENGTH,
+  INBOUND_ROUTES_MAX,
+  parseManifest,
+} from '@ignitify-integrations/core';
 
 const BASE = `schema_version: 1
 name: s3-storage
@@ -71,5 +76,24 @@ system_packages: [ffmpeg]
       ['network.inbound_routes: "/__callback/x/" would shadow the platform callback route /__callback/'],
     );
     expect(errorsOf(`${BASE}network: { type: bidirectional, inbound_routes: [{ prefix: /live/ }] }\n`)).toEqual([]);
+  });
+
+  it('applies the platform limits: route length, route count and secret name length', () => {
+    const route = (length: number) => `/${'a'.repeat(length - 2)}/`;
+    const routes = (count: number) =>
+      `${BASE}network:\n  type: bidirectional\n  inbound_routes:\n${Array.from({ length: count }, (_, i) => `    - prefix: /r${i}/\n`).join('')}`;
+    const withRoute = (prefix: string) =>
+      `${BASE}network: { type: bidirectional, inbound_routes: [{ prefix: ${prefix} }] }\n`;
+    expect(errorsOf(withRoute(route(INBOUND_ROUTE_MAX_LENGTH)))).toEqual([]);
+    expect(errorsOf(withRoute(route(INBOUND_ROUTE_MAX_LENGTH + 1)))).toEqual([
+      expect.stringMatching(/^network\.inbound_routes\.0\.prefix: must NOT have more than 256 characters/),
+    ]);
+    expect(errorsOf(routes(INBOUND_ROUTES_MAX))).toEqual([]);
+    expect(errorsOf(routes(INBOUND_ROUTES_MAX + 1))).toEqual([
+      expect.stringMatching(/^network\.inbound_routes: must NOT have more than 32 items/),
+    ]);
+    expect(errorsOf(`${BASE}secrets: [A${'B'.repeat(64)}]\n`)).toContain(
+      'secrets.0: must NOT have more than 64 characters',
+    );
   });
 });

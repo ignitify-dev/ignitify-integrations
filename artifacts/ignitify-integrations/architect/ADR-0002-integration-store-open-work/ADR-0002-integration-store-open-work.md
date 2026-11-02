@@ -44,21 +44,21 @@ Version, description and licence are in `package.json` only.
 
 ### 3.1 Fields
 
-| Field                            | Required     | Meaning                                                                                                                                 |
-| :------------------------------- | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------- |
-| `schema_version`                 | yes          | `1`                                                                                                                                     |
-| `name`                           | yes          | Equals the folder name. The npm name is `@ignitify-integrations/<name>`                                                                 |
-| `runtimes`                       | yes          | `[node]`                                                                                                                                |
-| `secrets`                        | no           | Default secret names the code reads from `ctx.secrets` (upper snake case)                                                               |
-| `network.type`                   | with network | `none`, `egress` or `bidirectional`                                                                                                     |
-| `network.egress_allow`           | no           | A fixed host list, at most 32, lower case, no IP addresses. No wildcard (`*`)                                                           |
-| `network.egress_hint`            | no           | One short line for hosts that vary per tenant. The plan prints it under "you add"                                                       |
-| `network.inbound_port`           | no           | Only with `bidirectional`. The port the code listens on                                                                                 |
-| `network.inbound_routes`         | no           | Only with `bidirectional`. `[{ prefix: /live/ }]`. A route at or under `/__callback/` is refused: it would shadow the platform callback |
-| `network.inbound_max_concurrent` | no           | Only with `bidirectional`. In-flight inbound requests                                                                                   |
-| `execution`                      | no           | `duration` (`short`, `long`), `interaction` (`boundary-only`, `continuous`)                                                             |
-| `system_packages`                | no           | OS packages the code runs as separate processes. The plan line says `runs <package>`                                                    |
-| `min_preset`                     | no           | The smallest preset that works                                                                                                          |
+| Field                            | Required     | Meaning                                                                                                                                                                              |
+| :------------------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `schema_version`                 | yes          | `1`                                                                                                                                                                                  |
+| `name`                           | yes          | Equals the folder name. The npm name is `@ignitify-integrations/<name>`                                                                                                              |
+| `runtimes`                       | yes          | `[node]`                                                                                                                                                                             |
+| `secrets`                        | no           | Default secret names the code reads from `ctx.secrets` (upper snake case, at most 64 characters)                                                                                     |
+| `network.type`                   | with network | `none`, `egress` or `bidirectional`                                                                                                                                                  |
+| `network.egress_allow`           | no           | A fixed host list, at most 32, lower case, no IP addresses. No wildcard (`*`)                                                                                                        |
+| `network.egress_hint`            | no           | One short line for hosts that vary per tenant. The plan prints it under "you add"                                                                                                    |
+| `network.inbound_port`           | no           | Only with `bidirectional`. The port the code listens on                                                                                                                              |
+| `network.inbound_routes`         | no           | Only with `bidirectional`. `[{ prefix: /live/ }]`, at most 32 routes of at most 256 characters. A route at or under `/__callback/` is refused: it would shadow the platform callback |
+| `network.inbound_max_concurrent` | no           | Only with `bidirectional`. In-flight inbound requests                                                                                                                                |
+| `execution`                      | no           | `duration` (`short`, `long`), `interaction` (`boundary-only`, `continuous`)                                                                                                          |
+| `system_packages`                | no           | OS packages the code runs as separate processes. The plan line says `runs <package>`                                                                                                 |
+| `min_preset`                     | no           | The smallest preset that works                                                                                                                                                       |
 
 ### 3.2 Example
 
@@ -162,7 +162,7 @@ Add a changeset for a change to a package that is on npm (`npx changeset`; see t
 ### 5.3 `core` and its clients
 
 - A client (the ignitify CLI) calls `core` and copies no rule. It decides "settings only" or "settings + code" with `core`'s `hasCode`.
-- The client tests every copied platform fact against the platform's own value: from `core`, `EGRESS_ALLOW_MAX`, `PRESETS` and `CALLBACK_ROUTE_PREFIX`; from `runtime`, `ROUTE_PREFIX_PATTERN`, `SECRET_NAME_PATTERN`, `INBOUND_PORT_MIN` and `INBOUND_PORT_MAX` (the owner, 2026-11-02).
+- The client tests every copied platform fact against the platform's own value (10 facts): from `core`, `EGRESS_ALLOW_MAX`, `INBOUND_ROUTES_MAX`, `INBOUND_ROUTE_MAX_LENGTH`, `PRESETS` and `CALLBACK_ROUTE_PREFIX`; from `runtime`, `ROUTE_PREFIX_PATTERN`, `SECRET_NAME_PATTERN`, `SECRET_NAME_MAX_LENGTH`, `INBOUND_PORT_MIN` and `INBOUND_PORT_MAX`. The route and secret-name limits came in `runtime` and `core` 0.1.1 (2026-11-02).
 
 ### 5.4 Repo setup
 
