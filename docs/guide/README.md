@@ -2,7 +2,13 @@
 
 This guide is for tenants. It covers what the integration store adds: receiving requests in a task, adding an integration, and combining several in one task. Each chapter ends with code that runs.
 
-For the basics of ignitify itself (your first task, secrets, network, progress, presets, testing and limits), read the platform's own docs on [ignitify.dev](https://ignitify.dev).
+For the basics of ignitify itself, read the platform's own docs:
+
+- [Your first task](https://ignitify.dev/docs/your-first-task) (or the [quick start](https://ignitify.dev/docs/quickstart))
+- [Use secrets](https://ignitify.dev/docs/guides/use-secrets)
+- [Network access](https://ignitify.dev/docs/guides/network-access)
+- [Presets and limits](https://ignitify.dev/docs/concepts/presets-and-limits)
+- [Integrations](https://ignitify.dev/docs/guides/integrations) and the [`integration:add` reference](https://ignitify.dev/docs/cli/integrations#integration-add)
 
 | Chapter                                         | Purpose                                                                                                        |
 | :---------------------------------------------- | :------------------------------------------------------------------------------------------------------------- |

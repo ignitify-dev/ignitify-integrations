@@ -50,7 +50,7 @@ For a provider other than AWS, add `endpoint`, for example `endpoint: 'https://<
 - **Many files from one run.** Call `putAndLink` once per file and return a list of links.
 - **Hand files between runs.** One run `put`s with a fixed `key`; a later run `get`s the same key. This is a simple way to keep data between runs.
 - **Record a stream.** With [`stream`](../stream/README.md), upload the recording when the stream ends. One playable link needs a public-read prefix; see "Keep the recording" in the `stream` README.
-- **Send the link to people.** With [`telegram`](../telegram/README.md), send the link in a message.
+- **Send the link to people.** Send it in a chat or email message from the same task.
 - **A second account.** Declare two more secret names in `task.yaml` (for example `BACKUP_S3_ACCESS_KEY_ID`, `BACKUP_S3_SECRET_ACCESS_KEY`) and pass them:
 
   ```ts

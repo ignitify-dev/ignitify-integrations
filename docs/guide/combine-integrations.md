@@ -56,5 +56,5 @@ export async function run(payload, ctx) {
 
 ## Grow it
 
-- **Tell people first.** Send the live link before the stream starts, for example with [`telegram`](../../integrations/telegram/README.md); use `startDelaySec` to give them time to join.
+- **Tell people first.** Send the live link before the stream starts, for example in a chat message; use `startDelaySec` to give them time to join.
 - **Keep files between runs.** One run `put`s with a fixed key; a later run `get`s it.

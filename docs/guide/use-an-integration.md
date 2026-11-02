@@ -10,7 +10,7 @@ An integration is an npm package, `@ignitify-integrations/<name>`. It carries an
 ignitify integration:add s3-storage --task report
 ```
 
-The CLI installs the package, reads its manifest and prints a plan. Nothing changes until you say yes.
+The CLI installs the package, reads its manifest and prints a plan. Nothing changes until you say yes. All flags: the [`integration:add` reference](https://ignitify.dev/docs/cli/integrations#integration-add).
 
 - `--dry-run` prints the plan and stops.
 - `--yes` applies it without the question. With no terminal and no `--yes`, the CLI refuses.
