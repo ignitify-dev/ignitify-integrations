@@ -13,7 +13,7 @@ ignitify integration:add clickup --task my-task
 ignitify secret:set CLICKUP_API_TOKEN --stdin
 ```
 
-The plan adds the secret names `CLICKUP_API_TOKEN` and an egress network limited to `api.clickup.com`. There is nothing for you to add.
+The plan adds the secret names `CLICKUP_API_TOKEN` and an egress network limited to `api.clickup.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [ClickUp docs](https://developer.clickup.com/docs/authentication).
 

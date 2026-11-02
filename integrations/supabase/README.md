@@ -35,7 +35,7 @@ export async function run(payload, ctx) {
 }
 ```
 
-The secrets come from `ctx.secrets`, and the listed hosts are already allowed.
+The secrets come from `ctx.secrets`; add your host to `execution.network.egress_allow` (see Add it).
 
 ## Grow your task
 

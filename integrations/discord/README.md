@@ -13,7 +13,7 @@ ignitify integration:add discord --task my-task
 ignitify secret:set DISCORD_BOT_TOKEN --stdin
 ```
 
-The plan adds the secret names `DISCORD_BOT_TOKEN` and an egress network limited to `discord.com`. There is nothing for you to add.
+The plan adds the secret names `DISCORD_BOT_TOKEN` and an egress network limited to `discord.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Discord docs](https://discord.com/developers/docs/getting-started).
 

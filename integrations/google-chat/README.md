@@ -13,7 +13,7 @@ ignitify integration:add google-chat --task my-task
 ignitify secret:set GOOGLE_CHAT_WEBHOOK_URL --stdin
 ```
 
-The plan adds the secret names `GOOGLE_CHAT_WEBHOOK_URL` and an egress network limited to `chat.googleapis.com`. There is nothing for you to add.
+The plan adds the secret names `GOOGLE_CHAT_WEBHOOK_URL` and an egress network limited to `chat.googleapis.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Google Chat docs](https://developers.google.com/workspace/chat/quickstart/webhooks).
 

@@ -13,7 +13,7 @@ ignitify integration:add asana --task my-task
 ignitify secret:set ASANA_ACCESS_TOKEN --stdin
 ```
 
-The plan adds the secret names `ASANA_ACCESS_TOKEN` and an egress network limited to `app.asana.com`. There is nothing for you to add.
+The plan adds the secret names `ASANA_ACCESS_TOKEN` and an egress network limited to `app.asana.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Asana docs](https://developers.asana.com/docs/personal-access-token).
 

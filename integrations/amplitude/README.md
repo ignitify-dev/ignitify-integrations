@@ -14,7 +14,7 @@ ignitify secret:set AMPLITUDE_API_KEY --stdin
 ignitify secret:set AMPLITUDE_SECRET_KEY --stdin
 ```
 
-The plan adds the secret names `AMPLITUDE_API_KEY`, `AMPLITUDE_SECRET_KEY` and an egress network limited to `api2.amplitude.com`, `api.eu.amplitude.com`, `amplitude.com`, `analytics.eu.amplitude.com`. There is nothing for you to add.
+The plan adds the secret names `AMPLITUDE_API_KEY`, `AMPLITUDE_SECRET_KEY` and an egress network limited to `api2.amplitude.com`, `api.eu.amplitude.com`, `amplitude.com`, `analytics.eu.amplitude.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Amplitude docs](https://amplitude.com/docs/apis/analytics/http-v2).
 

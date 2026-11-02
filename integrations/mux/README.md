@@ -14,7 +14,7 @@ ignitify secret:set MUX_TOKEN_ID --stdin
 ignitify secret:set MUX_TOKEN_SECRET --stdin
 ```
 
-The plan adds the secret names `MUX_TOKEN_ID`, `MUX_TOKEN_SECRET` and an egress network limited to `api.mux.com`. There is nothing for you to add.
+The plan adds the secret names `MUX_TOKEN_ID`, `MUX_TOKEN_SECRET` and an egress network limited to `api.mux.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Mux docs](https://www.mux.com/docs/core/stream-video-files).
 

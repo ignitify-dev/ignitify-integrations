@@ -13,7 +13,7 @@ ignitify integration:add airtable --task my-task
 ignitify secret:set AIRTABLE_TOKEN --stdin
 ```
 
-The plan adds the secret names `AIRTABLE_TOKEN` and an egress network limited to `api.airtable.com`. There is nothing for you to add.
+The plan adds the secret names `AIRTABLE_TOKEN` and an egress network limited to `api.airtable.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Airtable docs](https://airtable.com/developers/web/api/introduction).
 

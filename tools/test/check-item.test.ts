@@ -3,7 +3,7 @@ import {
   buildReferenceIssues,
   checkItem,
   checkSharedPackage,
-  hasCode,
+  hasSource,
   isDraft,
   isDraftItem,
   repositoryField,
@@ -24,10 +24,14 @@ const PACKAGE = {
   license: 'Apache-2.0',
   type: 'module',
   engines: { node: '>=22' },
+  exports: { '.': { types: './dist/index.d.ts', default: './dist/index.js' } },
   files: ['dist', ...PUBLISHED_FILES],
   publishConfig: { access: 'public', provenance: true },
   repository: repositoryField('integrations/s3-storage'),
 };
+
+/** A settings-only package: no exports, so no code. */
+const { exports: _exports, ...SETTINGS } = PACKAGE;
 
 const item = (pkg: object, extra: Partial<RawItem> = {}): RawItem => ({
   name: 's3-storage',
@@ -42,7 +46,7 @@ const item = (pkg: object, extra: Partial<RawItem> = {}): RawItem => ({
 const settingsOnly = (): RawItem =>
   item(
     {
-      ...PACKAGE,
+      ...SETTINGS,
       name: '@ignitify-integrations/telegram',
       files: [...PUBLISHED_FILES],
       repository: repositoryField('integrations/telegram'),
@@ -98,8 +102,8 @@ describe('checkItem', () => {
   });
 
   it('needs dist in files only when the integration has code', () => {
-    expect(hasCode(['src/index.ts'])).toBe(true);
-    expect(hasCode(['README.md'])).toBe(false);
+    expect(hasSource(['src/index.ts'])).toBe(true);
+    expect(hasSource(['README.md'])).toBe(false);
     expect(checkItem(item({ ...PACKAGE, files: [...PUBLISHED_FILES] }))).toEqual([
       `integrations/s3-storage/package.json: files must be a list that includes dist, ${PUBLISHED_FILES.join(', ')}`,
     ]);
@@ -149,10 +153,19 @@ describe('checkItem', () => {
       'integrations/s3-storage/package.json: engines.node must be set',
       'integrations/s3-storage/package.json: publishConfig must be { access: "public", provenance: true }',
       `integrations/s3-storage/package.json: repository must be ${JSON.stringify(repositoryField('integrations/s3-storage'))}`,
-      `integrations/s3-storage/package.json: files must be a list that includes dist, ${PUBLISHED_FILES.join(', ')}`,
+      // no exports, so no code: the files rule does not ask for dist, and the source rule reports the mismatch
+      `integrations/s3-storage/package.json: files must be a list that includes ${PUBLISHED_FILES.join(', ')}`,
       'integrations/s3-storage/package.json: scripts.postinstall runs on install; a published package must have no install scripts',
       'integrations/s3-storage/package.json: scripts.prepare runs on install; a published package must have no install scripts',
+      'integrations/s3-storage/package.json: the folder has src/ but no exports, so it would publish as settings only',
       'integrations/s3-storage/package.json: private must be absent (a published integration) or true (a draft)',
+    ]);
+  });
+
+  it('refuses source with no exports: it would publish as settings only', () => {
+    const { exports: _, ...noExports } = PACKAGE;
+    expect(checkItem(item({ ...noExports, files: [...PUBLISHED_FILES] }))).toEqual([
+      'integrations/s3-storage/package.json: the folder has src/ but no exports, so it would publish as settings only',
     ]);
   });
 
@@ -163,7 +176,7 @@ describe('checkItem', () => {
 });
 
 describe('drafts', () => {
-  const { publishConfig: _publishConfig, ...unpublished } = PACKAGE;
+  const { publishConfig: _publishConfig, ...unpublished } = SETTINGS;
   const DRAFT = {
     ...unpublished,
     name: '@ignitify-integrations/telegram',
@@ -211,7 +224,7 @@ describe('drafts', () => {
       'integrations/telegram/package.json: files must not include TODO.md (the upgrade checklist is never published)';
     expect(checkItem(draft({ ...DRAFT, files: [...PUBLISHED_FILES, DRAFT_FILE] }))).toEqual([want]);
     const published = {
-      ...PACKAGE,
+      ...SETTINGS,
       name: '@ignitify-integrations/telegram',
       files: [...PUBLISHED_FILES, DRAFT_FILE],
       repository: repositoryField('integrations/telegram'),
@@ -228,7 +241,7 @@ describe('buildReferenceIssues', () => {
     expect(buildReferenceIssues([item(PACKAGE)], tsconfig(['runtime', 'integrations/s3-storage']))).toEqual([]);
     expect(buildReferenceIssues([item(PACKAGE)], tsconfig(['./integrations/s3-storage']))).toEqual([]);
     expect(buildReferenceIssues([item(PACKAGE)], tsconfig(['runtime']))).toEqual([
-      'integrations/s3-storage: has src/ but is not in the root tsconfig.json references, so `npm run build` would publish it without dist',
+      'integrations/s3-storage: has code (exports) but is not in the root tsconfig.json references, so `npm run build` would publish it without dist',
     ]);
   });
 

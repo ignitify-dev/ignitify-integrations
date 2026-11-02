@@ -13,7 +13,7 @@ ignitify integration:add monday --task my-task
 ignitify secret:set MONDAY_API_TOKEN --stdin
 ```
 
-The plan adds the secret names `MONDAY_API_TOKEN` and an egress network limited to `api.monday.com`. There is nothing for you to add.
+The plan adds the secret names `MONDAY_API_TOKEN` and an egress network limited to `api.monday.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [monday.com docs](https://developer.monday.com/api-reference/docs/basics).
 

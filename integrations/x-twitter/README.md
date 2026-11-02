@@ -16,7 +16,7 @@ ignitify secret:set X_ACCESS_TOKEN --stdin
 ignitify secret:set X_ACCESS_TOKEN_SECRET --stdin
 ```
 
-The plan adds the secret names `X_API_KEY`, `X_API_SECRET`, `X_ACCESS_TOKEN`, `X_ACCESS_TOKEN_SECRET` and an egress network limited to `api.x.com`, `api.twitter.com`, `upload.twitter.com`. There is nothing for you to add.
+The plan adds the secret names `X_API_KEY`, `X_API_SECRET`, `X_ACCESS_TOKEN`, `X_ACCESS_TOKEN_SECRET` and an egress network limited to `api.x.com`, `api.twitter.com`, `upload.twitter.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [X (Twitter) docs](https://docs.x.com/x-api/getting-started/about-x-api).
 

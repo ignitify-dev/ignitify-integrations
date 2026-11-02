@@ -14,7 +14,7 @@ ignitify secret:set HIBOB_SERVICE_USER_ID --stdin
 ignitify secret:set HIBOB_SERVICE_USER_TOKEN --stdin
 ```
 
-The plan adds the secret names `HIBOB_SERVICE_USER_ID`, `HIBOB_SERVICE_USER_TOKEN` and an egress network limited to `api.hibob.com`. There is nothing for you to add.
+The plan adds the secret names `HIBOB_SERVICE_USER_ID`, `HIBOB_SERVICE_USER_TOKEN` and an egress network limited to `api.hibob.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [HiBob docs](https://apidocs.hibob.com/docs/getting-started).
 

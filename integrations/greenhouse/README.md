@@ -13,7 +13,7 @@ ignitify integration:add greenhouse --task my-task
 ignitify secret:set GREENHOUSE_API_KEY --stdin
 ```
 
-The plan adds the secret names `GREENHOUSE_API_KEY` and an egress network limited to `harvest.greenhouse.io`. There is nothing for you to add.
+The plan adds the secret names `GREENHOUSE_API_KEY` and an egress network limited to `harvest.greenhouse.io`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Greenhouse docs](https://developers.greenhouse.io/harvest.html).
 

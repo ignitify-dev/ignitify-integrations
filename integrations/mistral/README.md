@@ -13,7 +13,7 @@ ignitify integration:add mistral --task my-task
 ignitify secret:set MISTRAL_API_KEY --stdin
 ```
 
-The plan adds the secret names `MISTRAL_API_KEY` and an egress network limited to `api.mistral.ai`. There is nothing for you to add.
+The plan adds the secret names `MISTRAL_API_KEY` and an egress network limited to `api.mistral.ai`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Mistral AI docs](https://docs.mistral.ai/getting-started/quickstart/).
 

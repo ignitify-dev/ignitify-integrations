@@ -13,7 +13,7 @@ ignitify integration:add instagram --task my-task
 ignitify secret:set INSTAGRAM_ACCESS_TOKEN --stdin
 ```
 
-The plan adds the secret names `INSTAGRAM_ACCESS_TOKEN` and an egress network limited to `graph.instagram.com`, `graph.facebook.com`. There is nothing for you to add.
+The plan adds the secret names `INSTAGRAM_ACCESS_TOKEN` and an egress network limited to `graph.instagram.com`, `graph.facebook.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Instagram docs](https://developers.facebook.com/docs/instagram-platform/content-publishing).
 

@@ -16,7 +16,7 @@ ignitify secret:set MICROSOFT_CLIENT_SECRET --stdin
 ignitify secret:set MICROSOFT_REFRESH_TOKEN --stdin
 ```
 
-The plan adds the secret names `MICROSOFT_TENANT_ID`, `MICROSOFT_CLIENT_ID`, `MICROSOFT_CLIENT_SECRET`, `MICROSOFT_REFRESH_TOKEN` and an egress network limited to `login.microsoftonline.com`, `graph.microsoft.com`. There is nothing for you to add.
+The plan adds the secret names `MICROSOFT_TENANT_ID`, `MICROSOFT_CLIENT_ID`, `MICROSOFT_CLIENT_SECRET`, `MICROSOFT_REFRESH_TOKEN` and an egress network limited to `login.microsoftonline.com`, `graph.microsoft.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [OneDrive docs](https://learn.microsoft.com/onedrive/developer/rest-api/).
 

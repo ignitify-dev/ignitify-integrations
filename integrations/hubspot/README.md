@@ -13,7 +13,7 @@ ignitify integration:add hubspot --task my-task
 ignitify secret:set HUBSPOT_ACCESS_TOKEN --stdin
 ```
 
-The plan adds the secret names `HUBSPOT_ACCESS_TOKEN` and an egress network limited to `api.hubapi.com`. There is nothing for you to add.
+The plan adds the secret names `HUBSPOT_ACCESS_TOKEN` and an egress network limited to `api.hubapi.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [HubSpot docs](https://developers.hubspot.com/docs/api/private-apps).
 

@@ -13,7 +13,7 @@ ignitify integration:add mailgun --task my-task
 ignitify secret:set MAILGUN_API_KEY --stdin
 ```
 
-The plan adds the secret names `MAILGUN_API_KEY` and an egress network limited to `api.mailgun.net`, `api.eu.mailgun.net`. There is nothing for you to add.
+The plan adds the secret names `MAILGUN_API_KEY` and an egress network limited to `api.mailgun.net`, `api.eu.mailgun.net`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Mailgun docs](https://documentation.mailgun.com/docs/mailgun/user-manual/get-started/).
 

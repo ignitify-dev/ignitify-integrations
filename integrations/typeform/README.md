@@ -13,7 +13,7 @@ ignitify integration:add typeform --task my-task
 ignitify secret:set TYPEFORM_TOKEN --stdin
 ```
 
-The plan adds the secret names `TYPEFORM_TOKEN` and an egress network limited to `api.typeform.com`, `api.eu.typeform.com`. There is nothing for you to add.
+The plan adds the secret names `TYPEFORM_TOKEN` and an egress network limited to `api.typeform.com`, `api.eu.typeform.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Typeform docs](https://www.typeform.com/developers/get-started/).
 

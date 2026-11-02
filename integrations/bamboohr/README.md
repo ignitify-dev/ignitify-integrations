@@ -13,7 +13,7 @@ ignitify integration:add bamboohr --task my-task
 ignitify secret:set BAMBOOHR_API_KEY --stdin
 ```
 
-The plan adds the secret names `BAMBOOHR_API_KEY` and an egress network limited to `api.bamboohr.com`. There is nothing for you to add.
+The plan adds the secret names `BAMBOOHR_API_KEY` and an egress network limited to `api.bamboohr.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [BambooHR docs](https://documentation.bamboohr.com/docs/getting-started).
 

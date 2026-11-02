@@ -14,7 +14,7 @@ ignitify secret:set TWILIO_ACCOUNT_SID --stdin
 ignitify secret:set TWILIO_AUTH_TOKEN --stdin
 ```
 
-The plan adds the secret names `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN` and an egress network limited to `api.twilio.com`. There is nothing for you to add.
+The plan adds the secret names `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN` and an egress network limited to `api.twilio.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Twilio docs](https://www.twilio.com/docs/messaging/quickstart).
 

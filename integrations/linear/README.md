@@ -13,7 +13,7 @@ ignitify integration:add linear --task my-task
 ignitify secret:set LINEAR_API_KEY --stdin
 ```
 
-The plan adds the secret names `LINEAR_API_KEY` and an egress network limited to `api.linear.app`. There is nothing for you to add.
+The plan adds the secret names `LINEAR_API_KEY` and an egress network limited to `api.linear.app`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Linear docs](https://linear.app/developers).
 

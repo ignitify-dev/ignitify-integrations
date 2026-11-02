@@ -13,7 +13,7 @@ ignitify integration:add square --task my-task
 ignitify secret:set SQUARE_ACCESS_TOKEN --stdin
 ```
 
-The plan adds the secret names `SQUARE_ACCESS_TOKEN` and an egress network limited to `connect.squareup.com`, `connect.squareupsandbox.com`. There is nothing for you to add.
+The plan adds the secret names `SQUARE_ACCESS_TOKEN` and an egress network limited to `connect.squareup.com`, `connect.squareupsandbox.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Square docs](https://developer.squareup.com/docs/build-basics/access-tokens).
 

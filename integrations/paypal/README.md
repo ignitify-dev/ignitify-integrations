@@ -14,7 +14,7 @@ ignitify secret:set PAYPAL_CLIENT_ID --stdin
 ignitify secret:set PAYPAL_CLIENT_SECRET --stdin
 ```
 
-The plan adds the secret names `PAYPAL_CLIENT_ID`, `PAYPAL_CLIENT_SECRET` and an egress network limited to `api-m.paypal.com`, `api-m.sandbox.paypal.com`. There is nothing for you to add.
+The plan adds the secret names `PAYPAL_CLIENT_ID`, `PAYPAL_CLIENT_SECRET` and an egress network limited to `api-m.paypal.com`, `api-m.sandbox.paypal.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [PayPal docs](https://developer.paypal.com/api/rest/).
 

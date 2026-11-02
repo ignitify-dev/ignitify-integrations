@@ -14,7 +14,7 @@ ignitify secret:set TRELLO_API_KEY --stdin
 ignitify secret:set TRELLO_API_TOKEN --stdin
 ```
 
-The plan adds the secret names `TRELLO_API_KEY`, `TRELLO_API_TOKEN` and an egress network limited to `api.trello.com`. There is nothing for you to add.
+The plan adds the secret names `TRELLO_API_KEY`, `TRELLO_API_TOKEN` and an egress network limited to `api.trello.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Trello docs](https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/).
 

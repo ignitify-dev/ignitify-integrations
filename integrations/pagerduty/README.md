@@ -14,7 +14,7 @@ ignitify secret:set PAGERDUTY_ROUTING_KEY --stdin
 ignitify secret:set PAGERDUTY_API_TOKEN --stdin
 ```
 
-The plan adds the secret names `PAGERDUTY_ROUTING_KEY`, `PAGERDUTY_API_TOKEN` and an egress network limited to `events.pagerduty.com`, `api.pagerduty.com`, `events.eu.pagerduty.com`, `api.eu.pagerduty.com`. There is nothing for you to add.
+The plan adds the secret names `PAGERDUTY_ROUTING_KEY`, `PAGERDUTY_API_TOKEN` and an egress network limited to `events.pagerduty.com`, `api.pagerduty.com`, `events.eu.pagerduty.com`, `api.eu.pagerduty.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [PagerDuty docs](https://developer.pagerduty.com/docs/events-api-v2-overview).
 

@@ -13,7 +13,7 @@ ignitify integration:add bigquery --task my-task
 ignitify secret:set GCP_SERVICE_ACCOUNT_KEY --stdin
 ```
 
-The plan adds the secret names `GCP_SERVICE_ACCOUNT_KEY` and an egress network limited to `oauth2.googleapis.com`, `bigquery.googleapis.com`. There is nothing for you to add.
+The plan adds the secret names `GCP_SERVICE_ACCOUNT_KEY` and an egress network limited to `oauth2.googleapis.com`, `bigquery.googleapis.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [BigQuery docs](https://cloud.google.com/bigquery/docs/reference/libraries).
 

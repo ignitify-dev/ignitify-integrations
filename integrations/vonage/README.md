@@ -14,7 +14,7 @@ ignitify secret:set VONAGE_API_KEY --stdin
 ignitify secret:set VONAGE_API_SECRET --stdin
 ```
 
-The plan adds the secret names `VONAGE_API_KEY`, `VONAGE_API_SECRET` and an egress network limited to `rest.nexmo.com`, `api.nexmo.com`. There is nothing for you to add.
+The plan adds the secret names `VONAGE_API_KEY`, `VONAGE_API_SECRET` and an egress network limited to `rest.nexmo.com`, `api.nexmo.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Vonage docs](https://developer.vonage.com/en/messaging/sms/overview).
 

@@ -13,7 +13,7 @@ ignitify integration:add stripe --task my-task
 ignitify secret:set STRIPE_SECRET_KEY --stdin
 ```
 
-The plan adds the secret names `STRIPE_SECRET_KEY` and an egress network limited to `api.stripe.com`, `files.stripe.com`. There is nothing for you to add.
+The plan adds the secret names `STRIPE_SECRET_KEY` and an egress network limited to `api.stripe.com`, `files.stripe.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Stripe docs](https://docs.stripe.com/keys).
 

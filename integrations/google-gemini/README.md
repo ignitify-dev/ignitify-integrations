@@ -13,7 +13,7 @@ ignitify integration:add google-gemini --task my-task
 ignitify secret:set GEMINI_API_KEY --stdin
 ```
 
-The plan adds the secret names `GEMINI_API_KEY` and an egress network limited to `generativelanguage.googleapis.com`. There is nothing for you to add.
+The plan adds the secret names `GEMINI_API_KEY` and an egress network limited to `generativelanguage.googleapis.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Google Gemini docs](https://ai.google.dev/gemini-api/docs/quickstart).
 

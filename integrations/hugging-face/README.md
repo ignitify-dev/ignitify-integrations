@@ -13,7 +13,7 @@ ignitify integration:add hugging-face --task my-task
 ignitify secret:set HF_TOKEN --stdin
 ```
 
-The plan adds the secret names `HF_TOKEN` and an egress network limited to `router.huggingface.co`, `huggingface.co`. There is nothing for you to add.
+The plan adds the secret names `HF_TOKEN` and an egress network limited to `router.huggingface.co`, `huggingface.co`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Hugging Face docs](https://huggingface.co/docs/inference-providers/index).
 

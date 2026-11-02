@@ -21,8 +21,10 @@ export const ITEM_MESSAGES = {
     `${dir}/${PACKAGE_JSON}: files must not include ${DRAFT_FILE} (the upgrade checklist is never published)`,
   installScript: (dir: string, script: string) =>
     `${dir}/${PACKAGE_JSON}: scripts.${script} runs on install; a published package must have no install scripts`,
+  sourceWithoutExports: (dir: string) =>
+    `${dir}/${PACKAGE_JSON}: the folder has src/ but no exports, so it would publish as settings only`,
   notBuilt: (dir: string) =>
-    `${dir}: has src/ but is not in the root ${ROOT_TSCONFIG} references, so \`npm run build\` would publish it without dist`,
+    `${dir}: has code (exports) but is not in the root ${ROOT_TSCONFIG} references, so \`npm run build\` would publish it without dist`,
   badRootTsconfig: (reason: string) => `${ROOT_TSCONFIG}: cannot read its references (${reason})`,
   noRootReferences: `${ROOT_TSCONFIG}: has no references list`,
 } as const;

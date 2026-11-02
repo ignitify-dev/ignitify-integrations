@@ -15,7 +15,7 @@ ignitify secret:set MICROSOFT_CLIENT_ID --stdin
 ignitify secret:set MICROSOFT_CLIENT_SECRET --stdin
 ```
 
-The plan adds the secret names `MICROSOFT_TENANT_ID`, `MICROSOFT_CLIENT_ID`, `MICROSOFT_CLIENT_SECRET` and an egress network limited to `login.microsoftonline.com`, `graph.microsoft.com`. There is nothing for you to add.
+The plan adds the secret names `MICROSOFT_TENANT_ID`, `MICROSOFT_CLIENT_ID`, `MICROSOFT_CLIENT_SECRET` and an egress network limited to `login.microsoftonline.com`, `graph.microsoft.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Microsoft Entra ID docs](https://learn.microsoft.com/graph/api/resources/users).
 

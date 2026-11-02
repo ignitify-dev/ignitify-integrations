@@ -13,7 +13,7 @@ ignitify integration:add paddle --task my-task
 ignitify secret:set PADDLE_API_KEY --stdin
 ```
 
-The plan adds the secret names `PADDLE_API_KEY` and an egress network limited to `api.paddle.com`, `sandbox-api.paddle.com`. There is nothing for you to add.
+The plan adds the secret names `PADDLE_API_KEY` and an egress network limited to `api.paddle.com`, `sandbox-api.paddle.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Paddle docs](https://developer.paddle.com/api-reference/overview).
 

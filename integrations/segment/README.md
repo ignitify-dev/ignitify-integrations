@@ -13,7 +13,7 @@ ignitify integration:add segment --task my-task
 ignitify secret:set SEGMENT_WRITE_KEY --stdin
 ```
 
-The plan adds the secret names `SEGMENT_WRITE_KEY` and an egress network limited to `api.segment.io`, `events.eu1.segmentapis.com`. There is nothing for you to add.
+The plan adds the secret names `SEGMENT_WRITE_KEY` and an egress network limited to `api.segment.io`, `events.eu1.segmentapis.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Segment docs](https://segment.com/docs/connections/sources/catalog/libraries/server/http-api/).
 

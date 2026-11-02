@@ -13,7 +13,7 @@ ignitify integration:add elevenlabs --task my-task
 ignitify secret:set ELEVENLABS_API_KEY --stdin
 ```
 
-The plan adds the secret names `ELEVENLABS_API_KEY` and an egress network limited to `api.elevenlabs.io`. There is nothing for you to add.
+The plan adds the secret names `ELEVENLABS_API_KEY` and an egress network limited to `api.elevenlabs.io`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [ElevenLabs docs](https://elevenlabs.io/docs/quickstart).
 

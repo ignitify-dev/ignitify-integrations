@@ -16,7 +16,7 @@ ignitify secret:set GOOGLE_CLIENT_SECRET --stdin
 ignitify secret:set GOOGLE_REFRESH_TOKEN --stdin
 ```
 
-The plan adds the secret names `GOOGLE_ADS_DEVELOPER_TOKEN`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GOOGLE_REFRESH_TOKEN` and an egress network limited to `oauth2.googleapis.com`, `googleads.googleapis.com`. There is nothing for you to add.
+The plan adds the secret names `GOOGLE_ADS_DEVELOPER_TOKEN`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GOOGLE_REFRESH_TOKEN` and an egress network limited to `oauth2.googleapis.com`, `googleads.googleapis.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Google Ads docs](https://developers.google.com/google-ads/api/docs/get-started/introduction).
 

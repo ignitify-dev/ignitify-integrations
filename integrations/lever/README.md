@@ -13,7 +13,7 @@ ignitify integration:add lever --task my-task
 ignitify secret:set LEVER_API_KEY --stdin
 ```
 
-The plan adds the secret names `LEVER_API_KEY` and an egress network limited to `api.lever.co`, `api.sandbox.lever.co`. There is nothing for you to add.
+The plan adds the secret names `LEVER_API_KEY` and an egress network limited to `api.lever.co`, `api.sandbox.lever.co`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Lever docs](https://hire.lever.co/developer/documentation).
 

@@ -11,7 +11,7 @@ ignitify integration:add telegram --task report
 ignitify secret:set TELEGRAM_BOT_TOKEN --stdin
 ```
 
-The plan adds the secret name `TELEGRAM_BOT_TOKEN` and an egress network limited to `api.telegram.org`. There is nothing for you to add.
+The plan adds the secret name `TELEGRAM_BOT_TOKEN` and an egress network limited to `api.telegram.org`. You add only the secret values (the `secret:set` lines above).
 
 You need a bot token and a chat id first. Telegram's own docs show how to get them: [create a bot](https://core.telegram.org/bots/features#creating-a-new-bot).
 

@@ -1,7 +1,7 @@
 // Pure checks of one integration folder. The walker (items.ts) reads the files; nothing here
 // touches the disk.
 
-import { packageName, parseManifest, type Manifest } from '@ignitify-integrations/core';
+import { hasCode, packageName, parseManifest, type Manifest } from '@ignitify-integrations/core';
 import { err, ok, type Result } from '@ignitify-integrations/runtime';
 import {
   DIST_DIR,
@@ -66,8 +66,13 @@ export const isDraftItem = (item: RawItem): boolean => {
   return parsed.ok && isDraft(parsed.value);
 };
 
-/** An integration has code when it has a `src/` folder; it then ships `dist`. */
-export const hasCode = (files: readonly string[]): boolean => files.some((file) => file.startsWith(SRC_DIR));
+/** The folder holds source code. Whether the integration HAS code is `core`'s `hasCode` (its `exports`). */
+export const hasSource = (files: readonly string[]): boolean => files.some((file) => file.startsWith(SRC_DIR));
+
+const parsedPackage = (item: RawItem): unknown => {
+  const parsed = parseJson(item.packageJsonText ?? '');
+  return parsed.ok ? parsed.value : undefined;
+};
 
 /**
  * The publish rules every published package follows (integrations, `core`, `runtime`): its npm
@@ -130,9 +135,12 @@ const packageIssues = (item: RawItem, manifest: Manifest, pkg: Record<string, un
   const dir = item.dir;
   const draft = isDraft(pkg);
   const files = pkg['files'];
-  const shipped = hasCode(item.files) ? [DIST_DIR, ...PUBLISHED_FILES] : [...PUBLISHED_FILES];
+  const code = hasCode(pkg);
+  const shipped = code ? [DIST_DIR, ...PUBLISHED_FILES] : [...PUBLISHED_FILES];
   return [
     ...publishIssues(dir, packageName(manifest.name), pkg, shipped, !draft),
+    // Source with no exports would ship as settings only and escape the build-reference check.
+    ...(hasSource(item.files) && !code ? [ITEM_MESSAGES.sourceWithoutExports(dir)] : []),
     ...(pkg['private'] === undefined || draft
       ? []
       : [ITEM_MESSAGES.packageField(dir, 'private', 'absent (a published integration) or true (a draft)')]),
@@ -218,6 +226,6 @@ export const buildReferenceIssues = (items: readonly RawItem[], rootTsconfigText
     ),
   );
   return items
-    .filter((item) => hasCode(item.files) && !built.has(item.dir))
+    .filter((item) => hasCode(parsedPackage(item)) && !built.has(item.dir))
     .map((item) => ITEM_MESSAGES.notBuilt(item.dir));
 };

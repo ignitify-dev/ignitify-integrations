@@ -15,7 +15,7 @@ ignitify secret:set ZOOM_CLIENT_ID --stdin
 ignitify secret:set ZOOM_CLIENT_SECRET --stdin
 ```
 
-The plan adds the secret names `ZOOM_ACCOUNT_ID`, `ZOOM_CLIENT_ID`, `ZOOM_CLIENT_SECRET` and an egress network limited to `zoom.us`, `api.zoom.us`. There is nothing for you to add.
+The plan adds the secret names `ZOOM_ACCOUNT_ID`, `ZOOM_CLIENT_ID`, `ZOOM_CLIENT_SECRET` and an egress network limited to `zoom.us`, `api.zoom.us`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Zoom docs](https://developers.zoom.us/docs/internal-apps/s2s-oauth/).
 

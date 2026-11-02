@@ -43,4 +43,4 @@ Requires Node 22. See [CONTRIBUTING.md](CONTRIBUTING.md) and [writing an integra
 
 ## Licence
 
-Apache-2.0. The READMEs and the guide are MIT-0, so you can copy their example code into your task with no notice. See [LICENSE](LICENSE) and [REUSE.toml](REUSE.toml).
+Apache-2.0. The integration READMEs and the guide are MIT-0, so you can copy their example code into your task with no notice. See [LICENSE](LICENSE) and [REUSE.toml](REUSE.toml).

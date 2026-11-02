@@ -13,7 +13,7 @@ ignitify integration:add cloudflare --task my-task
 ignitify secret:set CLOUDFLARE_API_TOKEN --stdin
 ```
 
-The plan adds the secret names `CLOUDFLARE_API_TOKEN` and an egress network limited to `api.cloudflare.com`. There is nothing for you to add.
+The plan adds the secret names `CLOUDFLARE_API_TOKEN` and an egress network limited to `api.cloudflare.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Cloudflare docs](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
 

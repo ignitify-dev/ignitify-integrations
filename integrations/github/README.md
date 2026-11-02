@@ -13,7 +13,7 @@ ignitify integration:add github --task my-task
 ignitify secret:set GITHUB_TOKEN --stdin
 ```
 
-The plan adds the secret names `GITHUB_TOKEN` and an egress network limited to `api.github.com`, `uploads.github.com`. There is nothing for you to add.
+The plan adds the secret names `GITHUB_TOKEN` and an egress network limited to `api.github.com`, `uploads.github.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [GitHub docs](https://docs.github.com/rest/authentication/authenticating-to-the-rest-api).
 

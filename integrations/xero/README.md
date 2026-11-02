@@ -14,7 +14,7 @@ ignitify secret:set XERO_CLIENT_ID --stdin
 ignitify secret:set XERO_CLIENT_SECRET --stdin
 ```
 
-The plan adds the secret names `XERO_CLIENT_ID`, `XERO_CLIENT_SECRET` and an egress network limited to `identity.xero.com`, `api.xero.com`. There is nothing for you to add.
+The plan adds the secret names `XERO_CLIENT_ID`, `XERO_CLIENT_SECRET` and an egress network limited to `identity.xero.com`, `api.xero.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Xero docs](https://developer.xero.com/documentation/guides/oauth2/custom-connections/).
 

@@ -13,7 +13,7 @@ ignitify integration:add firebase --task my-task
 ignitify secret:set FIREBASE_SERVICE_ACCOUNT_KEY --stdin
 ```
 
-The plan adds the secret names `FIREBASE_SERVICE_ACCOUNT_KEY` and an egress network limited to `oauth2.googleapis.com`, `accounts.google.com`, `firestore.googleapis.com`, `fcm.googleapis.com`. There is nothing for you to add.
+The plan adds the secret names `FIREBASE_SERVICE_ACCOUNT_KEY` and an egress network limited to `oauth2.googleapis.com`, `accounts.google.com`, `firestore.googleapis.com`, `fcm.googleapis.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Firebase docs](https://firebase.google.com/docs/admin/setup).
 

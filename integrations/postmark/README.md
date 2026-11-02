@@ -13,7 +13,7 @@ ignitify integration:add postmark --task my-task
 ignitify secret:set POSTMARK_SERVER_TOKEN --stdin
 ```
 
-The plan adds the secret names `POSTMARK_SERVER_TOKEN` and an egress network limited to `api.postmarkapp.com`. There is nothing for you to add.
+The plan adds the secret names `POSTMARK_SERVER_TOKEN` and an egress network limited to `api.postmarkapp.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Postmark docs](https://postmarkapp.com/developer).
 

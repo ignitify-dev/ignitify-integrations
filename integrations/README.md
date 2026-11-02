@@ -2,7 +2,7 @@
 
 An integration is one npm package that adds a service or a feature to an ignitify task: the secrets, the hosts and the settings it needs, and code only when it earns its place.
 
-Add one to a task:
+Add a published integration to a task:
 
 ```bash
 ignitify integration:add <name> --task <slug>
@@ -12,14 +12,14 @@ ignitify integration:add <name> --task <slug>
 
 ## Chat and messaging
 
-| Integration                              | What it does for a task                                          | Status         |
-| :--------------------------------------- | :--------------------------------------------------------------- | :------------- |
-| [`telegram`](telegram)                   | Send Telegram messages from a task                               | released 0.1.x |
-| [`slack`](slack)                         | Post messages and files to Slack channels and people             | draft          |
-| [`discord`](discord)                     | Post messages to Discord channels with a bot                     | draft          |
-| [`microsoft-teams`](microsoft-teams)     | Post messages to Microsoft Teams channels                        | draft          |
-| [`google-chat`](google-chat)             | Post messages to a Google Chat space through an incoming webhook | draft          |
-| [`whatsapp-business`](whatsapp-business) | Send WhatsApp messages from a business number (Cloud API)        | draft          |
+| Integration                              | What it does for a task                                          | Status               |
+| :--------------------------------------- | :--------------------------------------------------------------- | :------------------- |
+| [`telegram`](telegram)                   | Send Telegram messages from a task                               | ready, not published |
+| [`slack`](slack)                         | Post messages and files to Slack channels and people             | draft                |
+| [`discord`](discord)                     | Post messages to Discord channels with a bot                     | draft                |
+| [`microsoft-teams`](microsoft-teams)     | Post messages to Microsoft Teams channels                        | draft                |
+| [`google-chat`](google-chat)             | Post messages to a Google Chat space through an incoming webhook | draft                |
+| [`whatsapp-business`](whatsapp-business) | Send WhatsApp messages from a business number (Cloud API)        | draft                |
 
 ## Email
 
@@ -125,14 +125,14 @@ ignitify integration:add <name> --task <slug>
 
 ## Files and storage
 
-| Integration                    | What it does for a task                                          | Status         |
-| :----------------------------- | :--------------------------------------------------------------- | :------------- |
-| [`s3-storage`](s3-storage)     | Upload, link and download files in S3-compatible storage         | released 0.1.x |
-| [`google-drive`](google-drive) | List, upload and download files in Google Drive                  | draft          |
-| [`dropbox`](dropbox)           | List, upload and download files in Dropbox                       | draft          |
-| [`box`](box)                   | List, upload and download files in Box                           | draft          |
-| [`onedrive`](onedrive)         | List, upload and download files in OneDrive                      | draft          |
-| [`sharepoint`](sharepoint)     | List, upload and download files in SharePoint document libraries | draft          |
+| Integration                    | What it does for a task                                          | Status               |
+| :----------------------------- | :--------------------------------------------------------------- | :------------------- |
+| [`s3-storage`](s3-storage)     | Upload, link and download files in S3-compatible storage         | ready, not published |
+| [`google-drive`](google-drive) | List, upload and download files in Google Drive                  | draft                |
+| [`dropbox`](dropbox)           | List, upload and download files in Dropbox                       | draft                |
+| [`box`](box)                   | List, upload and download files in Box                           | draft                |
+| [`onedrive`](onedrive)         | List, upload and download files in OneDrive                      | draft                |
+| [`sharepoint`](sharepoint)     | List, upload and download files in SharePoint document libraries | draft                |
 
 ## Docs and knowledge
 
@@ -193,11 +193,11 @@ ignitify integration:add <name> --task <slug>
 
 ## Video and meetings
 
-| Integration        | What it does for a task                                   | Status         |
-| :----------------- | :-------------------------------------------------------- | :------------- |
-| [`stream`](stream) | Stream live audio and video (HLS) from a task             | released 0.1.x |
-| [`zoom`](zoom)     | Create Zoom meetings and read recordings and participants | draft          |
-| [`mux`](mux)       | Upload and stream video with Mux                          | draft          |
+| Integration        | What it does for a task                                   | Status               |
+| :----------------- | :-------------------------------------------------------- | :------------------- |
+| [`stream`](stream) | Stream live audio and video (HLS) from a task             | ready, not published |
+| [`zoom`](zoom)     | Create Zoom meetings and read recordings and participants | draft                |
+| [`mux`](mux)       | Upload and stream video with Mux                          | draft                |
 
 ## Maps and location
 

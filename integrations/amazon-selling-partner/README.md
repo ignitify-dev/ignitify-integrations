@@ -15,7 +15,7 @@ ignitify secret:set SP_API_CLIENT_SECRET --stdin
 ignitify secret:set SP_API_REFRESH_TOKEN --stdin
 ```
 
-The plan adds the secret names `SP_API_CLIENT_ID`, `SP_API_CLIENT_SECRET`, `SP_API_REFRESH_TOKEN` and an egress network limited to `api.amazon.com`, `sellingpartnerapi-na.amazon.com`, `sellingpartnerapi-eu.amazon.com`, `sellingpartnerapi-fe.amazon.com`. There is nothing for you to add.
+The plan adds the secret names `SP_API_CLIENT_ID`, `SP_API_CLIENT_SECRET`, `SP_API_REFRESH_TOKEN` and an egress network limited to `api.amazon.com`, `sellingpartnerapi-na.amazon.com`, `sellingpartnerapi-eu.amazon.com`, `sellingpartnerapi-fe.amazon.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Amazon Selling Partner API docs](https://developer-docs.amazon.com/sp-api/).
 

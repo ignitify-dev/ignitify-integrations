@@ -13,7 +13,7 @@ ignitify integration:add linkedin --task my-task
 ignitify secret:set LINKEDIN_ACCESS_TOKEN --stdin
 ```
 
-The plan adds the secret names `LINKEDIN_ACCESS_TOKEN` and an egress network limited to `api.linkedin.com`. There is nothing for you to add.
+The plan adds the secret names `LINKEDIN_ACCESS_TOKEN` and an egress network limited to `api.linkedin.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [LinkedIn docs](https://learn.microsoft.com/linkedin/marketing/community-management/shares/posts-api).
 

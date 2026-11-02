@@ -13,7 +13,7 @@ ignitify integration:add pipedrive --task my-task
 ignitify secret:set PIPEDRIVE_API_TOKEN --stdin
 ```
 
-The plan adds the secret names `PIPEDRIVE_API_TOKEN` and an egress network limited to `api.pipedrive.com`. There is nothing for you to add.
+The plan adds the secret names `PIPEDRIVE_API_TOKEN` and an egress network limited to `api.pipedrive.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Pipedrive docs](https://pipedrive.readme.io/docs/core-api-concepts-about-pipedrive-api).
 

@@ -15,7 +15,7 @@ ignitify secret:set BOX_CLIENT_SECRET --stdin
 ignitify secret:set BOX_ENTERPRISE_ID --stdin
 ```
 
-The plan adds the secret names `BOX_CLIENT_ID`, `BOX_CLIENT_SECRET`, `BOX_ENTERPRISE_ID` and an egress network limited to `api.box.com`, `upload.box.com`. There is nothing for you to add.
+The plan adds the secret names `BOX_CLIENT_ID`, `BOX_CLIENT_SECRET`, `BOX_ENTERPRISE_ID` and an egress network limited to `api.box.com`, `upload.box.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Box docs](https://developer.box.com/guides/authentication/client-credentials/).
 

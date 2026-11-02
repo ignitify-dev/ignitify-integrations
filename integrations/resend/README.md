@@ -13,7 +13,7 @@ ignitify integration:add resend --task my-task
 ignitify secret:set RESEND_API_KEY --stdin
 ```
 
-The plan adds the secret names `RESEND_API_KEY` and an egress network limited to `api.resend.com`. There is nothing for you to add.
+The plan adds the secret names `RESEND_API_KEY` and an egress network limited to `api.resend.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Resend docs](https://resend.com/docs/send-with-nodejs).
 

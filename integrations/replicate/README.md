@@ -13,7 +13,7 @@ ignitify integration:add replicate --task my-task
 ignitify secret:set REPLICATE_API_TOKEN --stdin
 ```
 
-The plan adds the secret names `REPLICATE_API_TOKEN` and an egress network limited to `api.replicate.com`, `replicate.delivery`. There is nothing for you to add.
+The plan adds the secret names `REPLICATE_API_TOKEN` and an egress network limited to `api.replicate.com`, `replicate.delivery`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Replicate docs](https://replicate.com/docs/get-started/nodejs).
 

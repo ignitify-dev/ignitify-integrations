@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   checkCoverage,
+  hasCode,
   EGRESS_ALLOW_MAX,
   planAdd,
   planHeadline,
@@ -8,7 +9,7 @@ import {
   type PlanOutcome,
   type TaskConfig,
 } from '@ignitify-integrations/core';
-import type { Result } from '@ignitify-integrations/runtime';
+import { unwrap, type Result } from '@ignitify-integrations/runtime';
 
 const base = { schema_version: 1, runtimes: ['node'] } as const;
 
@@ -74,7 +75,7 @@ describe('planAdd', () => {
       execution: { network: { type: 'egress', egress_allow: ['api.telegram.org'] } },
     });
     expect(out.notes).toEqual(['execution.network.type: none -> egress']);
-    expect(out.youAdd).toEqual(['secret TELEGRAM_BOT_TOKEN: ignitify secret:set TELEGRAM_BOT_TOKEN --stdin']);
+    expect(out.youAdd).toEqual(['secret TELEGRAM_BOT_TOKEN (new): ignitify secret:set TELEGRAM_BOT_TOKEN --stdin']);
   });
 
   it('opens an empty host list for a varying host, and prints the hint under "you add"', () => {
@@ -152,6 +153,26 @@ describe('planAdd', () => {
   it('keeps keys it does not own', () => {
     const out = value(planAdd(deepFreeze({ slug: 'x', execution: { cpu: 2 }, run: { timeout_sec: 5 } }), STREAM));
     expect(out.config).toMatchObject({ slug: 'x', execution: { cpu: 2 }, run: { timeout_sec: 5 } });
+  });
+});
+
+describe('you add: secret lines', () => {
+  it('marks only the secrets the task does not declare yet', () => {
+    const s3 = unwrap(planAdd({ secrets: ['S3_ACCESS_KEY_ID'] }, S3));
+    const secretLines = s3.youAdd.filter((line) => line.startsWith('secret '));
+    expect(secretLines).toEqual([
+      'secret S3_ACCESS_KEY_ID: ignitify secret:set S3_ACCESS_KEY_ID --stdin',
+      'secret S3_SECRET_ACCESS_KEY (new): ignitify secret:set S3_SECRET_ACCESS_KEY --stdin',
+    ]);
+  });
+});
+
+describe('hasCode', () => {
+  it('is true only when the published package.json has an exports entry', () => {
+    expect(hasCode({ exports: { '.': './dist/index.js' } })).toBe(true);
+    expect(hasCode({ main: './index.js' })).toBe(false);
+    expect(hasCode({})).toBe(false);
+    expect(hasCode(null)).toBe(false);
   });
 });
 

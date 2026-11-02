@@ -13,7 +13,7 @@ ignitify integration:add openai --task my-task
 ignitify secret:set OPENAI_API_KEY --stdin
 ```
 
-The plan adds the secret names `OPENAI_API_KEY` and an egress network limited to `api.openai.com`. There is nothing for you to add.
+The plan adds the secret names `OPENAI_API_KEY` and an egress network limited to `api.openai.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [OpenAI docs](https://platform.openai.com/docs/quickstart).
 

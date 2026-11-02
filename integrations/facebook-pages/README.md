@@ -13,7 +13,7 @@ ignitify integration:add facebook-pages --task my-task
 ignitify secret:set FACEBOOK_PAGE_ACCESS_TOKEN --stdin
 ```
 
-The plan adds the secret names `FACEBOOK_PAGE_ACCESS_TOKEN` and an egress network limited to `graph.facebook.com`. There is nothing for you to add.
+The plan adds the secret names `FACEBOOK_PAGE_ACCESS_TOKEN` and an egress network limited to `graph.facebook.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Facebook Pages docs](https://developers.facebook.com/docs/pages-api/getting-started).
 

@@ -13,7 +13,7 @@ ignitify integration:add mapbox --task my-task
 ignitify secret:set MAPBOX_ACCESS_TOKEN --stdin
 ```
 
-The plan adds the secret names `MAPBOX_ACCESS_TOKEN` and an egress network limited to `api.mapbox.com`. There is nothing for you to add.
+The plan adds the secret names `MAPBOX_ACCESS_TOKEN` and an egress network limited to `api.mapbox.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Mapbox docs](https://docs.mapbox.com/api/overview/).
 

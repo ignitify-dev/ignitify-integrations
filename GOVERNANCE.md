@@ -17,6 +17,10 @@ All of these must hold:
 6. **Owner.** A named owner in CODEOWNERS.
 7. **README.** Short, and about the integration: `Add it`, `Use it`, `Grow your task`, `Limits`. It does not teach the vendor's API; for vendor setup it gives one line and a link to the vendor's docs.
 
+## Drafts
+
+A draft is an integration folder that is never published: `"private": true` and version `0.0.0` in `package.json`, and an upgrade checklist in `TODO.md`. `check:items` checks its manifest and README; npm and Changesets skip it. A draft is upgraded one at a time; the acceptance rules above apply then, starting with the value test.
+
 ## Versioning
 
 | Change                                                                                                                        | Bump  |

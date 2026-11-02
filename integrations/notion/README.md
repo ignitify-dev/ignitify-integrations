@@ -13,7 +13,7 @@ ignitify integration:add notion --task my-task
 ignitify secret:set NOTION_TOKEN --stdin
 ```
 
-The plan adds the secret names `NOTION_TOKEN` and an egress network limited to `api.notion.com`. There is nothing for you to add.
+The plan adds the secret names `NOTION_TOKEN` and an egress network limited to `api.notion.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Notion docs](https://developers.notion.com/docs/create-a-notion-integration).
 

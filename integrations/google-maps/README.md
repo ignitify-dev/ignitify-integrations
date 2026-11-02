@@ -13,7 +13,7 @@ ignitify integration:add google-maps --task my-task
 ignitify secret:set GOOGLE_MAPS_API_KEY --stdin
 ```
 
-The plan adds the secret names `GOOGLE_MAPS_API_KEY` and an egress network limited to `maps.googleapis.com`, `places.googleapis.com`, `routes.googleapis.com`, `addressvalidation.googleapis.com`. There is nothing for you to add.
+The plan adds the secret names `GOOGLE_MAPS_API_KEY` and an egress network limited to `maps.googleapis.com`, `places.googleapis.com`, `routes.googleapis.com`, `addressvalidation.googleapis.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Google Maps Platform docs](https://developers.google.com/maps/get-started).
 

@@ -13,7 +13,7 @@ ignitify integration:add sendgrid --task my-task
 ignitify secret:set SENDGRID_API_KEY --stdin
 ```
 
-The plan adds the secret names `SENDGRID_API_KEY` and an egress network limited to `api.sendgrid.com`, `api.eu.sendgrid.com`. There is nothing for you to add.
+The plan adds the secret names `SENDGRID_API_KEY` and an egress network limited to `api.sendgrid.com`, `api.eu.sendgrid.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [SendGrid docs](https://www.twilio.com/docs/sendgrid/for-developers/sending-email/api-getting-started).
 

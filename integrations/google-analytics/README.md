@@ -13,7 +13,7 @@ ignitify integration:add google-analytics --task my-task
 ignitify secret:set GOOGLE_SERVICE_ACCOUNT_KEY --stdin
 ```
 
-The plan adds the secret names `GOOGLE_SERVICE_ACCOUNT_KEY` and an egress network limited to `oauth2.googleapis.com`, `analyticsdata.googleapis.com`, `www.google-analytics.com`. There is nothing for you to add.
+The plan adds the secret names `GOOGLE_SERVICE_ACCOUNT_KEY` and an egress network limited to `oauth2.googleapis.com`, `analyticsdata.googleapis.com`, `www.google-analytics.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Google Analytics docs](https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries).
 

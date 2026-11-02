@@ -14,7 +14,7 @@ ignitify secret:set DATADOG_API_KEY --stdin
 ignitify secret:set DATADOG_APP_KEY --stdin
 ```
 
-The plan adds the secret names `DATADOG_API_KEY`, `DATADOG_APP_KEY` and an egress network limited to `api.datadoghq.com`, `api.us3.datadoghq.com`, `api.us5.datadoghq.com`, `api.datadoghq.eu`, `api.ap1.datadoghq.com`, `http-intake.logs.datadoghq.com`, `http-intake.logs.datadoghq.eu`. There is nothing for you to add.
+The plan adds the secret names `DATADOG_API_KEY`, `DATADOG_APP_KEY` and an egress network limited to `api.datadoghq.com`, `api.us3.datadoghq.com`, `api.us5.datadoghq.com`, `api.datadoghq.eu`, `api.ap1.datadoghq.com`, `http-intake.logs.datadoghq.com`, `http-intake.logs.datadoghq.eu`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Datadog docs](https://docs.datadoghq.com/api/latest/).
 

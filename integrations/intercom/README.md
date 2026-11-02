@@ -13,7 +13,7 @@ ignitify integration:add intercom --task my-task
 ignitify secret:set INTERCOM_ACCESS_TOKEN --stdin
 ```
 
-The plan adds the secret names `INTERCOM_ACCESS_TOKEN` and an egress network limited to `api.intercom.io`, `api.eu.intercom.io`, `api.au.intercom.io`. There is nothing for you to add.
+The plan adds the secret names `INTERCOM_ACCESS_TOKEN` and an egress network limited to `api.intercom.io`, `api.eu.intercom.io`, `api.au.intercom.io`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Intercom docs](https://developers.intercom.com/docs/build-an-integration/learn-more/authentication).
 

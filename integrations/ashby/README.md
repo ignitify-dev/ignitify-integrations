@@ -13,7 +13,7 @@ ignitify integration:add ashby --task my-task
 ignitify secret:set ASHBY_API_KEY --stdin
 ```
 
-The plan adds the secret names `ASHBY_API_KEY` and an egress network limited to `api.ashbyhq.com`. There is nothing for you to add.
+The plan adds the secret names `ASHBY_API_KEY` and an egress network limited to `api.ashbyhq.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Ashby docs](https://developers.ashbyhq.com/).
 

@@ -15,7 +15,7 @@ ignitify secret:set DROPBOX_APP_SECRET --stdin
 ignitify secret:set DROPBOX_REFRESH_TOKEN --stdin
 ```
 
-The plan adds the secret names `DROPBOX_APP_KEY`, `DROPBOX_APP_SECRET`, `DROPBOX_REFRESH_TOKEN` and an egress network limited to `api.dropboxapi.com`, `content.dropboxapi.com`, `api.dropbox.com`. There is nothing for you to add.
+The plan adds the secret names `DROPBOX_APP_KEY`, `DROPBOX_APP_SECRET`, `DROPBOX_REFRESH_TOKEN` and an egress network limited to `api.dropboxapi.com`, `content.dropboxapi.com`, `api.dropbox.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Dropbox docs](https://www.dropbox.com/developers/documentation/http/documentation).
 

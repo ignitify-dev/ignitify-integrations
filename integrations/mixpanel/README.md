@@ -15,7 +15,7 @@ ignitify secret:set MIXPANEL_SERVICE_ACCOUNT_USERNAME --stdin
 ignitify secret:set MIXPANEL_SERVICE_ACCOUNT_SECRET --stdin
 ```
 
-The plan adds the secret names `MIXPANEL_PROJECT_TOKEN`, `MIXPANEL_SERVICE_ACCOUNT_USERNAME`, `MIXPANEL_SERVICE_ACCOUNT_SECRET` and an egress network limited to `api.mixpanel.com`, `api-eu.mixpanel.com`, `mixpanel.com`, `eu.mixpanel.com`, `data.mixpanel.com`. There is nothing for you to add.
+The plan adds the secret names `MIXPANEL_PROJECT_TOKEN`, `MIXPANEL_SERVICE_ACCOUNT_USERNAME`, `MIXPANEL_SERVICE_ACCOUNT_SECRET` and an egress network limited to `api.mixpanel.com`, `api-eu.mixpanel.com`, `mixpanel.com`, `eu.mixpanel.com`, `data.mixpanel.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Mixpanel docs](https://docs.mixpanel.com/docs/tracking-methods/sdks/nodejs).
 

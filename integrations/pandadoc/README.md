@@ -13,7 +13,7 @@ ignitify integration:add pandadoc --task my-task
 ignitify secret:set PANDADOC_API_KEY --stdin
 ```
 
-The plan adds the secret names `PANDADOC_API_KEY` and an egress network limited to `api.pandadoc.com`. There is nothing for you to add.
+The plan adds the secret names `PANDADOC_API_KEY` and an egress network limited to `api.pandadoc.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [PandaDoc docs](https://developers.pandadoc.com/reference/about).
 

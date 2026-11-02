@@ -34,7 +34,10 @@ export const PLAN_MESSAGES = {
   presetUnknown: (preset: string, min: string) =>
     `run.preset ${preset} is not a known preset; left as is (this integration needs at least ${min})`,
   // "you add" lines
-  setSecret: (name: string) => `secret ${name}: ignitify secret:set ${name} --stdin`,
+  // `(new)`: the task does not declare this secret yet. A declared one still gets a line: the CLI
+  // cannot see whether its value is set.
+  setSecret: (name: string, isNew: boolean) =>
+    `secret ${name}${isNew ? ' (new)' : ''}: ignitify secret:set ${name} --stdin`,
   addHost: (hint: string) => `egress host: ${hint}`,
 } as const;
 

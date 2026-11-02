@@ -13,7 +13,7 @@ ignitify integration:add anthropic --task my-task
 ignitify secret:set ANTHROPIC_API_KEY --stdin
 ```
 
-The plan adds the secret names `ANTHROPIC_API_KEY` and an egress network limited to `api.anthropic.com`. There is nothing for you to add.
+The plan adds the secret names `ANTHROPIC_API_KEY` and an egress network limited to `api.anthropic.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Anthropic docs](https://docs.anthropic.com/en/api/getting-started).
 

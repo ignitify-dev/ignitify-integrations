@@ -13,7 +13,7 @@ ignitify integration:add vercel --task my-task
 ignitify secret:set VERCEL_TOKEN --stdin
 ```
 
-The plan adds the secret names `VERCEL_TOKEN` and an egress network limited to `api.vercel.com`. There is nothing for you to add.
+The plan adds the secret names `VERCEL_TOKEN` and an egress network limited to `api.vercel.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Vercel docs](https://vercel.com/docs/rest-api).
 

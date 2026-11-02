@@ -13,7 +13,7 @@ ignitify integration:add klaviyo --task my-task
 ignitify secret:set KLAVIYO_PRIVATE_API_KEY --stdin
 ```
 
-The plan adds the secret names `KLAVIYO_PRIVATE_API_KEY` and an egress network limited to `a.klaviyo.com`. There is nothing for you to add.
+The plan adds the secret names `KLAVIYO_PRIVATE_API_KEY` and an egress network limited to `a.klaviyo.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Klaviyo docs](https://developers.klaviyo.com/en/docs/authenticate_).
 

@@ -13,7 +13,7 @@ ignitify integration:add meta-ads --task my-task
 ignitify secret:set META_ACCESS_TOKEN --stdin
 ```
 
-The plan adds the secret names `META_ACCESS_TOKEN` and an egress network limited to `graph.facebook.com`. There is nothing for you to add.
+The plan adds the secret names `META_ACCESS_TOKEN` and an egress network limited to `graph.facebook.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Meta Ads docs](https://developers.facebook.com/docs/marketing-apis/get-started).
 

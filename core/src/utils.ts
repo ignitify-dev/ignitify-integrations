@@ -5,6 +5,13 @@ import { PACKAGE_SCOPE } from './constants.js';
 /** npm name of an integration: `@ignitify-integrations/<name>`. The one place this name is built. */
 export const packageName = (name: string): string => `${PACKAGE_SCOPE}/${name}`;
 
+/**
+ * Does an integration have code? The one rule: its package.json has an `exports` entry. A client
+ * sees only the installed package (no `src/`), so the rule reads what is published.
+ */
+export const hasCode = (packageJson: unknown): boolean =>
+  typeof packageJson === 'object' && packageJson !== null && 'exports' in packageJson;
+
 /** Position in an ordered vocabulary (NETWORK_TYPES, PRESETS); -1 when unknown. */
 export const rank = (order: readonly string[], value: string): number => order.indexOf(value);
 

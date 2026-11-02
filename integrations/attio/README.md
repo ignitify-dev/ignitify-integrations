@@ -13,7 +13,7 @@ ignitify integration:add attio --task my-task
 ignitify secret:set ATTIO_API_KEY --stdin
 ```
 
-The plan adds the secret names `ATTIO_API_KEY` and an egress network limited to `api.attio.com`. There is nothing for you to add.
+The plan adds the secret names `ATTIO_API_KEY` and an egress network limited to `api.attio.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Attio docs](https://docs.attio.com/rest-api/overview).
 

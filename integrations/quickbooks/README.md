@@ -15,7 +15,7 @@ ignitify secret:set QUICKBOOKS_CLIENT_SECRET --stdin
 ignitify secret:set QUICKBOOKS_REFRESH_TOKEN --stdin
 ```
 
-The plan adds the secret names `QUICKBOOKS_CLIENT_ID`, `QUICKBOOKS_CLIENT_SECRET`, `QUICKBOOKS_REFRESH_TOKEN` and an egress network limited to `oauth.platform.intuit.com`, `quickbooks.api.intuit.com`, `sandbox-quickbooks.api.intuit.com`. There is nothing for you to add.
+The plan adds the secret names `QUICKBOOKS_CLIENT_ID`, `QUICKBOOKS_CLIENT_SECRET`, `QUICKBOOKS_REFRESH_TOKEN` and an egress network limited to `oauth.platform.intuit.com`, `quickbooks.api.intuit.com`, `sandbox-quickbooks.api.intuit.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [QuickBooks Online docs](https://developer.intuit.com/app/developer/qbo/docs/get-started).
 

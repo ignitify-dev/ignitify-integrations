@@ -13,7 +13,7 @@ ignitify integration:add calendly --task my-task
 ignitify secret:set CALENDLY_ACCESS_TOKEN --stdin
 ```
 
-The plan adds the secret names `CALENDLY_ACCESS_TOKEN` and an egress network limited to `api.calendly.com`. There is nothing for you to add.
+The plan adds the secret names `CALENDLY_ACCESS_TOKEN` and an egress network limited to `api.calendly.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Calendly docs](https://developer.calendly.com/getting-started).
 

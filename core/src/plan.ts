@@ -173,7 +173,7 @@ export const planAdd = (config: TaskConfig, manifest: Manifest): Result<PlanOutc
     },
     notes,
     youAdd: [
-      ...needs.secrets.map(PLAN_MESSAGES.setSecret),
+      ...needs.secrets.map((name) => PLAN_MESSAGES.setSecret(name, !(config.secrets ?? []).includes(name))),
       ...(hint === undefined ? [] : [PLAN_MESSAGES.addHost(hint)]),
     ],
   });

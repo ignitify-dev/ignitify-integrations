@@ -15,4 +15,4 @@ export { parseManifest } from './manifest.js';
 export { checkCoverage, planAdd, planHeadline } from './plan.js';
 export { MANIFEST_SCHEMA } from './schema.js';
 export type * from './types.js';
-export { packageName } from './utils.js';
+export { hasCode, packageName } from './utils.js';

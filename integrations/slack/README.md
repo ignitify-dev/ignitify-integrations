@@ -13,7 +13,7 @@ ignitify integration:add slack --task my-task
 ignitify secret:set SLACK_BOT_TOKEN --stdin
 ```
 
-The plan adds the secret names `SLACK_BOT_TOKEN` and an egress network limited to `slack.com`, `files.slack.com`. There is nothing for you to add.
+The plan adds the secret names `SLACK_BOT_TOKEN` and an egress network limited to `slack.com`, `files.slack.com`. You add only the secret values (the `secret:set` lines above).
 
 Get the credentials first: [Slack docs](https://api.slack.com/authentication/basics).
 
