@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { readSecret, SECRET_NAME_PATTERN } from '@ignitify-integrations/runtime';
+import { readSecret, SECRET_NAME_MAX_LENGTH, SECRET_NAME_PATTERN } from '@ignitify-integrations/runtime';
 
 describe('readSecret', () => {
   const ctx = { secrets: { BOT_TOKEN: 't1', EMPTY: '' } };
@@ -25,7 +25,13 @@ describe('SECRET_NAME_PATTERN', () => {
     ['S3_ACCESS_KEY_ID', true],
     ['lower', false],
     ['1ABC', false],
+    [`A${'B'.repeat(SECRET_NAME_MAX_LENGTH - 1)}`, true],
+    [`A${'B'.repeat(SECRET_NAME_MAX_LENGTH)}`, false],
   ])('%s -> %s', (name, valid) => {
     expect(SECRET_NAME_PATTERN.test(name)).toBe(valid);
+  });
+
+  it("is the platform's own rule, character for character", () => {
+    expect(SECRET_NAME_PATTERN.source).toBe('^[A-Z][A-Z0-9_]{0,63}$');
   });
 });

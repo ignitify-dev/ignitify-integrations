@@ -4,8 +4,10 @@
 import type { TaskCtx } from './ctx.js';
 import { err, ok, type Result } from './result.js';
 
-/** Secret names are upper snake case. */
-export const SECRET_NAME_PATTERN = /^[A-Z][A-Z0-9_]*$/;
+/** The platform's longest secret name: deploy and `secret:set` refuse a longer one. */
+export const SECRET_NAME_MAX_LENGTH = 64;
+/** Secret names are upper snake case, at most SECRET_NAME_MAX_LENGTH characters (the platform's own rule). */
+export const SECRET_NAME_PATTERN = new RegExp(`^[A-Z][A-Z0-9_]{0,${SECRET_NAME_MAX_LENGTH - 1}}$`);
 
 const SECRET_MESSAGES = {
   missing: (name: string) =>

@@ -6,6 +6,7 @@ import {
   INBOUND_PORT_MAX,
   INBOUND_PORT_MIN,
   ROUTE_PREFIX_PATTERN,
+  SECRET_NAME_MAX_LENGTH,
   SECRET_NAME_PATTERN,
 } from '@ignitify-integrations/runtime';
 import {
@@ -14,6 +15,8 @@ import {
   EGRESS_HINT_MAX_LENGTH,
   EGRESS_HINT_PATTERN,
   HOST_MAX_LENGTH,
+  INBOUND_ROUTE_MAX_LENGTH,
+  INBOUND_ROUTES_MAX,
   INTERACTIONS,
   NAME_PATTERN,
   NETWORK_TYPES,
@@ -47,7 +50,11 @@ const network = closed(
     inbound_routes: {
       type: 'array',
       minItems: 1,
-      items: closed({ prefix: { type: 'string', pattern: ROUTE_PREFIX_PATTERN } }, ['prefix']),
+      maxItems: INBOUND_ROUTES_MAX,
+      items: closed(
+        { prefix: { type: 'string', maxLength: INBOUND_ROUTE_MAX_LENGTH, pattern: ROUTE_PREFIX_PATTERN } },
+        ['prefix'],
+      ),
     },
     inbound_max_concurrent: { type: 'integer', minimum: 1 },
   },
@@ -64,7 +71,7 @@ export const MANIFEST_SCHEMA = {
       runtimes: { type: 'array', items: { enum: RUNTIMES }, minItems: 1, uniqueItems: true },
       secrets: {
         type: 'array',
-        items: { type: 'string', pattern: SECRET_NAME_PATTERN.source },
+        items: { type: 'string', maxLength: SECRET_NAME_MAX_LENGTH, pattern: SECRET_NAME_PATTERN.source },
         uniqueItems: true,
       },
       network,
