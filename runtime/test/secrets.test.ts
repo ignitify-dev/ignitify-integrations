@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { readSecret, SECRET_NAME_MAX_LENGTH, SECRET_NAME_PATTERN } from '@ignitify-integrations/runtime';
+import {
+  readSecret,
+  redact,
+  REDACTED,
+  SECRET_NAME_MAX_LENGTH,
+  SECRET_NAME_PATTERN,
+} from '@ignitify-integrations/runtime';
 
 describe('readSecret', () => {
   const ctx = { secrets: { BOT_TOKEN: 't1', EMPTY: '' } };
@@ -33,5 +39,17 @@ describe('SECRET_NAME_PATTERN', () => {
 
   it("is the platform's own rule, character for character", () => {
     expect(SECRET_NAME_PATTERN.source).toBe('^[A-Z][A-Z0-9_]{0,63}$');
+  });
+});
+
+describe('redact', () => {
+  it('removes every copy of every secret', () => {
+    expect(redact('key AKID and SECRET and AKID', ['AKID', 'SECRET'])).toBe(
+      `key ${REDACTED} and ${REDACTED} and ${REDACTED}`,
+    );
+  });
+
+  it('ignores an empty secret', () => {
+    expect(redact('text', [''])).toBe('text');
   });
 });
