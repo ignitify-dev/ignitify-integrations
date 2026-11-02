@@ -17,3 +17,11 @@ coverage/
 /core/NOTICE
 /integrations/*/LICENSE
 /integrations/*/NOTICE
+
+# Local agent files: they name internal paths and people, so they stay out of this public repo.
+.mitra/docs/LICENSE
+.claude/memory/
+.claude/settings.json
+.agents/settings.json
+.agents/skills/scenario-report/
+.claude/skills/scenario-report
