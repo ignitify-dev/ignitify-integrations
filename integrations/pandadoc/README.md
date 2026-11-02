@@ -38,7 +38,7 @@ The secrets come from `ctx.secrets`, and the listed hosts are already allowed.
 
 - **Send a contract from a deal.** Read the deal from [`hubspot`](../hubspot/README.md) or [`salesforce`](../salesforce/README.md), then send the document for signature.
 - **Keep signed copies.** Download the signed PDF and upload it with [`s3-storage`](../s3-storage/README.md).
-- **Receive PandaDoc events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/04-inbound-and-webhooks.md)).
+- **Receive PandaDoc events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide: [Inbound and webhooks](../../docs/guide/inbound-and-webhooks.md).
 
 ## Limits
 

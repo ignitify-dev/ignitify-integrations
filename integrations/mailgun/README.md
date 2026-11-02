@@ -41,7 +41,7 @@ The secrets come from `ctx.secrets`, and the listed hosts are already allowed.
 - **Mail the report when a run ends.** Build the text in `run()` and send it as the last step.
 - **Send a link, not an attachment.** Upload a big file with [`s3-storage`](../s3-storage/README.md) and put the presigned link in the mail.
 - **Mail a list.** Read the recipients from [`google-sheets`](../google-sheets/README.md) or [`airtable`](../airtable/README.md), and send one mail to each. Wait between sends.
-- **Receive Mailgun events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/04-inbound-and-webhooks.md)).
+- **Receive Mailgun events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide: [Inbound and webhooks](../../docs/guide/inbound-and-webhooks.md).
 
 ## Limits
 

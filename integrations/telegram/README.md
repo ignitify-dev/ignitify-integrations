@@ -55,7 +55,7 @@ Any other Telegram library works the same way: the token comes from `ctx.secrets
 - **Send a link to a big result.** A task result is at most 10 KiB. Upload the file with [`s3-storage`](../s3-storage/README.md) and send the link in the message.
 - **Announce a live stream.** With [`stream`](../stream/README.md), get the viewer link with `watchUrl(ctx)` and send it before you call `stream()`.
 - **Two bots in one task.** Declare a second secret name in `task.yaml` (for example `OPS_TELEGRAM_BOT_TOKEN`) and create a second `Api` with it.
-- **Receive messages.** A bot that answers messages needs a webhook. A long-running task with a bidirectional network can receive one on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/04-inbound-and-webhooks.md)).
+- **Receive messages.** A bot that answers messages needs a webhook. A long-running task with a bidirectional network can receive one on its own route today. See the guide: [Inbound and webhooks](../../docs/guide/inbound-and-webhooks.md).
 
 ## Limits
 

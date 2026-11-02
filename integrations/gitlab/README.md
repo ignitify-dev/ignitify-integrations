@@ -41,7 +41,7 @@ The secrets come from `ctx.secrets`, and the listed hosts are already allowed.
 - **Repository report.** Count open pull requests or failed pipelines and post the list to [`slack`](../slack/README.md).
 - **Keep build output.** Upload artefacts with [`s3-storage`](../s3-storage/README.md) and link them in an issue or release.
 - **Track errors.** Open an issue for each new [`sentry`](../sentry/README.md) issue above a threshold.
-- **Receive GitLab events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/04-inbound-and-webhooks.md)).
+- **Receive GitLab events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide: [Inbound and webhooks](../../docs/guide/inbound-and-webhooks.md).
 
 ## Limits
 

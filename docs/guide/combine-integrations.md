@@ -1,4 +1,4 @@
-# 7. Combine integrations
+# Combine integrations
 
 One task can use several integrations. Each `integration:add` adds its settings to the same `task.yaml`: secrets and hosts are joined, and the network type and preset are raised to the larger need. This chapter streams a video live with [`stream`](../../integrations/stream/README.md), then stores the recording with [`s3-storage`](../../integrations/s3-storage/README.md) and returns one link.
 

@@ -51,7 +51,7 @@ The secrets come from `ctx.secrets`, and the listed hosts are already allowed.
 - **Write the post with a model.** Draft the text with [`anthropic`](../anthropic/README.md) or [`openai`](../openai/README.md), then publish it.
 - **Weekly reach report.** Read the numbers and append a row to [`google-sheets`](../google-sheets/README.md).
 - **Publish a chart.** Instagram fetches the image from a public URL: upload it with [`s3-storage`](../s3-storage/README.md) and pass the presigned link.
-- **Receive Instagram events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/04-inbound-and-webhooks.md)).
+- **Receive Instagram events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide: [Inbound and webhooks](../../docs/guide/inbound-and-webhooks.md).
 
 ## Limits
 

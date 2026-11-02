@@ -52,7 +52,7 @@ The secrets come from `ctx.secrets`, and the listed hosts are already allowed.
 - **Order digest.** Count yesterday's orders and post the numbers to [`slack`](../slack/README.md).
 - **Low-stock alert.** Check inventory and send an SMS with [`twilio`](../twilio/README.md) when an item runs low.
 - **Product copy.** Write product descriptions with [`openai`](../openai/README.md) and save them back.
-- **Receive Amazon Selling Partner API events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/04-inbound-and-webhooks.md)).
+- **Receive Amazon Selling Partner API events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide: [Inbound and webhooks](../../docs/guide/inbound-and-webhooks.md).
 
 ## Limits
 

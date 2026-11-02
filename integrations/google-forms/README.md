@@ -42,7 +42,7 @@ The secrets come from `ctx.secrets`, and the listed hosts are already allowed.
 
 - **Responses to a sheet.** Copy new responses to [`google-sheets`](../google-sheets/README.md).
 - **Route responses.** Create a [`hubspot`](../hubspot/README.md) contact or a [`linear`](../linear/README.md) issue for each response.
-- **Receive Google Forms events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/04-inbound-and-webhooks.md)).
+- **Receive Google Forms events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide: [Inbound and webhooks](../../docs/guide/inbound-and-webhooks.md).
 
 ## Limits
 

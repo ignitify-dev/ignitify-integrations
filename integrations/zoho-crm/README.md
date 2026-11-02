@@ -51,7 +51,7 @@ The secrets come from `ctx.secrets`, and the listed hosts are already allowed.
 - **Enrich records.** Read new records, classify them with [`openai`](../openai/README.md) or [`anthropic`](../anthropic/README.md), and write the label back.
 - **Push leads in.** Create a record for each new [`typeform`](../typeform/README.md) response.
 - **Report to the team.** Post a short pipeline summary to [`slack`](../slack/README.md).
-- **Receive Zoho CRM events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/04-inbound-and-webhooks.md)).
+- **Receive Zoho CRM events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide: [Inbound and webhooks](../../docs/guide/inbound-and-webhooks.md).
 
 ## Limits
 

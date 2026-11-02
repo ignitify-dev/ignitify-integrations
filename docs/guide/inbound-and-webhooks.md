@@ -1,4 +1,4 @@
-# 4. Inbound and webhooks
+# Inbound and webhooks
 
 A task can receive HTTPS requests while it runs: webhooks from a vendor, or a small page for people to open. It needs a long run and a bidirectional network. The [`stream`](../../integrations/stream/README.md) integration works this way.
 

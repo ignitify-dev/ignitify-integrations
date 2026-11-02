@@ -38,7 +38,7 @@ The secrets come from `ctx.secrets`; add your host to `execution.network.egress_
 
 - **Access review.** List users and their last sign-in, and write them to [`google-sheets`](../google-sheets/README.md).
 - **Offboarding.** Deactivate a user when [`bamboohr`](../bamboohr/README.md) or [`hibob`](../hibob/README.md) shows that they left.
-- **Receive Okta events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/04-inbound-and-webhooks.md)).
+- **Receive Okta events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide: [Inbound and webhooks](../../docs/guide/inbound-and-webhooks.md).
 
 ## Limits
 

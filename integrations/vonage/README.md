@@ -48,7 +48,7 @@ The secrets come from `ctx.secrets`, and the listed hosts are already allowed.
 - **Wake a person when a run fails.** Send an SMS from the `catch` block of a long task.
 - **Send one message for each row.** Read numbers and texts from [`airtable`](../airtable/README.md) and send them one by one.
 - **Pick the channel.** Post to [`slack`](../slack/README.md) for routine news; send an SMS only for failures.
-- **Receive Vonage events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/04-inbound-and-webhooks.md)).
+- **Receive Vonage events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide: [Inbound and webhooks](../../docs/guide/inbound-and-webhooks.md).
 
 ## Limits
 

@@ -44,7 +44,7 @@ The secrets come from `ctx.secrets`, and the listed hosts are already allowed.
 - **Open an issue when a run fails.** Create it from the `catch` block, with the error text and no secrets.
 - **Daily digest.** List the items due today and post them to [`slack`](../slack/README.md) or [`microsoft-teams`](../microsoft-teams/README.md).
 - **Tasks from a form.** Create one item for each new [`typeform`](../typeform/README.md) response.
-- **Receive Trello events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/04-inbound-and-webhooks.md)).
+- **Receive Trello events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide: [Inbound and webhooks](../../docs/guide/inbound-and-webhooks.md).
 
 ## Limits
 

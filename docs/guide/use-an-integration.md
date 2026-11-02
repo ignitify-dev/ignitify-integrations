@@ -1,4 +1,4 @@
-# 6. Use an integration
+# Use an integration
 
 An integration is an npm package, `@ignitify-integrations/<name>`. It carries an `integration.yaml` that says what your task needs: secrets, hosts, network, system packages and a minimum preset. The CLI reads it and changes `task.yaml` for you. The [index](../../integrations/README.md) lists every integration.
 
