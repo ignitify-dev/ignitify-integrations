@@ -32,7 +32,7 @@ Work through the draft's `TODO.md`:
    - Set the status in the [index](../../../../integrations/README.md) and remove the README's draft line.
    - Delete `TODO.md`, run `npm run check`, and merge.
    - Publish the first version once by hand (`npm publish --provenance=false` in the folder, with 2FA). npm also lists a `0.0.0-stage` version; deprecate it: `npm deprecate "@ignitify-integrations/<name>@0.0.0-stage" "not a release: use 0.1.0 or later"`.
-   - On the package's npm settings page, set trusted publishing: GitHub Actions, `ignitify-dev/ignitify-integrations`, `release.yml`. From then on, only the release workflow publishes it.
+   - On the package's npm settings page, set trusted publishing: GitHub Actions, `ignitify-dev/ignitify-integrations`, `release.yml`, no environment, and tick **Allow `npm publish`**. From then on, only the release workflow publishes it.
 
 ## 4. Known issues of the drafts
 
