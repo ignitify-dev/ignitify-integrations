@@ -1,5 +1,7 @@
 # telegram
 
+> **Status:** draft — not published.
+
 Let a task send Telegram messages: "the report is ready", "the run failed", a link to a result.
 
 This integration is **settings only**. It has no code. It writes the settings your task needs, and you send messages with any Telegram library.

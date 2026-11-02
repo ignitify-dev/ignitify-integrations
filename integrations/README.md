@@ -12,14 +12,14 @@ ignitify integration:add <name> --task <slug>
 
 ## Chat and messaging
 
-| Integration                              | What it does for a task                                          | Status               |
-| :--------------------------------------- | :--------------------------------------------------------------- | :------------------- |
-| [`telegram`](telegram)                   | Send Telegram messages from a task                               | ready, not published |
-| [`slack`](slack)                         | Post messages and files to Slack channels and people             | draft                |
-| [`discord`](discord)                     | Post messages to Discord channels with a bot                     | draft                |
-| [`microsoft-teams`](microsoft-teams)     | Post messages to Microsoft Teams channels                        | draft                |
-| [`google-chat`](google-chat)             | Post messages to a Google Chat space through an incoming webhook | draft                |
-| [`whatsapp-business`](whatsapp-business) | Send WhatsApp messages from a business number (Cloud API)        | draft                |
+| Integration                              | What it does for a task                                          | Status |
+| :--------------------------------------- | :--------------------------------------------------------------- | :----- |
+| [`telegram`](telegram)                   | Send Telegram messages from a task                               | draft  |
+| [`slack`](slack)                         | Post messages and files to Slack channels and people             | draft  |
+| [`discord`](discord)                     | Post messages to Discord channels with a bot                     | draft  |
+| [`microsoft-teams`](microsoft-teams)     | Post messages to Microsoft Teams channels                        | draft  |
+| [`google-chat`](google-chat)             | Post messages to a Google Chat space through an incoming webhook | draft  |
+| [`whatsapp-business`](whatsapp-business) | Send WhatsApp messages from a business number (Cloud API)        | draft  |
 
 ## Email
 

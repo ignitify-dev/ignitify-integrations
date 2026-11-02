@@ -6,6 +6,5 @@
 /tools/                     @ignitify-dev/maintainers
 # Drafts (never published) until each gets its own owner line when it is upgraded.
 /integrations/              @ignitify-dev/maintainers
-/integrations/telegram/     @ignitify-dev/maintainers
 /integrations/s3-storage/   @ignitify-dev/maintainers
 /integrations/stream/       @ignitify-dev/maintainers

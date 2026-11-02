@@ -4,7 +4,6 @@ Open-source building blocks for [ignitify](https://ignitify.dev) tasks. Add a se
 
 ```bash
 ignitify integration:add s3-storage --task report
-ignitify integration:add telegram --task report
 ignitify integration:add stream --task live
 ```
 
@@ -14,11 +13,10 @@ An integration is one npm package, `@ignitify-integrations/<name>`, with an `int
 
 | Integration                             | Has                                           | What the tenant no longer builds                             |
 | :-------------------------------------- | :-------------------------------------------- | :----------------------------------------------------------- |
-| [`telegram`](integrations/telegram)     | settings only                                 | the secret and host setup to send a message                  |
 | [`s3-storage`](integrations/s3-storage) | settings + code                               | upload, presigned link and download; a way past 10 KiB       |
 | [`stream`](integrations/stream)         | settings + code + `system_packages: [ffmpeg]` | the server, player, progress and stop plumbing of a live HLS |
 
-The [index of all integrations](integrations/README.md) lists them by category, with about 100 drafts that are not published yet.
+The [index of all integrations](integrations/README.md) lists them by category, with about 100 drafts (`telegram` among them) that are not published yet.
 
 Every integration has an `integration.yaml` manifest ([format](artifacts/ignitify-integrations/architect/ADR-0002-integration-store-open-work/ADR-0002-integration-store-open-work.md#3-the-manifest-integrationyaml)). Shared code lives in two packages:
 

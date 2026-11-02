@@ -22,15 +22,15 @@ ADR-0001 decided what an integration is, what its manifest holds and the rules `
 | Toolchain and guardrails               | ✅ Built: npm workspaces, `tsc -b`, vitest, ESLint, Prettier, Renovate. ✅ GitHub workflows in `.github/workflows`: `ci` (the same checks as `npm run check`, with ffmpeg and a local S3 server, plus an OSV scan on pull requests), CodeQL, Scorecard. All pass on GitHub                                                                                                                                                                         |
 | `core` and `runtime`                   | ✅ Built: manifest schema and checks, `planAdd`, `planHeadline`, `checkCoverage`; `TaskCtx`, `Result`, `readSecret`. Version 0.1.0 is on npm (published by hand on 2026-11-02, without provenance); publishing needs 2FA, and tokens are disallowed. `core` has a named public API (`core/src/index.ts`); platform facts that run-time code and the schema share are in `runtime/src/platform.ts`                                                  |
 | Repo tools                             | ✅ Built: `check:items` (integrations, the root build list, and the publish rules of `core` and `runtime`), `new-item`, `copy-legal`. `tools` is type-checked, not built: its scripts run from source with `tsx`. `npm run check` passes; the S3 contract test is skipped without a local S3 server                                                                                                                                                |
-| Three integrations                     | ✅ Built: `telegram` (settings only), `s3-storage` (code), `stream` (code + ffmpeg). Version 0.1.0; `s3-storage` and `stream` are on npm (2026-11-02), `telegram` is not                                                                                                                                                                                                                                                                           |
-| Drafts                                 | ✅ 100 settings-only drafts (`"private": true`, never published), listed in the [index](../../../../integrations/README.md). Each upgrade must pass the value test                                                                                                                                                                                                                                                                                 |
+| Three integrations                     | ✅ `s3-storage` (code) and `stream` (code + ffmpeg), 0.1.0 on npm (2026-11-02). `telegram` (settings only) was built too and is now a draft (the owner, 2026-11-02)                                                                                                                                                                                                                                                                                |
+| Drafts                                 | ✅ 101 drafts (`"private": true`, never published): 100 settings-only skeletons and `telegram`, listed in the [index](../../../../integrations/README.md). Upgrades: [ADR-0003](../ADR-0003-draft-upgrades/ADR-0003-draft-upgrades.md)                                                                                                                                                                                                             |
 | Changesets                             | Configured. Internal dependencies use `^` ranges; a dependent is updated only when a dependency leaves its `^` range, for example 0.1.x → 0.2.0 (`updateInternalDependencies: "minor"`). No changeset is pending: a package that is not on npm yet needs none                                                                                                                                                                                      |
 | Decided and done (2026-11-02)          | Q4: GOVERNANCE.md has a "Drafts" section. Q5: replaced by the one-licence decision (§5.5). Q6: `planAdd` marks a secret the task does not declare yet with "(new)"; the READMEs say "You add only the secret values". Q7: the `stream` and `s3-storage` READMEs give the recording pattern that plays (public-read prefix). Q8: `core`'s `hasCode` (an `exports` entry) is the one "has code" rule; `check:items` refuses `src/` without `exports` |
-| Release pipeline                       | ✅ `release.yml` (Changesets, npm trusted publishing, provenance) exists and runs only by hand. ✅ Trusted publishing is set for `runtime`, `core`, `s3-storage` and `stream` (2026-11-02; not proven until the first release run). ⏳ The workflow must not run before `telegram` is on npm (§5.1)                                                                                                                                                |
+| Release pipeline                       | ✅ `release.yml` (Changesets, npm trusted publishing, provenance) exists and runs only by hand. ✅ Trusted publishing is set for `runtime`, `core`, `s3-storage` and `stream` (2026-11-02; not proven until the first release run). ✅ Safe to run: every non-private package is on npm                                                                                                                                                            |
 | CLI `integration:add`, `task:validate` | ⏳ Written in the ignitify CLI, not released. It can now depend on `core` `^0.1.0`                                                                                                                                                                                                                                                                                                                                                                 |
 | Guide                                  | ✅ Chapters 4, 6 and 7 ([docs/guide](../../../../docs/guide/README.md)). ⏳ The other chapters: later                                                                                                                                                                                                                                                                                                                                              |
-| Nightly sandbox job                    | ✅ `nightly.yml` exists and runs by hand. ⏳ Its nightly schedule is off until the `sandbox` environment has its S3 keys; without them it only repeats `ci`                                                                                                                                                                                                                                                                                        |
-| npm org and GitHub repo                | ✅ The npm org `@ignitify-integrations` and the GitHub repo `ignitify-dev/ignitify-integrations` exist. `runtime`, `core`, `s3-storage` and `stream` 0.1.0 are published; `telegram` is not. Each published package also lists a `0.0.0-stage` version that npm made before the first publish; it is deprecated ("not a release")                                                                                                                  |
+| Nightly sandbox job                    | ✅ `nightly.yml` runs the suite by hand. Its schedule stays off: the sandbox keys are rejected (closed, §5.4)                                                                                                                                                                                                                                                                                                                                      |
+| npm org and GitHub repo                | ✅ The npm org `@ignitify-integrations` and the GitHub repo `ignitify-dev/ignitify-integrations` exist. `runtime`, `core`, `s3-storage` and `stream` 0.1.0 are published. Each published package also lists a `0.0.0-stage` version that npm made before the first publish; it is deprecated ("not a release")                                                                                                                                     |
 
 **Verified:** a clean install of `core` from npm in an empty folder runs `parseManifest`, `planAdd` and `planHeadline` (2026-11-02).
 
@@ -146,9 +146,9 @@ Add a changeset for a change to a package that is on npm (`npx changeset`; see t
 ### 5.1 Publishing and trust
 
 - Packages are published only by CI with npm trusted publishing and provenance. No npm token exists.
-- The first version of each package is published once by hand, because npm needs the package before trusted publishing can be set for it. Done for `runtime`, `core`, `s3-storage` and `stream` 0.1.0 (2026-11-02). `telegram` follows.
+- The first version of each package is published once by hand, because npm needs the package before trusted publishing can be set for it. Done for `runtime`, `core`, `s3-storage` and `stream` 0.1.0 (2026-11-02). A draft gets it when it is upgraded (ADR-0003).
 - Trusted publishing is set on each package's npm settings page (GitHub Actions, repo `ignitify-dev/ignitify-integrations`, workflow `release.yml`). Done for `runtime`, `core`, `s3-storage` and `stream` (2026-11-02); each integration gets it after its first version.
-- The release workflow runs only by hand. `changeset publish` publishes every non-private package whose version is not on npm, so the workflow must not run before `telegram` has its first version on npm.
+- The release workflow runs only by hand. `changeset publish` publishes every non-private package whose version is not on npm, Every non-private package is on npm (2026-11-02), so a run publishes only what a changeset bumps.
 - Trust is npm provenance. The tenant's lockfile pins the version.
 
 ### 5.2 Release and deprecation
@@ -172,10 +172,10 @@ Done in the GitHub settings (2026-11-02): the repo is public; a `master` ruleset
 
 The owner is the only maintainer and the security contact: GitHub private vulnerability reporting is on (2026-11-02), as SECURITY.md says.
 
-Later (the owner, 2026-11-02, not now):
+Closed (rejected by the owner, 2026-11-02):
 
-- S3 sandbox keys: when real users depend on `s3-storage`, make a small test bucket, put its endpoint, keys and bucket name in the `sandbox` environment (`S3_SANDBOX_*`), and turn the nightly schedule back on (`nightly.yml`).
-- A second maintainer: add them to the `maintainers` team, update GOVERNANCE.md, and then require one approval on pull requests.
+- S3 sandbox keys and the nightly schedule. For the future: to reopen it, make a small test bucket, put its endpoint, keys and bucket name in the `sandbox` environment (`S3_SANDBOX_*`), and add the schedule back to `nightly.yml`.
+- A second maintainer and required approvals. For the future: add them to the `maintainers` team, update GOVERNANCE.md, then require one approval on pull requests.
 
 ### 5.5 Licence
 
@@ -189,7 +189,7 @@ Chapters 4 (inbound and webhooks), 6 (use an integration) and 7 (combine integra
 
 **Principle: v1 is good enough; each version must earn its place.** v1 is built (ADR-0001 §9).
 
-Draft upgrades are for later (the owner, 2026-11-02): a draft is upgraded only when a user asks for it, one at a time, with the value test and a check against the vendor's docs.
+Draft upgrades: closed here, moved to [ADR-0003](../ADR-0003-draft-upgrades/ADR-0003-draft-upgrades.md) (the owner, 2026-11-02).
 
 | Version                   | The tenant gets                                                                                                | Needs                                   | Not yet                                             |
 | :------------------------ | :------------------------------------------------------------------------------------------------------------- | :-------------------------------------- | :-------------------------------------------------- |
@@ -212,8 +212,4 @@ No open questions (2026-11-02).
 
 ## 7. Known issues
 
-Each fix follows an existing rule; none adds a rule.
-
-| Issue                                                                                                                                 | Fix                           | Basis                                                     |
-| :------------------------------------------------------------------------------------------------------------------------------------ | :---------------------------- | :-------------------------------------------------------- |
-| Draft hosts and secret names are not checked against vendor docs (34 drafts say "Verify host"; one Google key has three secret names) | Check each before its upgrade | The "Hosts" and "Secrets" items of each draft's `TODO.md` |
+None. The draft issue (hosts and secret names not checked against vendor docs) moved to [ADR-0003](../ADR-0003-draft-upgrades/ADR-0003-draft-upgrades.md) (2026-11-02).
