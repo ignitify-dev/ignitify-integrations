@@ -168,12 +168,14 @@ Add a changeset for a change to a package that is on npm (`npx changeset`; see t
 
 Done (2026-11-02): the workflows, CODEOWNERS (each released integration has its own line; drafts share one), and the issue and pull-request templates are in `.github/`.
 
-Not done yet, in the GitHub settings:
+Done in the GitHub settings (2026-11-02): the repo is public; a `master` ruleset requires the checks `check` and `reuse` and blocks force-push and deletion (repo admins may bypass it); the `sandbox` environment exists and only `master` may use it; secret scanning, push protection and Dependabot alerts are on.
+
+Not done yet:
 
 - The `ignitify-dev/maintainers` team, which CODEOWNERS names.
-- Actions may create pull requests (the Changesets "version packages" pull request).
-- The DCO app, and a `master` ruleset that requires the checks `check`, `reuse` and `DCO`.
-- The `sandbox` environment with the S3 sandbox keys, for the nightly job.
+- Actions may create pull requests (the Changesets "version packages" pull request). The organization setting blocks it first.
+- The DCO app; then the ruleset also requires `DCO`.
+- The S3 sandbox keys in the `sandbox` environment, for the nightly job.
 - Two maintainers and a security contact.
 
 ### 5.5 Licence
