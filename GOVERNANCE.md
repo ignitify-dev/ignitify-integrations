@@ -40,7 +40,7 @@ While an integration is 0.x, the same rule applies one level down: a change that
 
 ## Nightly job and deprecation
 
-The nightly job ([nightly.yml](.github/workflows/nightly.yml)) runs the full test suite on `master`. With the `sandbox` environment's keys set, it also runs the `s3-storage` contract test against an S3 sandbox bucket; without them, that test is skipped. Other integrations have no sandbox test yet.
+The nightly job ([nightly.yml](.github/workflows/nightly.yml)) runs the full test suite on `master`, with the `s3-storage` contract test against an S3 sandbox bucket. It finds what breaks with no change in this repo: a vendor API or a tool on the test machine. Its schedule is off until the `sandbox` environment has its keys; until then it runs only by hand. Other integrations have no sandbox test yet.
 
 An integration that is broken for 14 days, or whose vendor API is gone, is marked with `npm deprecate` in all its versions. It stays on npm, so existing lockfiles still work. It is never unpublished.
 

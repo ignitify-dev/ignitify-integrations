@@ -1,10 +1,10 @@
 # Nightly: the full suite on master, plus the contract tests that have a REAL sandbox (today: s3-storage only).
-# Sandbox keys live in the protected "sandbox" environment, reachable only from master on schedule.
+# Sandbox keys live in the protected "sandbox" environment, reachable only from master.
 name: nightly
 
+# The schedule is off until the sandbox keys are set: without them this job only repeats ci.
+# Then add back:  schedule: [{ cron: '17 3 * * *' }]
 on:
-  schedule:
-    - cron: '17 3 * * *'
   workflow_dispatch:
 
 permissions:
