@@ -28,7 +28,7 @@ ADR-0001 decided what an integration is, what its manifest holds and the rules `
 | Decided and done (2026-11-02)          | Q4: GOVERNANCE.md has a "Drafts" section. Q5: replaced by the one-licence decision (§5.5). Q6: `planAdd` marks a secret the task does not declare yet with "(new)"; the READMEs say "You add only the secret values". Q7: the `stream` and `s3-storage` READMEs give the recording pattern that plays (public-read prefix). Q8: `core`'s `hasCode` (an `exports` entry) is the one "has code" rule; `check:items` refuses `src/` without `exports` |
 | Release pipeline                       | ✅ `release.yml` (Changesets, npm trusted publishing, provenance) exists and runs only by hand. ✅ Trusted publishing is set for `runtime`, `core`, `s3-storage` and `stream` (2026-11-02; not proven until the first release run). ⏳ The workflow must not run before `telegram` is on npm (§5.1)                                                                                                                                                |
 | CLI `integration:add`, `task:validate` | ⏳ Written in the ignitify CLI, not released. It can now depend on `core` `^0.1.0`                                                                                                                                                                                                                                                                                                                                                                 |
-| Guide                                  | ⏳ Outline only ([docs/guide](../../../../docs/guide/README.md))                                                                                                                                                                                                                                                                                                                                                                                   |
+| Guide                                  | ✅ Chapters 4, 6 and 7 ([docs/guide](../../../../docs/guide/README.md)). ⏳ The other chapters: later                                                                                                                                                                                                                                                                                                                                              |
 | Nightly sandbox job                    | ✅ `nightly.yml` exists and runs by hand. ⏳ Its nightly schedule is off until the `sandbox` environment has its S3 keys; without them it only repeats `ci`                                                                                                                                                                                                                                                                                        |
 | npm org and GitHub repo                | ✅ The npm org `@ignitify-integrations` and the GitHub repo `ignitify-dev/ignitify-integrations` exist. `runtime`, `core`, `s3-storage` and `stream` 0.1.0 are published; `telegram` is not. Each published package also lists a `0.0.0-stage` version that npm made before the first publish; it is deprecated ("not a release")                                                                                                                  |
 
@@ -170,10 +170,12 @@ Done (2026-11-02): the workflows, CODEOWNERS (each released integration has its 
 
 Done in the GitHub settings (2026-11-02): the repo is public; a `master` ruleset requires the checks `check` and `DCO` (each tied to its app) and blocks force-push and deletion (repo admins may bypass it); the `ignitify-dev/maintainers` team has Maintain access, so CODEOWNERS is valid; the DCO app is installed; Actions may create pull requests (for the Changesets "version packages" pull request); the `sandbox` environment exists and only `master` may use it; secret scanning, push protection and Dependabot alerts are on.
 
-Not done yet:
+The owner is the only maintainer and the security contact: GitHub private vulnerability reporting is on (2026-11-02), as SECURITY.md says.
 
-- The S3 sandbox keys in the `sandbox` environment; then turn the nightly schedule back on (`nightly.yml`).
-- Two maintainers and a security contact.
+Later (the owner, 2026-11-02, not now):
+
+- S3 sandbox keys: when real users depend on `s3-storage`, make a small test bucket, put its endpoint, keys and bucket name in the `sandbox` environment (`S3_SANDBOX_*`), and turn the nightly schedule back on (`nightly.yml`).
+- A second maintainer: add them to the `maintainers` team, update GOVERNANCE.md, and then require one approval on pull requests.
 
 ### 5.5 Licence
 
@@ -181,11 +183,13 @@ Decided and done (the owner, 2026-11-02): every package and file is Apache-2.0, 
 
 ### 5.6 The guide
 
-The guide (`docs/guide/`) has an outline. The chapters are not written.
+Chapters 4 (inbound and webhooks), 6 (use an integration) and 7 (combine integrations) are written (2026-11-02); the integration READMEs link to chapter 4. The other chapters teach the platform itself and are written later, from the CLI's own docs.
 
 ### 5.7 How the store grows
 
 **Principle: v1 is good enough; each version must earn its place.** v1 is built (ADR-0001 §9).
+
+Draft upgrades are for later (the owner, 2026-11-02): a draft is upgraded only when a user asks for it, one at a time, with the value test and a check against the vendor's docs.
 
 | Version                   | The tenant gets                                                                                                | Needs                                   | Not yet                                             |
 | :------------------------ | :------------------------------------------------------------------------------------------------------------- | :-------------------------------------- | :-------------------------------------------------- |

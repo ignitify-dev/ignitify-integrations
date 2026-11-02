@@ -41,7 +41,7 @@ The secrets come from `ctx.secrets`, and the listed hosts are already allowed.
 
 - **Daily agenda.** Read today's events and post them to [`slack`](../slack/README.md).
 - **Book from a task.** Create an event with a [`zoom`](../zoom/README.md) meeting link in it.
-- **Receive Calendly events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/README.md)).
+- **Receive Calendly events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/04-inbound-and-webhooks.md)).
 
 ## Limits
 

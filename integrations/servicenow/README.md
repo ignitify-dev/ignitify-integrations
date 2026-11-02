@@ -46,7 +46,7 @@ The secrets come from `ctx.secrets`; add your host to `execution.network.egress_
 - **Triage tickets.** Read new tickets, label them with [`anthropic`](../anthropic/README.md) or [`openai`](../openai/README.md), and write the label back.
 - **Open a ticket when a run fails.** Create it from the `catch` block, with the error text and no secrets.
 - **Escalate to engineering.** Create a [`jira`](../jira/README.md) or [`linear`](../linear/README.md) issue from a ticket.
-- **Receive ServiceNow events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/README.md)).
+- **Receive ServiceNow events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/04-inbound-and-webhooks.md)).
 
 ## Limits
 

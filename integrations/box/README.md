@@ -52,7 +52,7 @@ The secrets come from `ctx.secrets`, and the listed hosts are already allowed.
 - **Move files.** Download a file here and upload it with [`s3-storage`](../s3-storage/README.md), or the reverse.
 - **Summarise a document.** Read a file, summarise it with [`anthropic`](../anthropic/README.md), and post the summary to [`slack`](../slack/README.md).
 - **Back up a folder.** List it and copy each file to [`s3-storage`](../s3-storage/README.md).
-- **Receive Box events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/README.md)).
+- **Receive Box events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/04-inbound-and-webhooks.md)).
 
 ## Limits
 

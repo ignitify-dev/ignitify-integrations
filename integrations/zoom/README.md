@@ -51,7 +51,7 @@ The secrets come from `ctx.secrets`, and the listed hosts are already allowed.
 
 - **Meetings from a calendar.** Create a meeting and put the link into a [`google-calendar`](../google-calendar/README.md) event.
 - **Share the result.** Post the link to [`slack`](../slack/README.md) when it is ready.
-- **Receive Zoom events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/README.md)).
+- **Receive Zoom events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/04-inbound-and-webhooks.md)).
 
 ## Limits
 

@@ -39,7 +39,7 @@ The secrets come from `ctx.secrets`, and the listed hosts are already allowed.
 - **Daily revenue report.** List yesterday's payments, add them up, and post the total to [`slack`](../slack/README.md).
 - **Book payments.** Create the matching invoice or payment in [`quickbooks`](../quickbooks/README.md) or [`xero`](../xero/README.md).
 - **Mail a receipt.** Send it with [`sendgrid`](../sendgrid/README.md) or [`resend`](../resend/README.md) after a payment succeeds.
-- **Receive Stripe events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/README.md)).
+- **Receive Stripe events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/04-inbound-and-webhooks.md)).
 
 ## Limits
 

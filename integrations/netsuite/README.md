@@ -51,7 +51,7 @@ The secrets come from `ctx.secrets`; add your host to `execution.network.egress_
 
 - **Invoices from payments.** Read paid charges from [`stripe`](../stripe/README.md) and create the invoices here.
 - **Month-end export.** Run a report, upload the CSV with [`s3-storage`](../s3-storage/README.md), and mail the link with [`postmark`](../postmark/README.md).
-- **Receive NetSuite events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/README.md)).
+- **Receive NetSuite events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/04-inbound-and-webhooks.md)).
 
 ## Limits
 

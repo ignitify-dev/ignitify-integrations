@@ -47,7 +47,7 @@ The secrets come from `ctx.secrets`; add your host to `execution.network.egress_
 - **Open an issue when a run fails.** Create it from the `catch` block, with the error text and no secrets.
 - **Daily digest.** List the items due today and post them to [`slack`](../slack/README.md) or [`microsoft-teams`](../microsoft-teams/README.md).
 - **Tasks from a form.** Create one item for each new [`typeform`](../typeform/README.md) response.
-- **Receive Jira events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/README.md)).
+- **Receive Jira events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/04-inbound-and-webhooks.md)).
 
 ## Limits
 

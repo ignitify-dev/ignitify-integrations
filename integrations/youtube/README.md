@@ -43,7 +43,7 @@ The secrets come from `ctx.secrets`, and the listed hosts are already allowed.
 - **Post when content is ready.** Publish a post at the end of the run that made the content.
 - **Write the post with a model.** Draft the text with [`anthropic`](../anthropic/README.md) or [`openai`](../openai/README.md), then publish it.
 - **Weekly reach report.** Read the numbers and append a row to [`google-sheets`](../google-sheets/README.md).
-- **Receive YouTube events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/README.md)).
+- **Receive YouTube events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/04-inbound-and-webhooks.md)).
 
 ## Limits
 

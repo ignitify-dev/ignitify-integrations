@@ -2,7 +2,7 @@
 
 ## Roles
 
-- **Maintainers** merge pull requests, cut releases and decide on new integrations. At least two maintainers exist at all times.
+- **Maintainers** merge pull requests, cut releases and decide on new integrations. There is one maintainer for now; a second one joins when the project has one.
 - **Integration owners** are named per integration folder in [CODEOWNERS](.github/CODEOWNERS). They review changes to their integration and answer its issues.
 
 ## How an integration is accepted

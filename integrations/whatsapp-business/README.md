@@ -41,7 +41,7 @@ The secrets come from `ctx.secrets`, and the listed hosts are already allowed.
 - **Tell people when a long task ends.** Send one message at the end of `run()`, and a second one from a `catch` block when the work fails.
 - **Send a link to a big result.** A task result is at most 10 KiB. Upload the file with [`s3-storage`](../s3-storage/README.md) and send the link.
 - **Post a digest from another service.** Read open issues from [`github`](../github/README.md) or new deals from [`hubspot`](../hubspot/README.md), then post one line for each.
-- **Receive WhatsApp Business events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/README.md)).
+- **Receive WhatsApp Business events.** A long-running task with a bidirectional network can receive webhooks on its own route today. See the guide, chapter 4 ([Inbound and webhooks](../../docs/guide/04-inbound-and-webhooks.md)).
 
 ## Limits
 
