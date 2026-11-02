@@ -1,11 +1,11 @@
 # ADR-0003 — Draft upgrades
 
-> |             |                                                                                                         |
-> | :---------- | :------------------------------------------------------------------------------------------------------ |
-> | **Status**  | Accepted (the owner, 2026-11-02). Moved here from ADR-0002 §5.7 and §7                                  |
-> | **Scope**   | How a draft integration becomes a published one, and the known issues of the drafts                     |
-> | **Related** | [ADR-0002](../ADR-0002-integration-store-open-work/ADR-0002-integration-store-open-work.md) §4 and §5.1 |
-> | **Public**  | This repo is public. Write nothing about the platform's internals here                                  |
+> |             |                                                                                                                                                                                |
+> | :---------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+> | **Status**  | Accepted (the owner, 2026-11-02). Moved here from ADR-0002 §5.7 and §7 (old numbering)                                                                                         |
+> | **Scope**   | How a draft becomes a published integration, the known issues of the drafts, and how the store grows                                                                           |
+> | **Related** | [docs/handbook.md](../../../../docs/handbook.md) §2 and §3; [ADR-0002](../00-Archived/ADR-0002-integration-store-open-work/ADR-0002-integration-store-open-work.md) (archived) |
+> | **Public**  | This repo is public. Write nothing about the platform's internals here                                                                                                         |
 
 ## 1. Context
 
@@ -41,3 +41,14 @@ Work through the draft's `TODO.md`:
 | 34 drafts say "Verify host": their hosts are not checked against vendor docs            | Step 2, at upgrade        |
 | Secret names are not checked against vendor docs; one Google key has three secret names | Step 3, at upgrade        |
 | `telegram`: steps 1–4 are done; only the owner line and the release are left            | Steps 6 and 7, at upgrade |
+
+## 5. How the store grows
+
+**Principle: v1 is good enough; each version must earn its place.** v1 is built ([ADR-0001](../00-Archived/ADR-0001-integration-store/ADR-0001-integration-store.md) §9).
+
+| Version                   | The tenant gets                                                                                                | Needs                                   | Not yet                                             |
+| :------------------------ | :------------------------------------------------------------------------------------------------------------- | :-------------------------------------- | :-------------------------------------------------- |
+| **v2**                    | More integrations on today's platform, each passing the value test; drafts upgraded one by one; the user guide | nothing new                             | anything that needs the two platform features below |
+| **v3**                    | Integrations that start a run from a provider event                                                            | the platform starts a run from an event | state between runs                                  |
+| **v4**                    | Incremental fetch (a cursor between runs)                                                                      | state between runs                      | a connection store                                  |
+| **later, if tenants ask** | Several OAuth accounts as a platform object                                                                    | a platform connection store             | —                                                   |

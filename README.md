@@ -18,7 +18,7 @@ An integration is one npm package, `@ignitify-integrations/<name>`, with an `int
 
 The [index of all integrations](integrations/README.md) lists them by category, with about 100 drafts (`telegram` among them) that are not published yet.
 
-Every integration has an `integration.yaml` manifest ([format](artifacts/ignitify-integrations/architect/ADR-0002-integration-store-open-work/ADR-0002-integration-store-open-work.md#3-the-manifest-integrationyaml)). Shared code lives in two packages:
+Every integration has an `integration.yaml` manifest ([format](docs/handbook.md#1-the-manifest-integrationyaml)). Shared code lives in two packages:
 
 - [`runtime`](runtime) — zero-dependency helpers used at run time inside a task (`TaskCtx`, `Result`, `readSecret`).
 - [`core`](core) — the manifest schema and the pure planning logic the ignitify CLI uses.
@@ -37,7 +37,7 @@ npm run check        # lint, format, typecheck, tests, integration checks
 npm run new-item -- my-service [--code] [--draft]
 ```
 
-Requires Node 22. See [CONTRIBUTING.md](CONTRIBUTING.md) and [writing an integration](artifacts/ignitify-integrations/architect/ADR-0002-integration-store-open-work/ADR-0002-integration-store-open-work.md#4-writing-an-integration).
+Requires Node 22. See [CONTRIBUTING.md](CONTRIBUTING.md) and the [handbook](docs/handbook.md) (write, check and publish an integration).
 
 ## Licence
 

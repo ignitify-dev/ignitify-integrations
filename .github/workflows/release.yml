@@ -5,7 +5,7 @@ name: release
 # Run by hand only (Actions → release → Run workflow). `changeset publish` publishes EVERY non-private
 # package whose version is not on npm yet. Every non-private package is on npm today, so a run publishes
 # only what a changeset bumps. A new package's first version is published by hand (npm trusted
-# publishing needs the package to exist). See ADR-0002 §5.1.
+# publishing needs the package to exist). See docs/handbook.md §3.
 on:
   workflow_dispatch:
 

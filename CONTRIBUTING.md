@@ -2,6 +2,8 @@
 
 Thank you for helping. Read this before you open a pull request.
 
+How to write, check and publish an integration is in the [handbook](docs/handbook.md).
+
 ## Before you start
 
 - **Open an issue first** for a new integration. It is accepted only if it passes the **value test**: _what does a tenant no longer need to build or run?_ "They skip `npm install`" is not enough. See [GOVERNANCE.md](GOVERNANCE.md).
