@@ -1,0 +1,7 @@
+schema_version: 1
+name: mux
+runtimes: [node]
+secrets: [MUX_TOKEN_ID, MUX_TOKEN_SECRET]
+network:
+  type: egress
+  egress_allow: [api.mux.com]

@@ -1,0 +1,15 @@
+# Licence of every file, in one place (REUSE spec 3.3), instead of a header in each file.
+# Check it with `reuse lint`. READMEs and the guide are MIT-0, so a tenant can copy their example code with no notice.
+version = 1
+
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 The ignitify integrations authors"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = ["integrations/*/README.md", "docs/guide/**"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 The ignitify integrations authors"
+SPDX-License-Identifier = "MIT-0"

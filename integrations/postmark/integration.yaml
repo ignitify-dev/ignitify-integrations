@@ -1,0 +1,7 @@
+schema_version: 1
+name: postmark
+runtimes: [node]
+secrets: [POSTMARK_SERVER_TOKEN]
+network:
+  type: egress
+  egress_allow: [api.postmarkapp.com]

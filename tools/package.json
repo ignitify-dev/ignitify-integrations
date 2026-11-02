@@ -1,0 +1,12 @@
+{
+  "name": "@ignitify-integrations/tools",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Repo tools: integration checks, licence check, integration generator",
+  "license": "Apache-2.0",
+  "type": "module",
+  "dependencies": {
+    "@ignitify-integrations/core": "^0.1.0",
+    "@ignitify-integrations/runtime": "^0.1.0"
+  }
+}

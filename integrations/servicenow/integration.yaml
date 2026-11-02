@@ -1,0 +1,8 @@
+schema_version: 1
+name: servicenow
+runtimes: [node]
+secrets: [SERVICENOW_USERNAME, SERVICENOW_PASSWORD]
+network:
+  type: egress
+  # The host varies per tenant, so the plan prints this hint.
+  egress_hint: 'your instance host: <instance>.service-now.com'

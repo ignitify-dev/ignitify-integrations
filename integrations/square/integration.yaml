@@ -1,0 +1,7 @@
+schema_version: 1
+name: square
+runtimes: [node]
+secrets: [SQUARE_ACCESS_TOKEN]
+network:
+  type: egress
+  egress_allow: [connect.squareup.com, connect.squareupsandbox.com]

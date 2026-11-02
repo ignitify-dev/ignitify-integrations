@@ -1,0 +1,9 @@
+schema_version: 1
+name: sentry
+runtimes: [node]
+secrets: [SENTRY_DSN, SENTRY_AUTH_TOKEN]
+network:
+  type: egress
+  egress_allow: [sentry.io, us.sentry.io, de.sentry.io]
+  # The host varies per tenant, so the plan prints this hint.
+  egress_hint: 'the ingest host in your DSN, for example o123.ingest.us.sentry.io (or your self-hosted host)'

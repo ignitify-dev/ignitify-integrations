@@ -1,0 +1,9 @@
+schema_version: 1
+name: posthog
+runtimes: [node]
+secrets: [POSTHOG_PROJECT_API_KEY, POSTHOG_PERSONAL_API_KEY]
+network:
+  type: egress
+  egress_allow: [us.i.posthog.com, eu.i.posthog.com, us.posthog.com, eu.posthog.com]
+  # The host varies per tenant, so the plan prints this hint.
+  egress_hint: 'self-hosted only: the host of your PostHog instance'

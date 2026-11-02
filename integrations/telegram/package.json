@@ -1,0 +1,25 @@
+{
+  "name": "@ignitify-integrations/telegram",
+  "version": "0.1.0",
+  "description": "Settings for sending Telegram messages from an ignitify task: the bot token secret and the Bot API host",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ignitify-dev/ignitify-integrations.git",
+    "directory": "integrations/telegram"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "files": [
+    "integration.yaml",
+    "LICENSE",
+    "NOTICE",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}

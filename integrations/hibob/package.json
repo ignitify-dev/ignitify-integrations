@@ -1,0 +1,17 @@
+{
+  "name": "@ignitify-integrations/hibob",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Draft settings for an ignitify task to read HiBob people data and time off",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "files": [
+    "integration.yaml",
+    "LICENSE",
+    "NOTICE",
+    "README.md"
+  ]
+}

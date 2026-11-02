@@ -1,0 +1,34 @@
+{
+  "name": "@ignitify-integrations/runtime",
+  "version": "0.1.0",
+  "description": "Zero-dependency helpers shared by every ignitify integration at run time: the task ctx type, Result, secret names",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ignitify-dev/ignitify-integrations.git",
+    "directory": "runtime"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "NOTICE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}

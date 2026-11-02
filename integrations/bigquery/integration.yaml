@@ -1,0 +1,7 @@
+schema_version: 1
+name: bigquery
+runtimes: [node]
+secrets: [GCP_SERVICE_ACCOUNT_KEY]
+network:
+  type: egress
+  egress_allow: [oauth2.googleapis.com, bigquery.googleapis.com]

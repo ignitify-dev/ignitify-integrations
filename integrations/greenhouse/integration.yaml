@@ -1,0 +1,7 @@
+schema_version: 1
+name: greenhouse
+runtimes: [node]
+secrets: [GREENHOUSE_API_KEY]
+network:
+  type: egress
+  egress_allow: [harvest.greenhouse.io]

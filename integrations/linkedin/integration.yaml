@@ -1,0 +1,7 @@
+schema_version: 1
+name: linkedin
+runtimes: [node]
+secrets: [LINKEDIN_ACCESS_TOKEN]
+network:
+  type: egress
+  egress_allow: [api.linkedin.com]

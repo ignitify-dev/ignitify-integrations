@@ -1,0 +1,19 @@
+.env
+*.log
+.claude/worktrees/
+.claude/settings.local.json
+
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+.DS_Store
+.vitest/
+
+# Copied from the root at release time (npm run copy-legal); the root copies are the source.
+/runtime/LICENSE
+/runtime/NOTICE
+/core/LICENSE
+/core/NOTICE
+/integrations/*/LICENSE
+/integrations/*/NOTICE

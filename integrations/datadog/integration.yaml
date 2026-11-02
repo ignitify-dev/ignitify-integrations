@@ -1,0 +1,16 @@
+schema_version: 1
+name: datadog
+runtimes: [node]
+secrets: [DATADOG_API_KEY, DATADOG_APP_KEY]
+network:
+  type: egress
+  egress_allow:
+    [
+      api.datadoghq.com,
+      api.us3.datadoghq.com,
+      api.us5.datadoghq.com,
+      api.datadoghq.eu,
+      api.ap1.datadoghq.com,
+      http-intake.logs.datadoghq.com,
+      http-intake.logs.datadoghq.eu,
+    ]

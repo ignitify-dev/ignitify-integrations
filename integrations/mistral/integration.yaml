@@ -1,0 +1,7 @@
+schema_version: 1
+name: mistral
+runtimes: [node]
+secrets: [MISTRAL_API_KEY]
+network:
+  type: egress
+  egress_allow: [api.mistral.ai]

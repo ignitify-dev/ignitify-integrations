@@ -1,0 +1,7 @@
+schema_version: 1
+name: mixpanel
+runtimes: [node]
+secrets: [MIXPANEL_PROJECT_TOKEN, MIXPANEL_SERVICE_ACCOUNT_USERNAME, MIXPANEL_SERVICE_ACCOUNT_SECRET]
+network:
+  type: egress
+  egress_allow: [api.mixpanel.com, api-eu.mixpanel.com, mixpanel.com, eu.mixpanel.com, data.mixpanel.com]

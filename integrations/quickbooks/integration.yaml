@@ -1,0 +1,7 @@
+schema_version: 1
+name: quickbooks
+runtimes: [node]
+secrets: [QUICKBOOKS_CLIENT_ID, QUICKBOOKS_CLIENT_SECRET, QUICKBOOKS_REFRESH_TOKEN]
+network:
+  type: egress
+  egress_allow: [oauth.platform.intuit.com, quickbooks.api.intuit.com, sandbox-quickbooks.api.intuit.com]

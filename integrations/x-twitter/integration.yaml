@@ -1,0 +1,7 @@
+schema_version: 1
+name: x-twitter
+runtimes: [node]
+secrets: [X_API_KEY, X_API_SECRET, X_ACCESS_TOKEN, X_ACCESS_TOKEN_SECRET]
+network:
+  type: egress
+  egress_allow: [api.x.com, api.twitter.com, upload.twitter.com]

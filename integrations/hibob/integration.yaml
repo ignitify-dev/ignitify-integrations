@@ -1,0 +1,7 @@
+schema_version: 1
+name: hibob
+runtimes: [node]
+secrets: [HIBOB_SERVICE_USER_ID, HIBOB_SERVICE_USER_TOKEN]
+network:
+  type: egress
+  egress_allow: [api.hibob.com]

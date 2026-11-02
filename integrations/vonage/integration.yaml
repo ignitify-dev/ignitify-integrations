@@ -1,0 +1,7 @@
+schema_version: 1
+name: vonage
+runtimes: [node]
+secrets: [VONAGE_API_KEY, VONAGE_API_SECRET]
+network:
+  type: egress
+  egress_allow: [rest.nexmo.com, api.nexmo.com]

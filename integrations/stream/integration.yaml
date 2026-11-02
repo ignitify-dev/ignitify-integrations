@@ -1,0 +1,16 @@
+schema_version: 1
+name: stream
+runtimes: [node]
+network:
+  type: bidirectional
+  # Only an https source needs egress; its host varies, so the plan prints this hint.
+  egress_hint: 'the host of an https source (for example raw.githubusercontent.com); none for a local file'
+  inbound_port: 8080 # must equal the `port` option (default 8080)
+  inbound_routes:
+    - prefix: /live/ # must equal the `route` option (default /live/)
+  inbound_max_concurrent: 16 # in-flight requests; an HLS player fetches one segment every 4 s
+execution:
+  duration: long
+  interaction: continuous # ctx.chunk is dropped under boundary-only
+system_packages: [ffmpeg]
+min_preset: std.medium # live x264 runs out of memory on std.micro; the audio profile is not measured

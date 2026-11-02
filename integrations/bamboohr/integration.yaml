@@ -1,0 +1,7 @@
+schema_version: 1
+name: bamboohr
+runtimes: [node]
+secrets: [BAMBOOHR_API_KEY]
+network:
+  type: egress
+  egress_allow: [api.bamboohr.com]

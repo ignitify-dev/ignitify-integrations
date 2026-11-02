@@ -1,0 +1,10 @@
+node_modules/
+dist/
+coverage/
+package-lock.json
+.changeset/*.md
+
+# Agent tooling committed with the repo; not formatted by it.
+.mitra/
+.agents/
+.claude/

@@ -1,0 +1,7 @@
+schema_version: 1
+name: pipedrive
+runtimes: [node]
+secrets: [PIPEDRIVE_API_TOKEN]
+network:
+  type: egress
+  egress_allow: [api.pipedrive.com]

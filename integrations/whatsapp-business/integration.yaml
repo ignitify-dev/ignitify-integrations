@@ -1,0 +1,7 @@
+schema_version: 1
+name: whatsapp-business
+runtimes: [node]
+secrets: [WHATSAPP_ACCESS_TOKEN]
+network:
+  type: egress
+  egress_allow: [graph.facebook.com]

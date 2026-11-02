@@ -1,0 +1,39 @@
+{
+  "name": "@ignitify-integrations/stream",
+  "version": "0.1.0",
+  "description": "Live audio and video streaming (HLS over HTTPS) from an ignitify task, as glue over ffmpeg",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ignitify-dev/ignitify-integrations.git",
+    "directory": "integrations/stream"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "integration.yaml",
+    "LICENSE",
+    "NOTICE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "dependencies": {
+    "@ignitify-integrations/runtime": "^0.1.0",
+    "hls.js": "^1.7.4"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}

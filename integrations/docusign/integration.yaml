@@ -1,0 +1,9 @@
+schema_version: 1
+name: docusign
+runtimes: [node]
+secrets: [DOCUSIGN_INTEGRATION_KEY, DOCUSIGN_USER_ID, DOCUSIGN_PRIVATE_KEY]
+network:
+  type: egress
+  egress_allow: [account.docusign.com, account-d.docusign.com, demo.docusign.net]
+  # The host varies per tenant, so the plan prints this hint.
+  egress_hint: 'your account base URI host from userinfo, for example na3.docusign.net'

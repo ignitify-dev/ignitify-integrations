@@ -1,0 +1,7 @@
+schema_version: 1
+name: replicate
+runtimes: [node]
+secrets: [REPLICATE_API_TOKEN]
+network:
+  type: egress
+  egress_allow: [api.replicate.com, replicate.delivery]

@@ -1,0 +1,7 @@
+schema_version: 1
+name: stripe
+runtimes: [node]
+secrets: [STRIPE_SECRET_KEY]
+network:
+  type: egress
+  egress_allow: [api.stripe.com, files.stripe.com]

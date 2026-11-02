@@ -1,0 +1,8 @@
+schema_version: 1
+name: snowflake
+runtimes: [node]
+secrets: [SNOWFLAKE_TOKEN]
+network:
+  type: egress
+  # The host varies per tenant, so the plan prints this hint.
+  egress_hint: 'your account host: <account>.snowflakecomputing.com'

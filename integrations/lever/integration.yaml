@@ -1,0 +1,7 @@
+schema_version: 1
+name: lever
+runtimes: [node]
+secrets: [LEVER_API_KEY]
+network:
+  type: egress
+  egress_allow: [api.lever.co, api.sandbox.lever.co]

@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Read",
+      "Edit",
+      "Write",
+      "Bash(rtk ls *)",
+      "Bash(rtk read *)",
+      "Bash(rtk git *)",
+      "Bash(rtk find *)",
+      "Bash(mkdir -p reference)",
+      "Bash(mv network-requirements.md network-hardening-design.md network-hardening-technical.md reference/)",
+      "Bash(limactl shell lima-vm -- bash -lc ' *)",
+      "Bash(./.claude/skills/workflow-loader/scripts/load_workflow.sh *)",
+      "Bash(' | head -20 | sed '\\\\''s/^/  /'\\\\'' *)",
+      "Bash(grep -iE 'usage|help|__CMDSUB_OUTPUT__')",
+      "Bash(grep \"\\\\.md$\")",
+      "Bash(tee /tmp/clidocs-live.txt)",
+      "Bash(npx tsc *)",
+      "Bash(grep -nE \"^#{2,3} \" artifacts/ignitify/engineer/2026-07-19-IMPL-PLAN-cli-command-hierarchy.md)",
+      "Bash(cp cli/src/output/index.ts /tmp/idx.bak)",
+      "Bash(sed -i '' \"s/'deploy':           renderDeploy,/'task:deploy':      renderDeploy,/\" cli/src/output/index.ts)",
+      "Bash(perl *)",
+      "Bash(grep '\\\\.md$')"
+    ],
+    "env": {
+      "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "60"
+    }
+  },
+  "enabledPlugins": {
+    "paddle@claude-community": true
+  }
+}

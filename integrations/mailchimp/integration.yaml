@@ -1,0 +1,8 @@
+schema_version: 1
+name: mailchimp
+runtimes: [node]
+secrets: [MAILCHIMP_API_KEY]
+network:
+  type: egress
+  # The host varies per tenant, so the plan prints this hint.
+  egress_hint: 'your data-centre host, the suffix of the API key: <dc>.api.mailchimp.com (for example us21.api.mailchimp.com)'

@@ -1,0 +1,7 @@
+schema_version: 1
+name: resend
+runtimes: [node]
+secrets: [RESEND_API_KEY]
+network:
+  type: egress
+  egress_allow: [api.resend.com]

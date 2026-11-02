@@ -1,0 +1,7 @@
+schema_version: 1
+name: trello
+runtimes: [node]
+secrets: [TRELLO_API_KEY, TRELLO_API_TOKEN]
+network:
+  type: egress
+  egress_allow: [api.trello.com]

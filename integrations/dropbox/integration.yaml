@@ -1,0 +1,7 @@
+schema_version: 1
+name: dropbox
+runtimes: [node]
+secrets: [DROPBOX_APP_KEY, DROPBOX_APP_SECRET, DROPBOX_REFRESH_TOKEN]
+network:
+  type: egress
+  egress_allow: [api.dropboxapi.com, content.dropboxapi.com, api.dropbox.com]

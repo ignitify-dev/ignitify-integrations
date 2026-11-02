@@ -1,0 +1,7 @@
+schema_version: 1
+name: mailgun
+runtimes: [node]
+secrets: [MAILGUN_API_KEY]
+network:
+  type: egress
+  egress_allow: [api.mailgun.net, api.eu.mailgun.net]

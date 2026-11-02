@@ -1,0 +1,17 @@
+{
+  "name": "@ignitify-integrations/workday",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Draft settings for an ignitify task to read Workday workers and organizations through the REST API",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "files": [
+    "integration.yaml",
+    "LICENSE",
+    "NOTICE",
+    "README.md"
+  ]
+}

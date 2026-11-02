@@ -1,0 +1,7 @@
+schema_version: 1
+name: twilio
+runtimes: [node]
+secrets: [TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN]
+network:
+  type: egress
+  egress_allow: [api.twilio.com]

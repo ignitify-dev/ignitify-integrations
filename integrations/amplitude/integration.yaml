@@ -1,0 +1,7 @@
+schema_version: 1
+name: amplitude
+runtimes: [node]
+secrets: [AMPLITUDE_API_KEY, AMPLITUDE_SECRET_KEY]
+network:
+  type: egress
+  egress_allow: [api2.amplitude.com, api.eu.amplitude.com, amplitude.com, analytics.eu.amplitude.com]

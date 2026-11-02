@@ -1,0 +1,7 @@
+schema_version: 1
+name: mapbox
+runtimes: [node]
+secrets: [MAPBOX_ACCESS_TOKEN]
+network:
+  type: egress
+  egress_allow: [api.mapbox.com]

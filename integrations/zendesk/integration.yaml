@@ -1,0 +1,8 @@
+schema_version: 1
+name: zendesk
+runtimes: [node]
+secrets: [ZENDESK_EMAIL, ZENDESK_API_TOKEN]
+network:
+  type: egress
+  # The host varies per tenant, so the plan prints this hint.
+  egress_hint: 'your help-centre host: <subdomain>.zendesk.com'

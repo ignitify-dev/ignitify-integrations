@@ -1,0 +1,7 @@
+schema_version: 1
+name: github
+runtimes: [node]
+secrets: [GITHUB_TOKEN]
+network:
+  type: egress
+  egress_allow: [api.github.com, uploads.github.com]

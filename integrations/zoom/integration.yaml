@@ -1,0 +1,7 @@
+schema_version: 1
+name: zoom
+runtimes: [node]
+secrets: [ZOOM_ACCOUNT_ID, ZOOM_CLIENT_ID, ZOOM_CLIENT_SECRET]
+network:
+  type: egress
+  egress_allow: [zoom.us, api.zoom.us]

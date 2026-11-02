@@ -1,0 +1,7 @@
+schema_version: 1
+name: hugging-face
+runtimes: [node]
+secrets: [HF_TOKEN]
+network:
+  type: egress
+  egress_allow: [router.huggingface.co, huggingface.co]

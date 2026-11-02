@@ -1,0 +1,7 @@
+schema_version: 1
+name: sendgrid
+runtimes: [node]
+secrets: [SENDGRID_API_KEY]
+network:
+  type: egress
+  egress_allow: [api.sendgrid.com, api.eu.sendgrid.com]

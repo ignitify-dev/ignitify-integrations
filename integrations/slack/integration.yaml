@@ -1,0 +1,7 @@
+schema_version: 1
+name: slack
+runtimes: [node]
+secrets: [SLACK_BOT_TOKEN]
+network:
+  type: egress
+  egress_allow: [slack.com, files.slack.com]

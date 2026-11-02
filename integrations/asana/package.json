@@ -1,0 +1,17 @@
+{
+  "name": "@ignitify-integrations/asana",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Draft settings for an ignitify task to create and update Asana tasks and read projects",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "files": [
+    "integration.yaml",
+    "LICENSE",
+    "NOTICE",
+    "README.md"
+  ]
+}

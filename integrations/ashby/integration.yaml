@@ -1,0 +1,7 @@
+schema_version: 1
+name: ashby
+runtimes: [node]
+secrets: [ASHBY_API_KEY]
+network:
+  type: egress
+  egress_allow: [api.ashbyhq.com]

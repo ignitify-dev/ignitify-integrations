@@ -1,0 +1,7 @@
+schema_version: 1
+name: box
+runtimes: [node]
+secrets: [BOX_CLIENT_ID, BOX_CLIENT_SECRET, BOX_ENTERPRISE_ID]
+network:
+  type: egress
+  egress_allow: [api.box.com, upload.box.com]

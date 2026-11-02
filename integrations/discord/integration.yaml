@@ -1,0 +1,7 @@
+schema_version: 1
+name: discord
+runtimes: [node]
+secrets: [DISCORD_BOT_TOKEN]
+network:
+  type: egress
+  egress_allow: [discord.com]

@@ -1,0 +1,7 @@
+schema_version: 1
+name: calendly
+runtimes: [node]
+secrets: [CALENDLY_ACCESS_TOKEN]
+network:
+  type: egress
+  egress_allow: [api.calendly.com]

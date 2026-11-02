@@ -1,0 +1,7 @@
+schema_version: 1
+name: elevenlabs
+runtimes: [node]
+secrets: [ELEVENLABS_API_KEY]
+network:
+  type: egress
+  egress_allow: [api.elevenlabs.io]

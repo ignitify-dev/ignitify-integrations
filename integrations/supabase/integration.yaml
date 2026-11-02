@@ -1,0 +1,8 @@
+schema_version: 1
+name: supabase
+runtimes: [node]
+secrets: [SUPABASE_SECRET_KEY]
+network:
+  type: egress
+  # The host varies per tenant, so the plan prints this hint.
+  egress_hint: 'your project host: <project-ref>.supabase.co'

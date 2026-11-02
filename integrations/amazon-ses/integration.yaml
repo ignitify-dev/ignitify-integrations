@@ -1,0 +1,8 @@
+schema_version: 1
+name: amazon-ses
+runtimes: [node]
+secrets: [SES_ACCESS_KEY_ID, SES_SECRET_ACCESS_KEY]
+network:
+  type: egress
+  # The host varies per tenant, so the plan prints this hint.
+  egress_hint: 'the SES host of your region: email.<region>.amazonaws.com (for example email.eu-west-1.amazonaws.com)'

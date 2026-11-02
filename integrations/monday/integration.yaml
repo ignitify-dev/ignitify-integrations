@@ -1,0 +1,7 @@
+schema_version: 1
+name: monday
+runtimes: [node]
+secrets: [MONDAY_API_TOKEN]
+network:
+  type: egress
+  egress_allow: [api.monday.com]

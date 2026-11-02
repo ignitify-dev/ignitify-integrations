@@ -1,0 +1,7 @@
+schema_version: 1
+name: hubspot
+runtimes: [node]
+secrets: [HUBSPOT_ACCESS_TOKEN]
+network:
+  type: egress
+  egress_allow: [api.hubapi.com]

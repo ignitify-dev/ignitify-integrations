@@ -1,0 +1,7 @@
+schema_version: 1
+name: vercel
+runtimes: [node]
+secrets: [VERCEL_TOKEN]
+network:
+  type: egress
+  egress_allow: [api.vercel.com]

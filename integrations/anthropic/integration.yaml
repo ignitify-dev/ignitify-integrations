@@ -1,0 +1,7 @@
+schema_version: 1
+name: anthropic
+runtimes: [node]
+secrets: [ANTHROPIC_API_KEY]
+network:
+  type: egress
+  egress_allow: [api.anthropic.com]

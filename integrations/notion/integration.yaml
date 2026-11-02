@@ -1,0 +1,7 @@
+schema_version: 1
+name: notion
+runtimes: [node]
+secrets: [NOTION_TOKEN]
+network:
+  type: egress
+  egress_allow: [api.notion.com]

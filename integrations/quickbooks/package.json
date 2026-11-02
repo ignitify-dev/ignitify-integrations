@@ -1,0 +1,17 @@
+{
+  "name": "@ignitify-integrations/quickbooks",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Draft settings for an ignitify task to read and write QuickBooks Online invoices, customers and payments",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "files": [
+    "integration.yaml",
+    "LICENSE",
+    "NOTICE",
+    "README.md"
+  ]
+}

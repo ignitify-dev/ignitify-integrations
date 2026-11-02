@@ -1,0 +1,8 @@
+schema_version: 1
+name: netsuite
+runtimes: [node]
+secrets: [NETSUITE_CONSUMER_KEY, NETSUITE_CONSUMER_SECRET, NETSUITE_TOKEN_ID, NETSUITE_TOKEN_SECRET]
+network:
+  type: egress
+  # The host varies per tenant, so the plan prints this hint.
+  egress_hint: 'your account host: <account-id>.suitetalk.api.netsuite.com'

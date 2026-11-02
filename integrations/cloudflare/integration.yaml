@@ -1,0 +1,7 @@
+schema_version: 1
+name: cloudflare
+runtimes: [node]
+secrets: [CLOUDFLARE_API_TOKEN]
+network:
+  type: egress
+  egress_allow: [api.cloudflare.com]

@@ -1,0 +1,7 @@
+schema_version: 1
+name: google-docs
+runtimes: [node]
+secrets: [GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REFRESH_TOKEN]
+network:
+  type: egress
+  egress_allow: [oauth2.googleapis.com, docs.googleapis.com]

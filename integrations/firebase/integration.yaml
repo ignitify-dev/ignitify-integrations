@@ -1,0 +1,7 @@
+schema_version: 1
+name: firebase
+runtimes: [node]
+secrets: [FIREBASE_SERVICE_ACCOUNT_KEY]
+network:
+  type: egress
+  egress_allow: [oauth2.googleapis.com, accounts.google.com, firestore.googleapis.com, fcm.googleapis.com]

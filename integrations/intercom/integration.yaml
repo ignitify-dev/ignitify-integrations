@@ -1,0 +1,7 @@
+schema_version: 1
+name: intercom
+runtimes: [node]
+secrets: [INTERCOM_ACCESS_TOKEN]
+network:
+  type: egress
+  egress_allow: [api.intercom.io, api.eu.intercom.io, api.au.intercom.io]

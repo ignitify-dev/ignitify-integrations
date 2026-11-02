@@ -1,0 +1,7 @@
+schema_version: 1
+name: meta-ads
+runtimes: [node]
+secrets: [META_ACCESS_TOKEN]
+network:
+  type: egress
+  egress_allow: [graph.facebook.com]

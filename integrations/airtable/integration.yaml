@@ -1,0 +1,7 @@
+schema_version: 1
+name: airtable
+runtimes: [node]
+secrets: [AIRTABLE_TOKEN]
+network:
+  type: egress
+  egress_allow: [api.airtable.com]

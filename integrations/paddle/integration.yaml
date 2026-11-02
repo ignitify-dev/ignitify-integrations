@@ -1,0 +1,7 @@
+schema_version: 1
+name: paddle
+runtimes: [node]
+secrets: [PADDLE_API_KEY]
+network:
+  type: egress
+  egress_allow: [api.paddle.com, sandbox-api.paddle.com]

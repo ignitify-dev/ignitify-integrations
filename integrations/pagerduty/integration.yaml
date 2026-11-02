@@ -1,0 +1,7 @@
+schema_version: 1
+name: pagerduty
+runtimes: [node]
+secrets: [PAGERDUTY_ROUTING_KEY, PAGERDUTY_API_TOKEN]
+network:
+  type: egress
+  egress_allow: [events.pagerduty.com, api.pagerduty.com, events.eu.pagerduty.com, api.eu.pagerduty.com]

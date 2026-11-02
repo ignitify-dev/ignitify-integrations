@@ -1,0 +1,7 @@
+schema_version: 1
+name: xero
+runtimes: [node]
+secrets: [XERO_CLIENT_ID, XERO_CLIENT_SECRET]
+network:
+  type: egress
+  egress_allow: [identity.xero.com, api.xero.com]

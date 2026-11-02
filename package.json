@@ -1,0 +1,48 @@
+{
+  "name": "ignitify-integrations",
+  "private": true,
+  "type": "module",
+  "description": "Open-source integrations store for ignitify tasks: one npm package per integration",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ignitify-dev/ignitify-integrations.git"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "workspaces": [
+    "runtime",
+    "core",
+    "tools",
+    "integrations/*"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "typecheck": "tsc -b && tsc -p tsconfig.test.json",
+    "test": "vitest run",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check:items": "tsc -b && tsx tools/src/bin/check-items.ts",
+    "check:licences": "tsc -b && tsx tools/src/bin/check-licences.ts",
+    "new-item": "tsc -b && tsx tools/src/bin/new-item.ts",
+    "version": "changeset version && npm install --package-lock-only --ignore-scripts",
+    "release": "npm run build && npm run copy-legal && changeset publish",
+    "check": "npm run lint && npm run format:check && npm run typecheck && npm test && npm run check:items && npm run check:licences",
+    "copy-legal": "tsc -b && tsx tools/src/bin/copy-legal.ts"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.0",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^22.20.0",
+    "eslint": "^10.8.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.8.0",
+    "prettier": "^3.9.6",
+    "tsx": "^4.22.4",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.65.0",
+    "vitest": "^5.0.5"
+  }
+}

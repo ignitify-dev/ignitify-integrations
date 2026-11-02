@@ -1,0 +1,7 @@
+schema_version: 1
+name: klaviyo
+runtimes: [node]
+secrets: [KLAVIYO_PRIVATE_API_KEY]
+network:
+  type: egress
+  egress_allow: [a.klaviyo.com]

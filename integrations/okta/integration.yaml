@@ -1,0 +1,8 @@
+schema_version: 1
+name: okta
+runtimes: [node]
+secrets: [OKTA_API_TOKEN]
+network:
+  type: egress
+  # The host varies per tenant, so the plan prints this hint.
+  egress_hint: 'your Okta org host: <org>.okta.com (or your custom domain)'

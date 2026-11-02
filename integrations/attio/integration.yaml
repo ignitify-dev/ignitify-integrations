@@ -1,0 +1,7 @@
+schema_version: 1
+name: attio
+runtimes: [node]
+secrets: [ATTIO_API_KEY]
+network:
+  type: egress
+  egress_allow: [api.attio.com]

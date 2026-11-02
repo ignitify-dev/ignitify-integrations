@@ -1,0 +1,17 @@
+{
+  "name": "@ignitify-integrations/replicate",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Draft settings for an ignitify task to run open-source models on Replicate (images, audio, text)",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "files": [
+    "integration.yaml",
+    "LICENSE",
+    "NOTICE",
+    "README.md"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "@ignitify-integrations/openai",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Draft settings for an ignitify task to call OpenAI models for text, structured output, images and audio",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "files": [
+    "integration.yaml",
+    "LICENSE",
+    "NOTICE",
+    "README.md"
+  ]
+}

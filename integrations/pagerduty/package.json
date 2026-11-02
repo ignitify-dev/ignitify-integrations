@@ -1,0 +1,17 @@
+{
+  "name": "@ignitify-integrations/pagerduty",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Draft settings for an ignitify task to trigger and resolve PagerDuty incidents",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "files": [
+    "integration.yaml",
+    "LICENSE",
+    "NOTICE",
+    "README.md"
+  ]
+}

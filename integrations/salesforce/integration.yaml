@@ -1,0 +1,9 @@
+schema_version: 1
+name: salesforce
+runtimes: [node]
+secrets: [SALESFORCE_CLIENT_ID, SALESFORCE_CLIENT_SECRET, SALESFORCE_REFRESH_TOKEN]
+network:
+  type: egress
+  egress_allow: [login.salesforce.com, test.salesforce.com]
+  # The host varies per tenant, so the plan prints this hint.
+  egress_hint: 'your org host, from instance_url: <my-domain>.my.salesforce.com'

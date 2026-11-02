@@ -1,0 +1,8 @@
+schema_version: 1
+name: workday
+runtimes: [node]
+secrets: [WORKDAY_CLIENT_ID, WORKDAY_CLIENT_SECRET, WORKDAY_REFRESH_TOKEN]
+network:
+  type: egress
+  # The host varies per tenant, so the plan prints this hint.
+  egress_hint: 'your tenant REST host, for example wd2-impl-services1.workday.com'

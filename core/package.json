@@ -1,0 +1,39 @@
+{
+  "name": "@ignitify-integrations/core",
+  "version": "0.1.0",
+  "description": "Manifest schema, validation and the pure planning logic the ignitify CLI uses to add integrations to a task",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ignitify-dev/ignitify-integrations.git",
+    "directory": "core"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "NOTICE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "dependencies": {
+    "@ignitify-integrations/runtime": "^0.1.0",
+    "ajv": "^8.20.0",
+    "yaml": "^2.9.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}

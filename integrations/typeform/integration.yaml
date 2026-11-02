@@ -1,0 +1,7 @@
+schema_version: 1
+name: typeform
+runtimes: [node]
+secrets: [TYPEFORM_TOKEN]
+network:
+  type: egress
+  egress_allow: [api.typeform.com, api.eu.typeform.com]

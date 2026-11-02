@@ -1,0 +1,7 @@
+schema_version: 1
+name: instagram
+runtimes: [node]
+secrets: [INSTAGRAM_ACCESS_TOKEN]
+network:
+  type: egress
+  egress_allow: [graph.instagram.com, graph.facebook.com]

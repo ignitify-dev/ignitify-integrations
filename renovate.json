@@ -1,0 +1,21 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", "helpers:pinGitHubActionDigests", ":semanticCommits"],
+  "minimumReleaseAge": "3 days",
+  "lockFileMaintenance": { "enabled": true, "schedule": ["before 6am on monday"] },
+  "packageRules": [
+    { "groupName": "aws-sdk", "matchPackageNames": ["@aws-sdk/**"] },
+    {
+      "groupName": "lint and format",
+      "matchPackageNames": [
+        "eslint",
+        "@eslint/**",
+        "typescript-eslint",
+        "prettier",
+        "eslint-config-prettier",
+        "globals"
+      ]
+    },
+    { "groupName": "github actions", "matchManagers": ["github-actions"] }
+  ]
+}

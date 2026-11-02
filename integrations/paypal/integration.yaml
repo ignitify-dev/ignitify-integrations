@@ -1,0 +1,7 @@
+schema_version: 1
+name: paypal
+runtimes: [node]
+secrets: [PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET]
+network:
+  type: egress
+  egress_allow: [api-m.paypal.com, api-m.sandbox.paypal.com]

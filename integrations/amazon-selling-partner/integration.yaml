@@ -1,0 +1,8 @@
+schema_version: 1
+name: amazon-selling-partner
+runtimes: [node]
+secrets: [SP_API_CLIENT_ID, SP_API_CLIENT_SECRET, SP_API_REFRESH_TOKEN]
+network:
+  type: egress
+  egress_allow:
+    [api.amazon.com, sellingpartnerapi-na.amazon.com, sellingpartnerapi-eu.amazon.com, sellingpartnerapi-fe.amazon.com]

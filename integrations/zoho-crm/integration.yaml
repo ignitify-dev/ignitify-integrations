@@ -1,0 +1,9 @@
+schema_version: 1
+name: zoho-crm
+runtimes: [node]
+secrets: [ZOHO_CLIENT_ID, ZOHO_CLIENT_SECRET, ZOHO_REFRESH_TOKEN]
+network:
+  type: egress
+  egress_allow: [accounts.zoho.com, www.zohoapis.com]
+  # The host varies per tenant, so the plan prints this hint.
+  egress_hint: 'outside the US data centre, your hosts instead: for example accounts.zoho.eu and www.zohoapis.eu'

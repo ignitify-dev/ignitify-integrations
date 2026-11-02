@@ -1,0 +1,7 @@
+schema_version: 1
+name: telegram
+runtimes: [node]
+secrets: [TELEGRAM_BOT_TOKEN]
+network:
+  type: egress
+  egress_allow: [api.telegram.org]

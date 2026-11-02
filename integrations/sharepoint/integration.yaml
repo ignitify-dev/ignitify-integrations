@@ -1,0 +1,7 @@
+schema_version: 1
+name: sharepoint
+runtimes: [node]
+secrets: [MICROSOFT_TENANT_ID, MICROSOFT_CLIENT_ID, MICROSOFT_CLIENT_SECRET]
+network:
+  type: egress
+  egress_allow: [login.microsoftonline.com, graph.microsoft.com]
