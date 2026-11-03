@@ -4,6 +4,7 @@
     { "path": "runtime" },
     { "path": "core" },
     { "path": "integrations/s3-storage" },
-    { "path": "integrations/stream" }
+    { "path": "integrations/stream" },
+    { "path": "integrations/telegram" }
   ]
 }

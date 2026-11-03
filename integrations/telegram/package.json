@@ -2,7 +2,7 @@
   "name": "@ignitify-integrations/telegram",
   "version": "0.0.0",
   "private": true,
-  "description": "Settings for sending Telegram messages from an ignitify task: the bot token secret and the Bot API host",
+  "description": "Run a Telegram bot from an ignitify task: token-safe Bot API calls, 429 waits, long text, files and polling",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -13,10 +13,24 @@
   "engines": {
     "node": ">=22"
   },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "files": [
+    "dist",
     "integration.yaml",
     "LICENSE",
     "NOTICE",
     "README.md"
-  ]
+  ],
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "dependencies": {
+    "@grammyjs/types": "^5.0.0",
+    "@ignitify-integrations/runtime": "^0.1.2"
+  }
 }

@@ -6,7 +6,7 @@ This integration is a **draft**: it is in the repo but never published, and `che
 - [x] **Hosts.** `api.telegram.org`, for the Bot API and the file links.
 - [x] **Secrets.** `TELEGRAM_BOT_TOKEN`.
 - [x] **Bot API facts.** Checked; see the plan, §9.
-- [ ] **Code and tests.** PR 2 (core) and PR 3 (polling), with unit and fake-server tests.
-- [ ] **README.** Rewritten for code, then the `Use it` example run in a real task (the live test, PR 3).
+- [ ] **Code and tests.** PR 2 (core: `call`, `sendText`, files, escapes) is done, with unit and fake-server tests. PR 3 adds polling.
+- [ ] **README.** Rewritten for code, then the `Use it` example run in a real task (the live test, PR 3). The live test also checks the test-environment paths (`/bot<token>/test/…` and `/file/bot<token>/test/…`), and `sendVideo` with a `thumbnail` from disk. The README says that a cancel during a call returns `kind: 'aborted'`, so the task returns from `run`.
 - [ ] **Owner.** `/integrations/telegram/` in `.github/CODEOWNERS`.
 - [ ] **Release.** Remove `"private": true`, add `publishConfig` and the `repository` field, set `version` to `0.1.0`, publish it once by hand, deprecate npm's `0.0.0-stage`, set trusted publishing with **Allow `npm publish`**, and delete this file.
