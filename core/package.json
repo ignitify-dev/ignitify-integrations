@@ -1,6 +1,6 @@
 {
   "name": "@ignitify-integrations/core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Manifest schema, validation and the pure planning logic the ignitify CLI uses to add integrations to a task",
   "license": "Apache-2.0",
   "repository": {

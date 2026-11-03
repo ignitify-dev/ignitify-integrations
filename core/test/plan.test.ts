@@ -156,6 +156,23 @@ describe('planAdd', () => {
   });
 });
 
+describe('exact-path inbound routes ({ path })', () => {
+  it('planAdd keeps a path route and adds the prefix route next to it', () => {
+    const config: TaskConfig = { execution: { network: { inbound_routes: [{ path: '/health' }] } } };
+    expect(value(planAdd(config, STREAM)).config.execution?.network?.inbound_routes).toEqual([
+      { path: '/health' },
+      { prefix: '/live/' },
+    ]);
+  });
+
+  it('a path route never covers a prefix route', () => {
+    const config: TaskConfig = { execution: { network: { inbound_routes: [{ path: '/live/' }] } } };
+    expect(checkCoverage(config, [STREAM])).toContain(
+      '@ignitify-integrations/stream: route /live/ is missing from execution.network.inbound_routes',
+    );
+  });
+});
+
 describe('you add: secret lines', () => {
   it('marks only the secrets the task does not declare yet', () => {
     const s3 = unwrap(planAdd({ secrets: ['S3_ACCESS_KEY_ID'] }, S3));

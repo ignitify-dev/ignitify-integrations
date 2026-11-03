@@ -1,5 +1,11 @@
 # @ignitify-integrations/core
 
+## 0.1.2
+
+### Patch Changes
+
+- Task configs may hold the platform's exact-path inbound routes ({ path }) next to prefix routes. A path route is kept as it is and never covers a prefix route. Manifests are unchanged.
+
 ## 0.1.1
 
 ### Patch Changes

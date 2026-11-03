@@ -14,6 +14,7 @@ import type {
   PlanOutcome,
   Preset,
   TaskConfig,
+  TaskInboundRoute,
   TaskNetwork,
 } from './types.js';
 import { maxOf, optional, packageName, rank, union } from './utils.js';
@@ -71,9 +72,12 @@ const pick = <T extends string | number>(
   return { value: current, conflict: PLAN_MESSAGES.conflict(field, current, wanted, label) };
 };
 
-const unionRoutes = (current: readonly InboundRoute[], wanted: readonly InboundRoute[]): InboundRoute[] => [
+/** The prefix of a route; an exact-path route has none, so it never covers a prefix route. */
+const prefixOf = (route: TaskInboundRoute): string | undefined => ('prefix' in route ? route.prefix : undefined);
+
+const unionRoutes = (current: readonly TaskInboundRoute[], wanted: readonly InboundRoute[]): TaskInboundRoute[] => [
   ...current,
-  ...wanted.filter((route) => !current.some((have) => have.prefix === route.prefix)),
+  ...wanted.filter((route) => !current.some((have) => prefixOf(have) === route.prefix)),
 ];
 
 const egressFor = (current: TaskNetwork | undefined, needs: Needs, notes: string[]): readonly string[] | undefined => {
@@ -212,7 +216,7 @@ const coverageIssues = (config: TaskConfig, label: string, needs: Needs): string
         : [COVERAGE_MESSAGES.fieldMismatch(label, `execution.network.${field}`, network?.[field], need)];
     }),
     ...needs.inboundRoutes
-      .filter((route) => !routes.some((present) => present.prefix === route.prefix))
+      .filter((route) => !routes.some((present) => prefixOf(present) === route.prefix))
       .map((route) => COVERAGE_MESSAGES.routeMissing(label, route.prefix)),
     ...needs.systemPackages
       .filter((name) => !packages.includes(name))

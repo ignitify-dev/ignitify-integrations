@@ -16,6 +16,9 @@ export interface InboundRoute {
   readonly prefix: string;
 }
 
+/** A task's inbound route: a prefix (as in a manifest) or the platform's exact path. */
+export type TaskInboundRoute = InboundRoute | { readonly path: string };
+
 export interface NetworkSpec {
   readonly type: NetworkType;
   /** A FIXED host list, written into task.yaml as is. */
@@ -52,7 +55,7 @@ export interface TaskNetwork {
   readonly type?: NetworkType;
   readonly egress_allow?: readonly string[];
   readonly inbound_port?: number;
-  readonly inbound_routes?: readonly InboundRoute[];
+  readonly inbound_routes?: readonly TaskInboundRoute[];
   readonly inbound_max_concurrent?: number;
   readonly [key: string]: unknown;
 }
