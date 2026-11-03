@@ -25,3 +25,6 @@ coverage/
 .agents/settings.json
 .agents/skills/scenario-report/
 .claude/skills/scenario-report
+
+# Made from the installed hls.js at every build (integrations/stream/scripts/embed-player-script.mjs).
+*.generated.ts

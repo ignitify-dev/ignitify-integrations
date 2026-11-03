@@ -18,23 +18,26 @@
     "integrations/*"
   ],
   "scripts": {
-    "build": "tsc -b",
-    "typecheck": "tsc -b && tsc -p tsconfig.test.json",
+    "embed": "node integrations/stream/scripts/embed-player-script.mjs",
+    "build": "npm run embed && tsc -b",
+    "typecheck": "npm run build && tsc -p tsconfig.test.json",
+    "pretest": "npm run embed",
     "test": "vitest run",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "check:items": "tsc -b && tsx tools/src/bin/check-items.ts",
-    "new-item": "tsc -b && tsx tools/src/bin/new-item.ts",
+    "check:items": "npm run build && tsx tools/src/bin/check-items.ts",
+    "new-item": "npm run build && tsx tools/src/bin/new-item.ts",
     "version": "changeset version && npm install --package-lock-only --ignore-scripts",
     "release": "npm run build && npm run copy-legal && changeset publish",
     "check": "npm run lint && npm run format:check && npm run typecheck && npm test && npm run check:items",
-    "copy-legal": "tsc -b && tsx tools/src/bin/copy-legal.ts"
+    "copy-legal": "npm run build && tsx tools/src/bin/copy-legal.ts"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.0",
     "@eslint/js": "^10.0.1",
     "@types/node": "^22.20.0",
+    "esbuild": "^0.28.2",
     "eslint": "^10.8.0",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^17.8.0",

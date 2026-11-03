@@ -55,6 +55,12 @@ The result is `{ success: true, stage: 'streamed', cancelled, watch, streamed_s,
 - **One stream per task, for a small audience.** Many viewers need a CDN or a media server.
 - The memory need of the `audio` profile is not measured; the minimum preset stays `std.medium`.
 
+## On the VM
+
+- **Call `stream()` early.** A bidirectional run must call `ctx.ready()` within 30 s (`ingress.ready_timeout_ms`). `stream()` calls it as soon as its server listens, before ffmpeg starts, so do slow work (a download, a lookup) after it or in `startDelaySec`, not before.
+- **Write under `$HOME`.** The VM has no writable `/tmp`; `HOME` is the scratch disk (`/mnt/scratch`). The stream files go to `$HOME/hls`.
+- **Bundled tasks work.** The platform bundles a task into one file and ships no `node_modules` for pure-JS packages, so hls.js is embedded in this package at build time; nothing is read from `node_modules` at run time.
+
 ## Licence of ffmpeg
 
-FFmpeg is LGPL-2.1-or-later; builds with libx264 (as distribution builds are) are GPL. This package runs the OS package unmodified as a separate process and links none of it. hls.js (Apache-2.0) is an npm dependency, served from `node_modules`.
+FFmpeg is LGPL-2.1-or-later; builds with libx264 (as distribution builds are) are GPL. This package runs the OS package unmodified as a separate process and links none of it. hls.js (Apache-2.0) is embedded in the published package at build time and served by the task; see NOTICE.

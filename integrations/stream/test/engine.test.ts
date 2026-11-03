@@ -10,7 +10,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import type { TaskCtx } from '@ignitify-integrations/runtime';
 import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
-import { HLS_JS_DIST, HLS_SUBDIR, METRIC_STREAMED_SECONDS, PLAYLIST_FILE, STATUS } from '../src/constants.js';
+import { HLS_SUBDIR, METRIC_STREAMED_SECONDS, PLAYLIST_FILE, STATUS } from '../src/constants.js';
 import { stream } from '../src/index.js';
 
 const HAS_FFMPEG = spawnSync('ffmpeg', ['-version']).status === 0;
@@ -143,7 +143,8 @@ describe.skipIf(!HAS_FFMPEG)('stream with the real ffmpeg (skipped when ffmpeg i
     expect(await page.text()).toContain('/live/hls.min.js');
     expect(script.status).toBe(200);
     expect(script.headers.get('content-type')).toMatch(/javascript/);
-    const dist = createRequire(import.meta.url).resolve(HLS_JS_DIST);
+    // The embedded copy is the installed hls.js, byte for byte.
+    const dist = createRequire(import.meta.url).resolve('hls.js/dist/hls.min.js');
     expect((await script.arrayBuffer()).byteLength).toBe((await stat(dist)).size);
 
     const { playlist, text, segment } = await replay!;
