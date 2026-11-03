@@ -4,13 +4,11 @@
 import { spawn } from 'node:child_process';
 import { mkdir, readFile, rm } from 'node:fs/promises';
 import { createServer, type IncomingMessage, type Server, type ServerResponse } from 'node:http';
-import { createRequire } from 'node:module';
 import { join } from 'node:path';
 import { setTimeout as sleep } from 'node:timers/promises';
 import { unwrap, type TaskCtx } from '@ignitify-integrations/runtime';
 import {
   FFMPEG_BIN,
-  HLS_JS_DIST,
   HLS_SUBDIR,
   HTML_TYPE,
   MESSAGES,
@@ -25,6 +23,7 @@ import {
   STDERR_TAIL_CHARS,
 } from './constants.js';
 import { ffmpegArgs, type StreamPaths } from './ffmpeg-args.js';
+import { PLAYER_SCRIPT } from './player-script.generated.js';
 import { parseOptions, type StreamConfig, type StreamOptions } from './options.js';
 import { PROGRESS_START, parseProgress, roundTime, shouldEmit, type ProgressReport } from './progress.js';
 import { playerPage, resolveRoute, viewerUrl } from './routes.js';
@@ -73,8 +72,9 @@ const hlsPaths = (): StreamPaths => {
   return { hlsDir, playlist: join(hlsDir, PLAYLIST_FILE) };
 };
 
-// Resolved at run time from the installed package: never a CDN, never a copy in this repo.
-const loadPlayerScript = (): Promise<Buffer> => readFile(createRequire(import.meta.url).resolve(HLS_JS_DIST));
+// Embedded at build time from the installed hls.js (scripts/embed-player-script.mjs), so it travels
+// inside a bundled task: the VM has no node_modules for pure-JS packages. Never a CDN.
+const playerScript = Buffer.from(PLAYER_SCRIPT);
 
 const handler =
   (route: string, player: string, script: Buffer, hlsDir: string) =>
@@ -175,12 +175,11 @@ export async function stream(ctx: TaskCtx, options: StreamOptions): Promise<Stre
   const stop = options.signal === undefined ? processStop() : { signal: options.signal, release: () => undefined };
   const { signal } = stop;
   const paths = hlsPaths();
-  const script = await loadPlayerScript();
 
   await rm(paths.hlsDir, { recursive: true, force: true });
   await mkdir(paths.hlsDir, { recursive: true });
 
-  const server = createServer(handler(config.route, playerPage(config.route), script, paths.hlsDir));
+  const server = createServer(handler(config.route, playerPage(config.route), playerScript, paths.hlsDir));
   try {
     await listen(server, config.port);
     ctx.ready();

@@ -26,14 +26,16 @@
     "README.md"
   ],
   "scripts": {
-    "build": "tsc -b"
+    "build": "node scripts/embed-player-script.mjs && tsc -b"
   },
   "dependencies": {
-    "@ignitify-integrations/runtime": "^0.1.0",
-    "hls.js": "^1.7.4"
+    "@ignitify-integrations/runtime": "^0.1.0"
   },
   "publishConfig": {
     "access": "public",
     "provenance": true
+  },
+  "devDependencies": {
+    "hls.js": "^1.7.4"
   }
 }

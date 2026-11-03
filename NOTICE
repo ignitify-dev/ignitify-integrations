@@ -3,7 +3,8 @@ Copyright 2026 The ignitify integrations authors
 
 This product includes software developed by the ignitify integrations authors.
 
-integrations/stream serves hls.js (https://github.com/video-dev/hls.js), Apache-2.0, from its npm package at run time.
+integrations/stream includes hls.js (https://github.com/video-dev/hls.js), Copyright (c) 2017 Dailymotion, Apache-2.0:
+its dist/hls.min.js is embedded in the published package at build time and served to viewers.
 integrations/stream drives ffmpeg (https://ffmpeg.org) as a separate process. ffmpeg is not distributed by this project;
 it is installed in the task image as a system package and keeps its own licence (LGPL-2.1-or-later, or GPL when
 built with GPL components).

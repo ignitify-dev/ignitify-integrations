@@ -27,9 +27,8 @@ export const SCRATCH_HOME_FALLBACK = '/mnt/scratch';
 export const HLS_SUBDIR = 'hls';
 export const PLAYLIST_FILE = 'index.m3u8';
 
-/** hls.js is served from the installed package, so a viewer's browser needs no third-party CDN. */
+/** hls.js is embedded in the package and served by the task, so a viewer's browser needs no third-party CDN. */
 export const PLAYER_SCRIPT_FILE = 'hls.min.js';
-export const HLS_JS_DIST = 'hls.js/dist/hls.min.js';
 
 /** ffmpeg writes MPEG-TS segments for both profiles (an audio-only HLS output is `.ts` too). */
 export const MEDIA_TYPES: Readonly<Record<string, string>> = {
