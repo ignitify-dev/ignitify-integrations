@@ -9,7 +9,13 @@ import {
   repositoryField,
   type RawItem,
 } from '../src/check-item.js';
-import { DRAFT_FILE, PUBLISHED_FILES, README_SECTIONS, SHARED_PUBLISHED_FILES } from '../src/constants.js';
+import {
+  DRAFT_FILE,
+  INBOUND_MAX_CONCURRENT_MAX,
+  PUBLISHED_FILES,
+  README_SECTIONS,
+  SHARED_PUBLISHED_FILES,
+} from '../src/constants.js';
 
 const readme = (name: string): string =>
   [`# ${name}`, '', 'One line.', ...README_SECTIONS.flatMap((s) => ['', s, '', 'text'])].join('\n');
@@ -121,6 +127,15 @@ describe('checkItem', () => {
     expect(
       checkItem(item(PACKAGE, { name: 'core', dir: 'integrations/core', manifestText: MANIFEST('core') })),
     ).toContain('integrations/core: "core" is the name of a shared package');
+  });
+
+  it('refuses an inbound_max_concurrent above the lowest plan limit; at or below it, or absent, passes', () => {
+    const withMax = (n: number): string =>
+      `${MANIFEST('s3-storage')}network:\n  type: bidirectional\n  inbound_port: 8080\n  inbound_max_concurrent: ${n}\n`;
+    expect(checkItem(item(PACKAGE, { manifestText: withMax(INBOUND_MAX_CONCURRENT_MAX + 1) }))).toEqual([
+      `integrations/s3-storage/integration.yaml: network.inbound_max_concurrent ${INBOUND_MAX_CONCURRENT_MAX + 1} is above ${INBOUND_MAX_CONCURRENT_MAX}, so the platform refuses the run on a plan with a lower limit; remove it to take the plan limit`,
+    ]);
+    expect(checkItem(item(PACKAGE, { manifestText: withMax(INBOUND_MAX_CONCURRENT_MAX) }))).toEqual([]);
   });
 
   it('needs a README and a manifest that parses (path-prefixed)', () => {

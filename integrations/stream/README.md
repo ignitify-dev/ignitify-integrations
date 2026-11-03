@@ -53,6 +53,7 @@ The result is `{ success: true, stage: 'streamed', cancelled, watch, streamed_s,
 - Serves **HLS over HTTPS** only, with a few seconds of delay. It reads the source over HTTPS or from disk.
 - **No ingest.** Inbound is HTTPS only, so RTMP, SRT and WebRTC cannot reach the task. You cannot stream from OBS into a task.
 - **One stream per task, for a small audience.** Many viewers need a CDN or a media server.
+- **Viewers share your plan's inbound limit.** The manifest declares no `inbound_max_concurrent`, so the task takes your plan's limit (as low as 2 in flight). A player fetches one short segment about every 4 s, so a few viewers fit even at 2; if requests start to queue, use a bigger preset or plan. Do not declare a higher value: the platform refuses the run.
 - The memory need of the `audio` profile is not measured; the minimum preset stays `std.medium`.
 
 ## On the VM

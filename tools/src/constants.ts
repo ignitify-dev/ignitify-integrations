@@ -31,6 +31,14 @@ export const RESERVED_NAMES = [...SHARED_PACKAGES, 'tools'] as const;
 /** Folders the item walker never enters: installed or built files, not the item's source. */
 export const SKIP_DIRS = ['node_modules', 'dist', 'coverage'] as const;
 
+/**
+ * The most `network.inbound_max_concurrent` a store manifest may declare. The platform refuses a value
+ * above the plan's ceiling at task:run (a declared value may only LOWER it), and the lowest ceiling of a
+ * plan with ingress is 2 (round(per-vCPU factor x preset vCPU); starter's factor is 5). Omit the field
+ * to take the plan limit.
+ */
+export const INBOUND_MAX_CONCURRENT_MAX = 2;
+
 /** The README sections every integration has, in this order (GOVERNANCE rule 7). */
 export const README_SECTIONS = ['## Add it', '## Use it', '## Grow your task', '## Limits'] as const;
 

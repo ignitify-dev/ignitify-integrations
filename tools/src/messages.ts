@@ -1,5 +1,12 @@
 import { MANIFEST_FILE } from '@ignitify-integrations/core';
-import { DRAFT_FILE, PACKAGE_JSON, README_FILE, README_SECTIONS, ROOT_TSCONFIG } from './constants.js';
+import {
+  DRAFT_FILE,
+  INBOUND_MAX_CONCURRENT_MAX,
+  PACKAGE_JSON,
+  README_FILE,
+  README_SECTIONS,
+  ROOT_TSCONFIG,
+} from './constants.js';
 
 // Every message the tools print, grouped by concern.
 
@@ -7,6 +14,8 @@ export const ITEM_MESSAGES = {
   noManifest: (dir: string) => `${dir}: ${MANIFEST_FILE} is missing`,
   manifest: (dir: string, issue: string) => `${dir}/${MANIFEST_FILE}: ${issue}`,
   nameMismatch: (dir: string, name: string) => `${dir}: folder name must equal the manifest name "${name}"`,
+  inboundMaxConcurrent: (dir: string, value: number) =>
+    `${dir}/${MANIFEST_FILE}: network.inbound_max_concurrent ${value} is above ${INBOUND_MAX_CONCURRENT_MAX}, so the platform refuses the run on a plan with a lower limit; remove it to take the plan limit`,
   reservedName: (dir: string, name: string) => `${dir}: "${name}" is the name of a shared package`,
   noReadme: (dir: string) => `${dir}: ${README_FILE} is missing`,
   readmeTitle: (dir: string, name: string) =>
