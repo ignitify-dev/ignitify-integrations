@@ -44,7 +44,7 @@ The result is `{ success: true, stage: 'streamed', cancelled, watch, streamed_s,
 
 - **A radio-style stream.** Use `profile: 'audio'`.
 - **Give viewers time to join.** Use `startDelaySec`, and send the link first: `watchUrl(ctx)` returns it before the stream starts (for example, in a chat message).
-- **Keep the recording.** Use `after: 'stop'`; the playlist and segments stay in `$HOME/hls` until the next stream starts. To return one playable link, upload each segment with [`s3-storage`](../s3-storage/README.md)'s `put` under one prefix, keeping its file name (`key: 'rec/<file>'`), then the playlist with `putAndLink` and the same prefix, and return that link. The player fetches the segments by plain URL, so the prefix must allow public read. With a private bucket, return one link per file.
+- **Keep the recording.** Use `after: 'stop'`; the playlist and segments stay in `$HOME/hls` until the next stream starts. To return one playable link, upload each segment with [`s3-storage`](https://github.com/ignitify-dev/ignitify-integrations/tree/master/integrations/s3-storage)'s `put` under one prefix, keeping its file name (`key: 'rec/<file>'`), then the playlist with `putAndLink` and the same prefix, and return that link. The player fetches the segments by plain URL, so the prefix must allow public read. With a private bucket, return one link per file.
 - **Your own encoding.** Change bitrate, codec or filters with `ffmpegArgs`; the package still runs the server and the progress.
 - **React to progress.** Use `onProgress`, for example to stop early on a condition with your own `AbortController` and `signal`.
 

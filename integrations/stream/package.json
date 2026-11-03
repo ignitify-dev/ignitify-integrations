@@ -1,6 +1,6 @@
 {
   "name": "@ignitify-integrations/stream",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Live audio and video streaming (HLS over HTTPS) from an ignitify task, as glue over ffmpeg",
   "license": "Apache-2.0",
   "repository": {
