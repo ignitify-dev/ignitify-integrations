@@ -30,6 +30,7 @@ let releases = 0;
 const waits: number[] = [];
 const errors: TelegramError[] = [];
 
+const ctxOf = (secrets: Record<string, string>) => ({ secrets, chunk: () => undefined, metric: () => undefined });
 const stop = (): ProcessStop => ({ signal: stopController.signal, release: () => void (releases += 1) });
 const sleep = async (ms: number, signal: AbortSignal): Promise<void> => {
   waits.push(ms);
@@ -38,7 +39,7 @@ const sleep = async (ms: number, signal: AbortSignal): Promise<void> => {
 
 const bot = async (script: (request: Recorded, index: number) => Reply, options: TelegramOptions = {}) => {
   api = await fakeBotApi(script);
-  return telegram({ secrets: { TELEGRAM_BOT_TOKEN: TOKEN } }, { apiRoot: api.root, ...options }, { sleep, stop });
+  return telegram(ctxOf({ TELEGRAM_BOT_TOKEN: TOKEN }), { apiRoot: api.root, ...options }, { sleep, stop });
 };
 
 /** The error of a failed result, kept so the last test can check no error holds the token. */
@@ -64,21 +65,19 @@ afterEach(async () => {
 
 describe('setup', () => {
   it('reads the token secret, and names only the secret when it is missing', () => {
-    expect(() => telegram({ secrets: {} })).toThrow(/TELEGRAM_BOT_TOKEN is not set/);
+    expect(() => telegram(ctxOf({}))).toThrow(/TELEGRAM_BOT_TOKEN is not set/);
   });
 
   it('refuses a bad token or bad options without printing the token', () => {
-    expect(() => telegram({ secrets: { TELEGRAM_BOT_TOKEN: 'a/b' } })).toThrow(/malformed/);
-    expect(() => telegram({ secrets: {} }, { token: '' })).toThrow(/malformed/);
-    expect(() => telegram({ secrets: { TELEGRAM_BOT_TOKEN: TOKEN } }, { apiRoot: 'http://example.com' })).toThrow(
-      /apiRoot/,
-    );
+    expect(() => telegram(ctxOf({ TELEGRAM_BOT_TOKEN: 'a/b' }))).toThrow(/malformed/);
+    expect(() => telegram(ctxOf({}), { token: '' })).toThrow(/malformed/);
+    expect(() => telegram(ctxOf({ TELEGRAM_BOT_TOKEN: TOKEN }), { apiRoot: 'http://example.com' })).toThrow(/apiRoot/);
   });
 
   it('uses the token of a second bot when given', async () => {
     const second = '999:OTHER';
     api = await fakeBotApi(() => success(true));
-    const other = telegram({ secrets: {} }, { token: second, apiRoot: api.root }, { sleep, stop });
+    const other = telegram(ctxOf({}), { token: second, apiRoot: api.root }, { sleep, stop });
     await other.call('getMe', {});
     expect(api.requests[0]?.path).toBe(`/bot${second}/getMe`);
   });

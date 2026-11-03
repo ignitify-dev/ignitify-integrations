@@ -101,3 +101,27 @@ export const MESSAGES = {
   aborted: 'stopped',
   failed: (method: string, detail: string) => `telegram ${method}: ${detail}`,
 } as const;
+
+/** Long polling: "Timeout in seconds for long polling. Defaults to 0" (short polling, for tests only). */
+export const POLL_TIMEOUT_SEC = 30;
+/** "Limits the number of updates to be retrieved. Values between 1-100 are accepted. Defaults to 100." */
+export const POLL_LIMIT = 100;
+/** "The negative offset can be specified to retrieve updates starting from -offset update from the end". */
+export const POLL_LAST_OFFSET = -1;
+/** Backoff of the poll loop after a failed pull: base * 2^(failures - 1), at most the max. */
+export const POLL_BACKOFF_BASE_MS = 1000;
+export const POLL_BACKOFF_MAX_MS = 30_000;
+/** A failed pull that no wait will fix: a bad token, or another poller or a webhook on this bot. */
+export const HTTP_UNAUTHORIZED = 401;
+export const HTTP_NOT_FOUND = 404;
+export const HTTP_CONFLICT = 409;
+/** At most one `receiving` progress chunk per interval. */
+export const RECEIVING_EVERY_MS = 5000;
+export const METRIC_UPDATES = 'telegram_updates';
+export const STATUS = { listening: 'listening', receiving: 'receiving' } as const;
+
+export const POLL_MESSAGES = {
+  conflict: (message: string) =>
+    `${message}: only one poller per bot, and no webhook (call deleteWebhook first, or stop the other run)`,
+  unauthorized: (message: string) => `${message}: check the TELEGRAM_BOT_TOKEN secret`,
+} as const;

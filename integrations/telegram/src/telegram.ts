@@ -2,13 +2,14 @@
 // `storage()`); every call returns a Result.
 
 import { setTimeout as delay } from 'node:timers/promises';
-import type { Message } from '@grammyjs/types';
+import type { Message, Update } from '@grammyjs/types';
 import { err, ok, processStop, readSecret, unwrap, type Result, type TaskCtx } from '@ignitify-integrations/runtime';
 import { createClient, type TelegramDeps } from './client.js';
 import { checkToken, endpoints, parseOptions, type TelegramOptions } from './config.js';
 import { SECRET_BOT_TOKEN } from './constants.js';
 import { download, type Downloaded } from './files.js';
 import { splitText } from './text.js';
+import { updates, type UpdatesOptions } from './updates.js';
 import type { CallOptions, Method, Params, Returns, TelegramError } from './types.js';
 
 /** The `sendMessage` parameters other than the chat and the text, plus a stop signal. */
@@ -29,24 +30,32 @@ export interface Telegram {
   ): Promise<Result<readonly Message.TextMessage[], TelegramError>>;
   /** Download a file by its `file_id` to `toPath` (at most 20 MB). */
   download(fileId: string, toPath: string, opts?: CallOptions): Promise<Result<Downloaded, TelegramError>>;
+  /**
+   * The bot's updates, by long polling, until stopped (SIGTERM, SIGINT or `signal`): then the loop
+   * ends. Throws a redacted Error when polling cannot go on: a bad token, or another poller or a
+   * webhook on this bot (409).
+   */
+  updates(opts: UpdatesOptions): AsyncIterable<Update>;
 }
 
 const defaultDeps: TelegramDeps = {
   fetch: (input, init) => fetch(input, init),
   sleep: (ms, signal) => delay(ms, undefined, { signal }),
   stop: processStop,
+  now: Date.now,
 };
 
 const callOptions = (signal: AbortSignal | undefined): CallOptions => (signal === undefined ? {} : { signal });
 
 export const telegram = (
-  ctx: Pick<TaskCtx, 'secrets'>,
+  ctx: Pick<TaskCtx, 'secrets' | 'chunk' | 'metric'>,
   options: TelegramOptions = {},
   deps: Partial<TelegramDeps> = {},
 ): Telegram => {
   const config = unwrap(parseOptions(options));
   const token = unwrap(checkToken(options.token ?? unwrap(readSecret(ctx, SECRET_BOT_TOKEN))));
-  const client = createClient(endpoints(config, token), token, config, { ...defaultDeps, ...deps });
+  const effects: TelegramDeps = { ...defaultDeps, ...deps };
+  const client = createClient(endpoints(config, token), token, config, effects);
 
   const call: Telegram['call'] = async (method, params, opts) =>
     (await client.call(method, params as Readonly<Record<string, unknown>>, opts)) as Result<
@@ -78,5 +87,6 @@ export const telegram = (
     call,
     sendText,
     download: (fileId, toPath, opts) => download(client, fileId, toPath, opts),
+    updates: (opts) => updates(ctx, client, effects, opts),
   };
 };
