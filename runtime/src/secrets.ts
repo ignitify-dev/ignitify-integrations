@@ -14,6 +14,13 @@ const SECRET_MESSAGES = {
     `secret ${name} is not set: declare it in task.yaml "secrets:" and set it with "ignitify secret:set ${name} --stdin"`,
 } as const;
 
+/** What a secret value becomes in an error or a log. */
+export const REDACTED = '[redacted]';
+
+/** Remove every secret value from a text that may reach an error or a log. Empty values are ignored. */
+export const redact = (text: string, secrets: readonly string[]): string =>
+  secrets.filter((secret) => secret !== '').reduce((out, secret) => out.replaceAll(secret, REDACTED), text);
+
 /** Read one secret, or explain how to set it. Never returns or logs the value of another secret. */
 export const readSecret = (ctx: Pick<TaskCtx, 'secrets'>, name: string): Result<string> => {
   const value = ctx.secrets[name];

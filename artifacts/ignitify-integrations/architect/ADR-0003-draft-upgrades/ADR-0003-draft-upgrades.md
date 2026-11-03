@@ -36,11 +36,11 @@ Work through the draft's `TODO.md`:
 
 ## 4. Known issues of the drafts
 
-| Issue                                                                                   | Fix                       |
-| :-------------------------------------------------------------------------------------- | :------------------------ |
-| 34 drafts say "Verify host": their hosts are not checked against vendor docs            | Step 2, at upgrade        |
-| Secret names are not checked against vendor docs; one Google key has three secret names | Step 3, at upgrade        |
-| `telegram`: steps 1–4 are done; only the owner line and the release are left            | Steps 6 and 7, at upgrade |
+| Issue                                                                                                                                                                                                   | Fix                |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :----------------- |
+| 34 drafts say "Verify host": their hosts are not checked against vendor docs                                                                                                                            | Step 2, at upgrade |
+| Secret names are not checked against vendor docs; one Google key has three secret names                                                                                                                 | Step 3, at upgrade |
+| `telegram`: upgraded to code by [PLAN-telegram-v1](../../engineer/PLAN-telegram-v1.md) (the owner, 2026-11-02): value test, hosts, secrets and Bot API facts done; code, README, owner and release open | The plan's 4 PRs   |
 
 ## 5. How the store grows
 
