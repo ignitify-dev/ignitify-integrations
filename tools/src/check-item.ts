@@ -7,6 +7,7 @@ import {
   DIST_DIR,
   DRAFT_FILE,
   DRAFT_VERSION,
+  INBOUND_MAX_CONCURRENT_MAX,
   INSTALL_SCRIPTS,
   INTEGRATIONS_DIR,
   LICENCE,
@@ -176,6 +177,14 @@ const readmeIssues = (dir: string, name: string, text: string | undefined): stri
   ];
 };
 
+/** A store manifest may only lower a plan limit, never ask for more than the lowest plan grants. */
+const networkIssues = (dir: string, manifest: Manifest): string[] => {
+  const value = manifest.network?.inbound_max_concurrent;
+  return value !== undefined && value > INBOUND_MAX_CONCURRENT_MAX
+    ? [ITEM_MESSAGES.inboundMaxConcurrent(dir, value)]
+    : [];
+};
+
 export const checkItem = (item: RawItem): string[] => {
   const layout = [
     ...readmeIssues(item.dir, item.name, item.readmeText),
@@ -189,6 +198,7 @@ export const checkItem = (item: RawItem): string[] => {
   const manifest = parsed.value;
   return [
     ...(manifest.name === item.name ? [] : [ITEM_MESSAGES.nameMismatch(item.dir, manifest.name)]),
+    ...networkIssues(item.dir, manifest),
     ...layout,
     ...packageJsonIssues(item, manifest),
   ];

@@ -19,7 +19,7 @@ execution:
     inbound_port: 8080
     inbound_routes:
       - prefix: /hooks/
-    inbound_max_concurrent: 8 # optional: requests handled at the same time
+    inbound_max_concurrent: 2 # optional: only to LOWER the plan limit; omit it to take the limit
 ```
 
 - `inbound_port` is the port your code listens on: 1024 to 65535.
@@ -75,5 +75,5 @@ Anyone can send a request to a public address. Use the vendor's own check: most 
 ## Limits
 
 - The address works only while the run is alive.
-- `inbound_max_concurrent` limits the requests handled at the same time; raise it if you need more.
+- Your plan sets how many inbound requests are handled at the same time. `inbound_max_concurrent` can only lower that limit: a higher value is refused when the task runs.
 - Many viewers or a high event rate need a service built for that load (a queue, a CDN), not one task.

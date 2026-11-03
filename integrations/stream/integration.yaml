@@ -8,7 +8,6 @@ network:
   inbound_port: 8080 # must equal the `port` option (default 8080)
   inbound_routes:
     - prefix: /live/ # must equal the `route` option (default /live/)
-  inbound_max_concurrent: 16 # in-flight requests; an HLS player fetches one segment every 4 s
 execution:
   duration: long
   interaction: continuous # ctx.chunk is dropped under boundary-only
