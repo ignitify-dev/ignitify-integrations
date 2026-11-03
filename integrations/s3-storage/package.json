@@ -1,6 +1,6 @@
 {
   "name": "@ignitify-integrations/s3-storage",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Store files from an ignitify task in any S3-compatible bucket and return presigned links",
   "license": "Apache-2.0",
   "repository": {
