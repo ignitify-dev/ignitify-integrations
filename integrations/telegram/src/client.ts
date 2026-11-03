@@ -17,6 +17,8 @@ export interface TelegramDeps {
   readonly sleep: (ms: number, signal: AbortSignal) => Promise<void>;
   /** The process stop signal (SIGTERM, SIGINT). */
   readonly stop: () => ProcessStop;
+  /** The clock, in ms, for the progress throttle. */
+  readonly now: () => number;
 }
 
 type Body = Pick<RequestInit, 'body' | 'headers'>;
@@ -35,6 +37,8 @@ export interface Client {
   ): Promise<Result<T, TelegramError>>;
   /** The secrets every error is redacted of. */
   readonly secrets: readonly string[];
+  /** The shared process stop, for work that spans many calls (the poll loop). */
+  readonly acquireStop: () => ProcessStop;
 }
 
 /**
@@ -155,5 +159,5 @@ export const createClient = (endpoints: Endpoints, token: string, limits: RetryL
       exchange(DOWNLOAD_LABEL, `${endpoints.files}/${filePath}`, { method: 'GET' }, CALL_TIMEOUT_MS, signal, consume),
     );
 
-  return { call, getFile, secrets };
+  return { call, getFile, secrets, acquireStop };
 };
