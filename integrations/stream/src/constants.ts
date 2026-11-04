@@ -46,6 +46,14 @@ export const READ_METHODS: readonly string[] = ['GET', 'HEAD'];
 export const PROGRESS_EVERY_MS = 2000;
 /** How often the player page asks whether the playlist exists yet. */
 export const PLAYER_POLL_MS = 2000;
+/** The player's LIVE button is red when playback is less than this many seconds behind the live edge. */
+export const LIVE_EDGE_SEC = 10;
+/** A viewer counts while its player asked for the playlist within this time (a few segments). */
+export const VIEWER_WINDOW_MS = 15_000;
+/** The player's per-tab id: short and plain, so a request cannot put junk in the log. */
+export const VIEWER_ID_PATTERN = /^[a-z0-9]{6,16}$/;
+/** At most this many viewers are tracked; above it the count stays at the cap (a small audience, see README). */
+export const VIEWER_LOG_MAX = 1000;
 export const STDERR_TAIL_CHARS = 2000;
 export const METRIC_STREAMED_SECONDS = 'streamed_seconds';
 

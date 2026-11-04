@@ -22,7 +22,9 @@ export async function run(payload, ctx) {
 }
 ```
 
-The first chunk the caller gets is `{ status: 'live', watch, playlist }`. A viewer opens `watch` (the deployment's public host + `/live/`). Then progress chunks follow: `{ status: 'streaming', time_s, of_s, speed }`, at most every 2 s.
+The first chunk the caller gets is `{ status: 'live', watch, playlist }`. A viewer opens `watch` (the deployment's public host + `/live/`). Then progress chunks follow: `{ status: 'streaming', time_s, of_s, speed, viewers }`, at most every 2 s. `viewers` is the number of players that asked for the playlist in the last 15 s (one per browser tab).
+
+The player page plays with hls.js wherever it runs, so the video has a timeline and a viewer can seek back. Where hls.js cannot run (iOS Safari), it falls back to the browser's own HLS. A **LIVE** button is red at the live edge and grey when the viewer is more than 10 s behind; a click goes back to live. It hides when the stream has ended.
 
 | Option          | Default              | Meaning                                                                                                                       |
 | :-------------- | :------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
@@ -38,7 +40,7 @@ The first chunk the caller gets is `{ status: 'live', watch, playlist }`. A view
 | `onProgress`    | —                    | Called for every ffmpeg progress report                                                                                       |
 | `signal`        | `SIGTERM` / `SIGINT` | An `AbortSignal` that stops the stream                                                                                        |
 
-The result is `{ success: true, stage: 'streamed', cancelled, watch, streamed_s, height, wall_ms }`, or `{ success: true, cancelled: true, stage: 'before-stream' }` when it is stopped during the start delay. A failed ffmpeg run throws, with the end of ffmpeg's error output in the message.
+The result is `{ success: true, stage: 'streamed', cancelled, watch, streamed_s, height, wall_ms, peak_viewers }`, or `{ success: true, cancelled: true, stage: 'before-stream' }` when it is stopped during the start delay. A failed ffmpeg run throws, with the end of ffmpeg's error output in the message.
 
 ## Grow your task
 
@@ -46,13 +48,14 @@ The result is `{ success: true, stage: 'streamed', cancelled, watch, streamed_s,
 - **Give viewers time to join.** Use `startDelaySec`, and send the link first: `watchUrl(ctx)` returns it before the stream starts (for example, in a chat message).
 - **Keep the recording.** Use `after: 'stop'`; the playlist and segments stay in `$HOME/hls` until the next stream starts. To return one playable link, upload each segment with [`s3-storage`](https://github.com/ignitify-dev/ignitify-integrations/tree/master/integrations/s3-storage)'s `put` under one prefix, keeping its file name (`key: 'rec/<file>'`), then the playlist with `putAndLink` and the same prefix, and return that link. The player fetches the segments by plain URL, so the prefix must allow public read. With a private bucket, return one link per file.
 - **Your own encoding.** Change bitrate, codec or filters with `ffmpegArgs`; the package still runs the server and the progress.
+- **Count your audience.** `peak_viewers` in the result is the most viewers at one time while streaming; `viewers` in each chunk is the count now.
 - **React to progress.** Use `onProgress`, for example to stop early on a condition with your own `AbortController` and `signal`.
 
 ## Limits
 
 - Serves **HLS over HTTPS** only, with a few seconds of delay. It reads the source over HTTPS or from disk.
 - **No ingest.** Inbound is HTTPS only, so RTMP, SRT and WebRTC cannot reach the task. You cannot stream from OBS into a task.
-- **One stream per task, for a small audience.** Many viewers need a CDN or a media server.
+- **One stream per task, for a small audience.** Many viewers need a CDN or a media server. The viewer count is a count of browser tabs, not people; it stops growing at 1000 and counts only the player page served by the task.
 - **Viewers share your plan's inbound limit.** The manifest declares no `inbound_max_concurrent`, so the task takes your plan's limit (as low as 2 in flight). A player fetches one short segment about every 4 s, so a few viewers fit even at 2; if requests start to queue, use a bigger preset or plan. Do not declare a higher value: the platform refuses the run.
 - The memory need of the `audio` profile is not measured; the minimum preset stays `std.medium`.
 
