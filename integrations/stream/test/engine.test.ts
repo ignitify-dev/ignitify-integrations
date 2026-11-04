@@ -99,13 +99,18 @@ describe.skipIf(!HAS_FFMPEG)('stream with the real ffmpeg (skipped when ffmpeg i
     const base = `http://127.0.0.1:${port}`;
     const controller = new AbortController();
     let playlistAtReady: boolean | undefined;
-    let early: Promise<[Response, Response]> | undefined;
+    let early: Promise<[Response, Response, Response]> | undefined;
     let replay: Promise<{ playlist: Response; text: string; segment: Response }> | undefined;
 
     const { ctx, events } = fakeCtx(CALLBACK, {
       onReady: () => {
         playlistAtReady = existsSync(join(hlsDir, PLAYLIST_FILE));
-        early = Promise.all([fetch(`${base}/live/`), fetch(`${base}/live/hls.min.js`)]);
+        // A player asks for the playlist with its tab id: one viewer, even before the playlist exists.
+        early = Promise.all([
+          fetch(`${base}/live/`),
+          fetch(`${base}/live/hls.min.js`),
+          fetch(`${base}/live/${PLAYLIST_FILE}?v=tab1viewer`),
+        ]);
       },
       // The replay window is open from the `ended` chunk until the test aborts.
       onChunk: (data) => {
@@ -138,7 +143,8 @@ describe.skipIf(!HAS_FFMPEG)('stream with the real ffmpeg (skipped when ffmpeg i
       data: { status: STATUS.live, watch: WATCH, playlist: `${WATCH}${PLAYLIST_FILE}` },
     });
 
-    const [page, script] = await early!;
+    const [page, script, firstPlaylist] = await early!;
+    expect(firstPlaylist.status).toBe(404);
     expect(page.status).toBe(200);
     expect(await page.text()).toContain('/live/hls.min.js');
     expect(script.status).toBe(200);
@@ -156,7 +162,8 @@ describe.skipIf(!HAS_FFMPEG)('stream with the real ffmpeg (skipped when ffmpeg i
 
     // The last progress report is always sent, so the final chunk and metric hold the full length.
     const streaming = chunks(events, STATUS.streaming);
-    expect(streaming.at(-1)).toMatchObject({ of_s: null });
+    expect(streaming.at(-1)).toMatchObject({ of_s: null, viewers: 1 });
+    expect(result.stage === 'streamed' && result.peak_viewers).toBe(1);
     expect(Number(streaming.at(-1)?.time_s)).toBeCloseTo(SOURCE_SEC, 0);
     const metrics = events.filter((e) => e.type === 'metric');
     expect(metrics.every((m) => m.name === METRIC_STREAMED_SECONDS && m.kind === 'gauge')).toBe(true);

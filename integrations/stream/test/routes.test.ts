@@ -75,7 +75,17 @@ describe('playerPage', () => {
   it('loads hls.js and the playlist by absolute path under the route, from no other origin', () => {
     const page = playerPage('/tv/');
     expect(page).toContain(`src="/tv/${PLAYER_SCRIPT_FILE}"`);
-    expect(page).toContain(`"/tv/${PLAYLIST_FILE}"`);
+    expect(page).toContain(`"/tv/${PLAYLIST_FILE}?v="`);
     expect(page).not.toMatch(/https?:\/\//);
+  });
+
+  it('uses hls.js wherever it runs (a timeline), native HLS only as the fallback, and has a LIVE button', () => {
+    const page = playerPage('/live/');
+    expect(page.indexOf('Hls.isSupported()')).toBeGreaterThan(-1);
+    expect(page.indexOf('Hls.isSupported()')).toBeLessThan(page.indexOf('v.src = src'));
+    expect(page).toContain('liveDurationInfinity: false');
+    expect(page).not.toContain('canPlayType');
+    expect(page).toContain('id="live"');
+    expect(page).toContain(`${PLAYLIST_FILE}?v=" + id`);
   });
 });

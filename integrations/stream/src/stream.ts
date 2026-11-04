@@ -27,6 +27,7 @@ import { PLAYER_SCRIPT } from './player-script.generated.js';
 import { parseOptions, type StreamConfig, type StreamOptions } from './options.js';
 import { PROGRESS_START, parseProgress, roundTime, shouldEmit, type ProgressReport } from './progress.js';
 import { playerPage, resolveRoute, viewerUrl } from './routes.js';
+import { NO_VIEWERS, countViewers, recordViewer, viewerId, type ViewerLog } from './viewers.js';
 
 export type StreamResult =
   | { readonly success: true; readonly cancelled: true; readonly stage: 'before-stream' }
@@ -41,6 +42,8 @@ export type StreamResult =
       readonly height: number | null;
       /** From the start of ffmpeg to the end of the run, replay included. */
       readonly wall_ms: number;
+      /** The most viewers at one time while streaming (players seen within the last 15 s, at each progress chunk). */
+      readonly peak_viewers: number;
     };
 
 const STOP_SIGNALS = ['SIGTERM', 'SIGINT'] as const;
@@ -77,7 +80,7 @@ const hlsPaths = (): StreamPaths => {
 const playerScript = Buffer.from(PLAYER_SCRIPT);
 
 const handler =
-  (route: string, player: string, script: Buffer, hlsDir: string) =>
+  (route: string, player: string, script: Buffer, hlsDir: string, onViewer: (id: string) => void) =>
   (req: IncomingMessage, res: ServerResponse): void => {
     if (!READ_METHODS.includes(req.method ?? '')) {
       res.writeHead(NOT_ALLOWED, { allow: READ_METHODS.join(', ') }).end();
@@ -89,11 +92,14 @@ const handler =
     if (r.kind === 'player') res.writeHead(OK, { 'content-type': HTML_TYPE }).end(player);
     else if (r.kind === 'script') res.writeHead(OK, { 'content-type': SCRIPT_TYPE }).end(script);
     else if (r.kind === 'none') res.writeHead(NOT_FOUND).end();
-    else
+    else {
+      const id = r.name === PLAYLIST_FILE ? viewerId(req.url ?? '') : null;
+      if (id !== null) onViewer(id);
       readFile(join(hlsDir, r.name)).then(
         (body) => res.writeHead(OK, { 'content-type': r.type, 'cache-control': NO_CACHE }).end(body),
         () => res.writeHead(NOT_FOUND).end(),
       );
+    }
   };
 
 const listen = (server: Server, port: number): Promise<void> =>
@@ -123,6 +129,7 @@ const runEngine = (
   config: StreamConfig,
   args: readonly string[],
   signal: AbortSignal,
+  watching: () => number,
 ): Promise<EngineExit> =>
   new Promise((resolve, reject) => {
     const ff = spawn(FFMPEG_BIN, args, { stdio: ['ignore', 'pipe', 'pipe'] });
@@ -144,7 +151,13 @@ const runEngine = (
       const now = Date.now();
       if (!shouldEmit(r, lastEmitMs, now)) return;
       lastEmitMs = now;
-      ctx.chunk({ status: STATUS.streaming, time_s: roundTime(r.doneSec), of_s: config.seconds, speed: r.speed });
+      ctx.chunk({
+        status: STATUS.streaming,
+        time_s: roundTime(r.doneSec),
+        of_s: config.seconds,
+        speed: r.speed,
+        viewers: watching(),
+      });
       ctx.metric(METRIC_STREAMED_SECONDS, r.doneSec, 'gauge');
     };
     ff.stdout.setEncoding('utf8').on('data', (text: string) => {
@@ -179,7 +192,18 @@ export async function stream(ctx: TaskCtx, options: StreamOptions): Promise<Stre
   await rm(paths.hlsDir, { recursive: true, force: true });
   await mkdir(paths.hlsDir, { recursive: true });
 
-  const server = createServer(handler(config.route, playerPage(config.route), playerScript, paths.hlsDir));
+  // The one mutable viewer state; every decision on it is in viewers.ts.
+  let viewers: ViewerLog = NO_VIEWERS;
+  let peakViewers = 0;
+  const onViewer = (id: string): void => {
+    viewers = recordViewer(viewers, id, Date.now());
+  };
+  const watching = (): number => {
+    const now = countViewers(viewers, Date.now());
+    peakViewers = Math.max(peakViewers, now);
+    return now;
+  };
+  const server = createServer(handler(config.route, playerPage(config.route), playerScript, paths.hlsDir, onViewer));
   try {
     await listen(server, config.port);
     ctx.ready();
@@ -197,7 +221,7 @@ export async function stream(ctx: TaskCtx, options: StreamOptions): Promise<Stre
     if (signal.aborted) return { success: true, cancelled: true, stage: 'before-stream' };
 
     const started = Date.now();
-    const exit = await runEngine(ctx, config, ffmpegArgs(config, paths), signal);
+    const exit = await runEngine(ctx, config, ffmpegArgs(config, paths), signal, watching);
     // ffmpeg exits non-zero when it is stopped; that is a cancel, not a failure.
     if (exit.code !== 0 && !signal.aborted) throw new Error(MESSAGES.ffmpegFailed(exit.code, exit.stderrTail));
 
@@ -216,6 +240,7 @@ export async function stream(ctx: TaskCtx, options: StreamOptions): Promise<Stre
       streamed_s: roundTime(exit.streamedSec),
       height: config.profile === 'video' ? config.height : null,
       wall_ms: Date.now() - started,
+      peak_viewers: peakViewers,
     };
   } finally {
     await close(server);
